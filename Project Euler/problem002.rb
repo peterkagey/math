@@ -16,4 +16,5 @@ end
 p seq.select{ |n| n % 2 == 0 }.reduce(:+)
 p Time.now - start
 
-# 7.9e-05 seconds
+# 4613732
+# 3.7e-05 seconds

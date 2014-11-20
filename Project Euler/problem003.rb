@@ -18,4 +18,5 @@ a = 600851475143
 end
 p Time.now-start
 
-# 0.003941 seconds
+# 6857
+# 0.002216 seconds

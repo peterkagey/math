@@ -1,5 +1,3 @@
-start = Time.now
-
 # The four adjacent digits in the 1000-digit number that have the greatest 
 # product are 9 × 9 × 8 × 9 = 5832.
 
@@ -27,7 +25,12 @@ a =
 
 # Find the thirteen adjacent digits in the 1000-digit number that have the 
 # greatest product. What is the value of this product?
+
+start = Time.now
+
 n = 13
 p (0..a.length-n).collect{|x|a[x...x+n].split("").map(&:to_i).reduce(:*)}.max
 p Time.now-start
-# 0.018498 seconds
+
+# 23514624000
+# 0.013319 seconds

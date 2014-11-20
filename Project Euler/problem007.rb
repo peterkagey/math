@@ -3,18 +3,8 @@
 # What is the 10 001st prime number?
 
 start = Time.now
-def sieve_of_eratosthenes(n)
-	return [] if n < 2
-	p = 2
-	bool_arry = [false] + [false] + [true] * (n-1)
-	loop do
-		(2*p..n).step(p).each { |i| bool_arry[i] = false }
-		index = bool_arry[p+1..n].index{ |x| x }
-		break if index.nil?
-		p = index + p + 1
-	end
-	bool_arry.each_index.select{ |i| bool_arry[i] }
-end
+
+require File.join File.dirname(__FILE__),'function_sieve_of_eratosthenes'
 
 def log(n)
 	Math.log(n)
@@ -29,4 +19,6 @@ end
 p first_n_primes(10001)[-1]
 p Time.now - start
 
-# 0.896943 seconds
+
+# 104743
+# 0.055475 seconds

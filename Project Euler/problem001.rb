@@ -6,4 +6,5 @@ start = Time.now
 p (1...1000).select{ |n| n % 3 == 0 || n % 5 == 0 }.reduce(:+)
 p Time.now - start
 
-# 0.000449 seconds
+# 233168
+# 0.000164 seconds

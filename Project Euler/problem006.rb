@@ -18,4 +18,5 @@ sum_of_squares = n * (n + 1) * (2*n + 1) / 6
 p sum_to_n_squared - sum_of_squares
 p Time.now - start
 
+# 25164150
 # 2.5e-05 seconds

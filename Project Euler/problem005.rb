@@ -30,4 +30,6 @@ end
 
 p h.collect{|k,v| k ** v}.reduce(:*)
 p Time.now - start
- # 0.000175 seconds
+
+# 232792560
+# 0.000101 seconds

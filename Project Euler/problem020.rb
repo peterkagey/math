@@ -6,10 +6,11 @@
 
 # Find the sum of the digits in the number 100!
 
-p start = Time.now
-require File.join File.dirname(__FILE__),'factorial'
+start = Time.now
+require File.join File.dirname(__FILE__),'function_factorial'
 
 p factorial(100).to_s.split("").map(&:to_i).reduce(:+)
 p Time.now - start
 
-# 0.0011 seconds
+# 648
+# 0.001415 seconds

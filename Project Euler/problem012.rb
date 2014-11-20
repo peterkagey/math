@@ -18,7 +18,7 @@
 # What is the value of the first triangle number to have over five hundred 
 # divisors?
 start = Time.now
-require File.join File.dirname(__FILE__),'sieve_of_eratosthenes'
+require File.join File.dirname(__FILE__),'function_sieve_of_eratosthenes'
 
 primes = sieve_of_eratosthenes(10000)
 
@@ -47,4 +47,6 @@ end
 
 p i*(i+1)/2
 p Time.now-start
-# Took 2.215497
+
+# 76576500
+# 1.163591 seconds

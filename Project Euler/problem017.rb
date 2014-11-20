@@ -70,4 +70,5 @@ end
 p x.join.length
 p Time.now - start
 
-# 0.008281 seconds
+# 21124
+# 0.0108 seconds

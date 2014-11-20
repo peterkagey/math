@@ -48,4 +48,6 @@ h.each do |k,v|
 end
 p Time.now - start
 
-# 8.413266 seconds
+# 837799
+# 4.523849 seconds
+# inelegant solution

@@ -17,4 +17,5 @@ end
 p c
 p Time.now - start
 
-# 0.003942 seconds
+# 906609
+# 0.002313 seconds

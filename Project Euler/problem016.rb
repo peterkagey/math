@@ -6,4 +6,5 @@ start = Time.now
 p (2**1000).to_s.split("").map(&:to_i).reduce(:+)
 p Time.now-start
 
-# 0.000398 seconds
+# 1366
+# 0.000208 seconds

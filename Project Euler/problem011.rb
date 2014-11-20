@@ -59,4 +59,6 @@ end
 
 p new_max
 p Time.now-start
-# Takes 0.001972 seconds
+
+# 70600674
+# 0.000878 seconds

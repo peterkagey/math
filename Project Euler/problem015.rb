@@ -5,10 +5,7 @@
 
 start = Time.now
 
-def factorial(n)
-	return 1 if n == 0
-	(1..n).reduce(:*)
-end
+require File.join File.dirname(__FILE__),'function_factorial'
 
 def n_choose_k(n,k)
 	factorial(n)/factorial(k)/factorial(n-k)
@@ -16,4 +13,5 @@ end
 
 p n_choose_k(40,20)
 p Time.now-start
-# 8.3e-05 seconds
+# 137846528820
+# 0.00049 seconds
