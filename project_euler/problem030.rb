@@ -28,4 +28,4 @@ p Time.now - start
 # 443839
 # 6.798568 seconds
 
-# Brute force, but it works!
+# Brute force, but it works.

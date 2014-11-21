@@ -1,22 +1,13 @@
-def pandigital_product?(a, b)
-	!!("#{a}#{b}#{a * b}".split("").uniq.join =~ /^[1-9]{9}$/)
-end
+# In England the currency is made up of pound, £, and pence, p, and there are 
+# eight coins in general circulation:
 
-def range_of_correct_number_of_digits(a, b)
-	power = 9 - a.to_s.length - b.to_s.length
-	max_product = 10**power - 1
-	min_product = 10**(power-1)
-	[max_product, min_product]
-end
+# 1p, 2p, 5p, 10p, 20p, 50p, £1 (100p) and £2 (200p).
+# It is possible to make £2 in the following way:
 
-p range_of_correct_number_of_digits(1,1)
+# 1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
+# How many different ways can £2 be made using any number of coins?
 
-a_b_list = []
-(1..999).each do |x|
-	(x...999).each do |y|
-		# next unless x.to_s.length + y.to_s.length + (x*y).to_s.length == 9
-		a_b_list << x*y if pandigital_product?(x,y) && x.to_s.length + y.to_s.length + (x*y).to_s.length == 9
-	end
-end
+start = Time.now
 
-p a_b_list.reduce(:+)
+
+p Time.now-start
