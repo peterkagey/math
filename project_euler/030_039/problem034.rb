@@ -7,7 +7,7 @@
 
 start = Time.now
 
-require File.join File.dirname(__FILE__),'function_factorial'
+require_relative '../function/factorial'
 
 # 7*9! = 2,540,160 < 9,999,999 is an upper bound.
 

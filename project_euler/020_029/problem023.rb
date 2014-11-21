@@ -16,10 +16,11 @@
 # Find the sum of all the positive integers which cannot be written as the sum
 # of two abundant numbers.
 
-require File.join File.dirname(__FILE__),'function_sieve_of_eratosthenes'
-require File.join File.dirname(__FILE__),'function_prime_factors'
-require File.join File.dirname(__FILE__),'function_proper_factor_sum'
 start = Time.now
+
+require_relative '../function/sieve_of_eratosthenes'
+require_relative '../function/prime_factors'
+require_relative '../function/proper_factor_sum'
 
 primes = sieve_of_eratosthenes(10000)
 

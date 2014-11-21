@@ -4,7 +4,7 @@
 
 start = Time.now
 
-require File.join File.dirname(__FILE__),'function_sieve_of_eratosthenes'
+require_relative '../function/sieve_of_eratosthenes'
 
 def log(n)
 	Math.log(n)

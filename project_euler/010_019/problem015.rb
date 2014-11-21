@@ -5,7 +5,7 @@
 
 start = Time.now
 
-require File.join File.dirname(__FILE__),'function_factorial'
+require_relative '../function/factorial'
 
 def n_choose_k(n,k)
 	factorial(n)/factorial(k)/factorial(n-k)

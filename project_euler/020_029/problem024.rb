@@ -1,4 +1,4 @@
-require File.join File.dirname(__FILE__),'function_factorial'
+require_relative '../function/factorial'
 
 start = Time.now
 
