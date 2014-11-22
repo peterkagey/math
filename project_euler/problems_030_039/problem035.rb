@@ -21,6 +21,6 @@ p primes.length
 p Time.now - start
 
 # 55
-# 0.531968 seconds
+# 0.356699
 
 # One of my most elegant solutions.

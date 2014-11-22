@@ -9,9 +9,7 @@
 start = Time.now
 seq = [1,1]
 
-loop do
-	seq[-1] > 4000000 ? break : seq << seq[-1] + seq[-2]
-end
+loop do; (seq[-1] > 4000000 ? break : seq << seq[-1] + seq[-2]) end
 
 p seq.select{ |n| n % 2 == 0 }.reduce(:+)
 p Time.now - start

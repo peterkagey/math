@@ -2,20 +2,16 @@
 
 # What is the largest prime factor of the number 600851475143 ?
 
-
 start = Time.now
 a = 600851475143
 
-(2..a).each do |x| # cycle through composites because it's easier
-	loop do
-		(a % x == 0) ? a /= x : break
-	end
-	
-	if a == 1
-		p x
-		break
-	end
+c = 1
+loop do # cycle through composites because it's easier
+	c += 1
+	loop do; (a % c == 0 ? a /= c : break) end	
+	break if a == 1
 end
+p c
 p Time.now-start
 
 # 6857

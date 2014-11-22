@@ -4,32 +4,13 @@
 # What is the smallest positive number that is evenly divisible by all of the 
 # numbers from 1 to 20?
 
-def prime_factors(n)
-	list = []
-	(2..n).each do |k|
-		loop do
-			break if n % k != 0
-			n /= k
-			list << k 
-		end
-		break if n == 1
-	end
-	list
-end
-
 start = Time.now
 
-h = Hash.new(0)
-(1..20).each do |i|
-	pf = prime_factors(i)
-	pf.uniq.each do |p|
-		count = pf.count(p)
-		h[p] = count if h[p] < count 
-	end
-end
+product = 1
+(1..20).each{ |n| product = product.lcm(n) }
 
-p h.collect{|k,v| k ** v}.reduce(:*)
+p product
 p Time.now - start
 
 # 232792560
-# 0.000101 seconds
+# 1.4e-05 seconds

@@ -27,7 +27,7 @@ def prime_factors(n, primes)
 	prime_factors_hash = Hash.new(0)
 	primes.each do |k|
 		loop do
-			break if n % k != 0
+			break unless n % k == 0
 			n /= k
 			prime_factors_hash[k] += 1 
 		end
@@ -51,3 +51,5 @@ p Time.now-start
 
 # 76576500
 # 1.163591 seconds
+
+# I'm not sure why this takes so long.

@@ -10,4 +10,4 @@ p sieve_of_eratosthenes(2000000).reduce(:+)
 p Time.now - start
 
 # 142913828922
-# 0.856559 seconds
+# 0.471795 seconds

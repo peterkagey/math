@@ -1,14 +1,12 @@
 def sieve_of_eratosthenes(n)
-	return [] if n < 2
+	threshold = Math.sqrt(n).to_i
+	bool_arry = [false, false] + [true] * (n-1)
+	
 	p = 2
-	bool_arry = [false] + [false] + [true] * (n-1)
 	loop do
-		(2*p..n).step(p).each { |i| bool_arry[i] = false }
-		loop do 
-			p += 1
-			break if bool_arry[p] || p >= n
-		end
-		break if p >= n
+		(p**2..n).step(p).each { |i| bool_arry[i] = false }
+		(p+1..threshold).each { |k| p = k; break if bool_arry[p] || p >= n }
+		break if p >= threshold
 	end
 	bool_arry.each_index.select{ |i| bool_arry[i] }
 end
