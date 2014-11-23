@@ -9,7 +9,7 @@
 # That is, 3 + 7 + 4 + 9 = 23.
 
 # Find the maximum total from top to bottom of the triangle below:
-a =
+tri =
 ["75",
 "95 64",
 "17 47 82",
@@ -32,20 +32,19 @@ a =
 # and requires a clever method! ;o)
 
 start = Time.now
-a = a.collect{|k| k.split(" ").map(&:to_i)}
-i = a.length - 1
+tri = tri.collect{|k| k.split(" ").map(&:to_i)}
 
-a.reverse[1..-1].each do |row|  # iterate from bottom to top
-	i -= 1 						# row index
-	j = -1 						# entry index
-	a[i] = row.collect do |entry|
-		j += 1
-		entry + [a[i+1][j], a[i+1][j+1]].max # + max of lower entries
+r_i = 0
+tri[1..-1].each do |row|  # iterate from top to bottom
+	r_i += 1; c_i = -1
+	tri[r_i] = row.collect do
+		c_i += 1
+		tri[r_i][c_i] + [tri[r_i - 1][c_i], tri[r_i - 1][c_i - 1]].compact.max
 	end
 end
 
-p a[0][0]
+p tri.last.max
 p Time.now - start
 
 # 1074
-# 0.000184
+# 0.000129 seconds

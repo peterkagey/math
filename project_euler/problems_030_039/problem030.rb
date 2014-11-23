@@ -18,7 +18,7 @@ def digit_power_sum(n, k)
 end
 
 # 6 * 9^5 = 354,294 < 999,999
-sum = (2**5..999999).select do |i|
+sum = (2**5..354294).select do |i|
 	i == digit_power_sum(i, 5)
 end
 
@@ -26,6 +26,6 @@ p sum.reduce(:+)
 p Time.now - start
 
 # 443839
-# 6.798568 seconds
+# 2.484822 seconds
 
 # Brute force, but it works.

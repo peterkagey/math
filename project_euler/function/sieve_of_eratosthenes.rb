@@ -5,7 +5,7 @@ def sieve_of_eratosthenes(n)
 	p = 2
 	loop do
 		(p**2..n).step(p).each { |i| bool_arry[i] = false }
-		(p+1..threshold).each { |k| p = k; break if bool_arry[p] || p >= n }
+		(p+1..threshold).each { |k| p = k; break if bool_arry[p] }
 		break if p >= threshold
 	end
 	bool_arry.each_index.select{ |i| bool_arry[i] }

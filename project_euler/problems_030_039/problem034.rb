@@ -25,4 +25,4 @@ p Time.now - start
 # 40730
 # 0.853797 seconds
 
-# I dislike this solution because 10**5 is sufficient, but aribitrary.
+# I dislike this solution because 10**5 is arbitrary, albeit sufficient.
