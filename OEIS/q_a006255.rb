@@ -67,4 +67,5 @@ def f(n, primes)
 	h.collect{|x| x[1] % 2 == 0 ? 0 : 1}.join
 end
 
-p f(70, sieve_of_eratosthenes(70)) # "1011"
+p f(70, sieve_of_eratosthenes(70))
+p f(70, sieve_of_eratosthenes(70)).to_i(2)
