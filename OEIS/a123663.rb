@@ -1,4 +1,5 @@
-start = Time.now
+# A123663: Number of shared edges in a spiral of n unit squares.
+
 a123663 = [0]; k = 0; a_i = 0; n = 10000
 loop do
 	2.times do 
@@ -10,4 +11,3 @@ loop do
 	break if a123663.length >= n
 end
 a123663 = a123663[0...n]
-p Time.now-start
