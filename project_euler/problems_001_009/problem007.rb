@@ -3,7 +3,6 @@
 # What is the 10 001st prime number?
 
 start = Time.now
-
 require_relative '../function/sieve_of_eratosthenes'
 
 def log(n); Math.log(n) end

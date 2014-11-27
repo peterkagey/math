@@ -34,24 +34,21 @@ a = [
 a = a.collect{|x| x.split(" ").map(&:to_i)}
 new_max = 0
 
-2.times do
+2.times do # flips over the diagonal, then flips back.
 	a = a.transpose
-	a.each_index do |r_i|
-		a[r_i][0...-3].each_index do |c_i|
+	a.each_index do |r_i| # row index
+		a[r_i][0...-3].each_index do |c_i| # column index
 			x = a[r_i][c_i+0..c_i+3].reduce(:*)
 			new_max = x if x > new_max
 		end
 	end
 end
 
-2.times do
+2.times do # flips horizontally, then flips back.
 	a = a.collect{ |row| row.reverse }
-	a[0...-3].each_index do |r_i|
-		a[r_i][0...-3].each_index do |c_i|
-			x = a[r_i][c_i]*
-				a[r_i+1][c_i+1]*
-				a[r_i+2][c_i+2]*
-				a[r_i+3][c_i+3]
+	a[0...-3].each_index do |r_i| # row index
+		a[r_i][0...-3].each_index do |c_i| # column index
+			x = (0..3).collect{ |i| a[r_i+i][c_i+i] }.reduce(:*)
 			new_max = x if x > new_max
 		end
 	end
@@ -61,4 +58,4 @@ p new_max
 p Time.now-start
 
 # 70600674
-# 0.000878 seconds
+# 0.001392

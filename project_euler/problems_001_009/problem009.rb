@@ -7,6 +7,8 @@
 # There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 # Find the product abc.
 
+start = Time.now
+
 def problem_9
 	(334...500).each do |c|
 		(0..c).each do |b|
@@ -17,7 +19,6 @@ def problem_9
 	end
 end
 
-start = Time.now
 p problem_9
 p Time.now-start
 

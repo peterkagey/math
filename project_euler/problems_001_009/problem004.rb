@@ -4,8 +4,8 @@
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
 start = Time.now
-c = 0
 
+c = 0
 999.downto(100).each do |a|
 	k = [c/a, a].max
 	(k...999).each do |b|
