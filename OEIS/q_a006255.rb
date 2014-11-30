@@ -78,7 +78,7 @@ def xor(ary1, ary2)
     end
 end
 
-ps = sieve_of_eratosthenes(200)
+ps = sieve_of_eratosthenes(4000)
 
 ##############################################################################
 
@@ -137,39 +137,41 @@ def almost_rref(matrix)
     end
 end
 
-def graham(n, ps, solution_array)
-    return n if perfect_square?(n)
-    return 2 * n if ps.include?(n) && n > 8
-    fop = first_odd_prime(f(n, ps), ps)
-    (n+fop..4*n).each do |i|
-        next if solution_array.include?(i)
-        next if perfect_square?(i)
-        next if ps.include?(i)
-        a = (n+1..i).collect{|k| f(k, ps)} + [f(n,ps)]
-        a.collect!{|s| s.split("").map(&:to_i)}
-        a = a.transpose.select{|row| row.uniq != [0]}
-        x = almost_rref(a)
-        return i if consistent? x
-    end
-end
-
 def interpret_this_matrix(a, n, primes)
     return [n] if perfect_square?(n)
     a = a.transpose
     labels = ((n+1...n+a.length).to_a + [n])
-    oar = xor(a[-1], a[-2])
+    oar = a[-1]
     terms = (0...a.length).collect do |x|
         labels[x] if a[x].count(1) == 1 && oar[a[x].index(1)] == 1
     end
-    ary = (terms.compact + [n, n+a.length-1]).sort
+    ary = (terms.compact + [n]).sort
     ary.group_by{|k| f(k, primes)}.collect{|k,v| v.min}.sort
 end
 
-solution_array = []
-(9000..10000).each do |m|
-    ps = sieve_of_eratosthenes(m * 2 + 200)     if m % 100 == 0
-    solution_array << graham(m, ps, solution_array)
-    p [m, solution_array.last]
+def graham(n, ps)
+    return n if perfect_square?(n)
+    return 2 * n if ps.include?(n) && n > 8
+    fop = first_odd_prime(f(n, ps), ps)
+    a = (n+1..n+fop).collect{|k| f(k, ps)} + [f(n,ps)]
+    a.collect!{|s| s.split("").map(&:to_i)}
+    a = a.transpose.select{|row| row.uniq != [0]}
+    return n+fop if consistent? almost_rref(a)
+
+    upper_bound = n <= 8 ? 4*n : 2*n 
+    a = (n+1..upper_bound).collect{|k| f(k, ps)} + [f(n,ps)]
+    a.collect!{|s| s.split("").map(&:to_i)}
+    a = a.transpose.select{|row| row.uniq != [0]}
+    sequence = interpret_this_matrix(almost_rref(a), n, ps)
+    return "==== PID #{n} ====" unless perfect_square?(sequence.reduce(:*))
+    return interpret_this_matrix(almost_rref(a), n, ps).last
 end
 
-p solution_array
+start_time = Time.now
+solution_array = []
+(0..1000).each do |m|
+    start = Time.now
+    ps = sieve_of_eratosthenes(m * 2 + 200)     if m % 100 == 0
+    solution_array << graham(m, ps)
+    p [m, solution_array.last, (Time.now-start).to_i, (Time.now-start_time).to_i]
+end
