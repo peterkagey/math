@@ -78,7 +78,7 @@ def xor(ary1, ary2)
     end
 end
 
-ps = sieve_of_eratosthenes(2000)
+ps = sieve_of_eratosthenes(200)
 
 ##############################################################################
 
@@ -137,15 +137,19 @@ def almost_rref(matrix)
     end
 end
 
-def graham(n, ps)
+def graham(n, ps, solution_array)
     return n if perfect_square?(n)
+    return 2 * n if ps.include?(n) && n > 8
     fop = first_odd_prime(f(n, ps), ps)
     (n+fop..4*n).each do |i|
+        next if solution_array.include?(i)
+        next if perfect_square?(i)
+        next if ps.include?(i)
         a = (n+1..i).collect{|k| f(k, ps)} + [f(n,ps)]
         a.collect!{|s| s.split("").map(&:to_i)}
         a = a.transpose.select{|row| row.uniq != [0]}
         x = almost_rref(a)
-        return a if consistent? x
+        return i if consistent? x
     end
 end
 
@@ -161,8 +165,11 @@ def interpret_this_matrix(a, n, primes)
     ary.group_by{|k| f(k, primes)}.collect{|k,v| v.min}.sort
 end
 
-n = 1
-loop do
-    p interpret_this_matrix(graham(n, ps), n, ps)
-    n += 1
+solution_array = []
+(9000..10000).each do |m|
+    ps = sieve_of_eratosthenes(m * 2 + 200)     if m % 100 == 0
+    solution_array << graham(m, ps, solution_array)
+    p [m, solution_array.last]
 end
+
+p solution_array
