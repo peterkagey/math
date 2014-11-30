@@ -40,17 +40,29 @@ def perfect_square?(n)
 end
 
 def prime_factors(n, primes) # prime_factors(12, primes) = {2=>2, 3=>1}
-    prime_factors_hash = Hash.new(0)
+    factors_hash = Hash.new(0)
     primes.each do |k|
-        prime_factors_hash[k] = 0
+        factors_hash[k] = 0
         loop do
             break if n % k != 0
             n /= k
-            prime_factors_hash[k] += 1
+            factors_hash[k] += 1
         end
         break if n == 1
     end
-    prime_factors_hash
+    factors_hash
+end
+
+def product_ary_is_square?(ary, primes)
+    return true if ary == []
+    factors_hash = Hash.new(0)
+    ary.each do |n|
+        prime_factors(n, primes).each do |k,v|
+            factors_hash[k] += v
+        end
+    end
+    return false if factors_hash.select{|k,v| v % 2 == 1}.length > 0
+    return true
 end
 
 def sieve_of_eratosthenes(n) # finds all primes less than n
@@ -163,15 +175,16 @@ def graham(n, ps)
     a.collect!{|s| s.split("").map(&:to_i)}
     a = a.transpose.select{|row| row.uniq != [0]}
     sequence = interpret_this_matrix(almost_rref(a), n, ps)
-    return "==== PID #{n} ====" unless perfect_square?(sequence.reduce(:*))
+    return "==== PID #{n} ====" unless product_ary_is_square?(sequence, ps)
     return interpret_this_matrix(almost_rref(a), n, ps).last
 end
 
 start_time = Time.now
 solution_array = []
-(0..1000).each do |m|
+(0..5000).each do |m|
     start = Time.now
-    ps = sieve_of_eratosthenes(m * 2 + 200)     if m % 100 == 0
+    ps = sieve_of_eratosthenes(m * 2 + 200) if m % 100 == 0
     solution_array << graham(m, ps)
+    p solution_array
     p [m, solution_array.last, (Time.now-start).to_i, (Time.now-start_time).to_i]
 end
