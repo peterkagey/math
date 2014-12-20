@@ -26,17 +26,16 @@
 # Thus f(2*7*13) = 1001010...
 
 # Now we have a list of binary strings, and we want to find the way to XOR 
-# combine some subset of them, using only the beginning* of the list
+# combine some subset of them, using only the beginning of the list
 
 # in other words, we're looking for f(N) XOR f(k_1) XOR ... XOR f(k_n) such
 # that f(N) XOR f(k_1) XOR ... XOR f(k_n) == 000000...
 # and k_n is minimized.
 
 # This is at least a computationally fast way of iterating through the list.
-# (Unfortunately, it doesn't cut down on the problem's complexity)
 
 def perfect_square?(n)
-    (Math.sqrt(n).to_i)**2 == n
+    (Math.sqrt(n).round)**2 == n
 end
 
 def prime_factors(n, primes) # prime_factors(12, primes) = {2=>2, 3=>1}
@@ -112,7 +111,7 @@ def consistent?(a)
 end
 
 
-def almost_rref(matrix)
+def rref(matrix)
     rows = matrix.length
     columns = matrix[0].length
     current_column = 0
@@ -168,15 +167,15 @@ def graham(n, ps)
     a = (n+1..n+fop).collect{|k| f(k, ps)} + [f(n,ps)]
     a.collect!{|s| s.split("").map(&:to_i)}
     a = a.transpose.select{|row| row.uniq != [0]}
-    return n+fop if consistent? almost_rref(a)
+    return n+fop if consistent? rref(a)
 
     upper_bound = n <= 8 ? 4*n : 2*n 
     a = (n+1..upper_bound).collect{|k| f(k, ps)} + [f(n,ps)]
     a.collect!{|s| s.split("").map(&:to_i)}
     a = a.transpose.select{|row| row.uniq != [0]}
-    sequence = interpret_this_matrix(almost_rref(a), n, ps)
+    sequence = interpret_this_matrix(rref(a), n, ps)
     return "==== PID #{n} ====" unless product_ary_is_square?(sequence, ps)
-    return interpret_this_matrix(almost_rref(a), n, ps).last
+    return interpret_this_matrix(rref(a), n, ps).last
 end
 
 start_time = Time.now
