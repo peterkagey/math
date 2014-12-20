@@ -3,7 +3,7 @@
 a123663 = [0]; k = 0; a_i = 0; n = 10000
 loop do
 	2.times do 
-		k.times{ a_i += 2; a123663 << a_i }
+		k.times { a_i += 2; a123663 << a_i }
 		a_i += 1
 		a123663 << a_i
 	end
