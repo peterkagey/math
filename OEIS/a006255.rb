@@ -116,7 +116,7 @@ def reduce(matrix)
     return matrix if curr_col >= columns || comp_rows >= rows
 
     loop do # goes to next column if current column is all 0's.
-      break if matrix[comp_rows...rows].collect { |r| r[curr_col] }.uniq != [0]
+      break if matrix[comp_rows..-1].collect { |r| r[curr_col] }.uniq != [0]
       curr_col += 1
       return matrix if curr_col >= columns || comp_rows + 1 >= rows
     end
@@ -126,7 +126,7 @@ def reduce(matrix)
     end
 
     # if no swap is going to happen, increment column
-    if matrix[comp_rows...rows].collect { |r| r[curr_col] }.uniq != [0]
+    if matrix[comp_rows..-1].collect { |r| r[curr_col] }.uniq != [0]
       matrix[r_i], matrix[comp_rows] = matrix[comp_rows], matrix[r_i]
     end
 
@@ -145,9 +145,8 @@ def interpret_matrix(a, n, primes)
   return [n] if perfect_square?(n)
   a = a.transpose
   labels = ((n+1...n+a.length).to_a + [n])
-  oar = a[-1]
   terms = (0...a.length).collect do |x|
-    labels[x] if a[x].count(1) == 1 && oar[a[x].index(1)] == 1
+    labels[x] if a[x].count(1) == 1 && a[-1][a[x].index(1)] == 1
   end
   ary = (terms.compact + [n]).sort
   ary.group_by { |k| f(k, primes) }.collect { |k,v| v.min }.sort
