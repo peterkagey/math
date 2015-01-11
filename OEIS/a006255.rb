@@ -190,3 +190,13 @@ primes = sieve_of_eratosthenes(2000)
 # p x._read_column(0)
 # 1 1 1
 # 0 1 0
+
+# ps = sieve_of_eratosthenes(2200 * 2 + 200)
+# start_time = Time.now
+# solution_array = []
+# (2..50).each do |m|
+#   start = Time.now
+#   ps = sieve_of_eratosthenes(m + 100) if m % 100 == 0
+#   solution_array << graham(m, ps)
+#   p [m, solution_array.last, (Time.now-start).to_i, (Time.now-start_time).to_i]
+# end
