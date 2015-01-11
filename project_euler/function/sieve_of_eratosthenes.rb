@@ -10,3 +10,5 @@ def sieve_of_eratosthenes(n)
     end
     bool_arry.each_index.select{ |i| bool_arry[i] }
 end
+
+p sieve_of_eratosthenes(8)

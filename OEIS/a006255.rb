@@ -32,16 +32,11 @@
 # that f(N) XOR f(k_1) XOR ... XOR f(k_n) == 000000...
 # and k_n is minimized.
 
-def perfect_square?(n); (Math.sqrt(n).to_i)**2 == n end
-
 def prime_factors(n, primes) # prime_factors(12, primes) = { 2=>2, 3=>1 }
-  factors_hash = Hash.new(0)
-  primes.each do |k|
-    factors_hash[k] = 0
-    while n % k == 0 do
-      n /= k
-      factors_hash[k] += 1
-    end
+  factors_hash = {}
+  primes.each do |q|
+    factors_hash[q] = 0
+    (n /= q; factors_hash[q] += 1) while n % q == 0
     break if n == 1
   end
   factors_hash
@@ -55,121 +50,143 @@ def product_ary_is_square?(ary, primes)
       factors_hash[k] += v
     end
   end
-  return false if factors_hash.select { |k,v| v % 2 == 1 }.length > 0
+  factors_hash.each { |k,v| return false if v % 2 == 1 }
   true
 end
 
-def sieve_of_eratosthenes(n) # finds all primes less than n
+def sieve_of_eratosthenes(n)
   threshold = Math.sqrt(n).to_i
   bool_arry = [false, false] + [true] * (n-1)
-
+  
   p = 2
-  while p < threshold do
+  loop do
     (p**2..n).step(p).each { |i| bool_arry[i] = false }
     (p+1..threshold).each { |k| p = k; break if bool_arry[p] }
+    break if p >= threshold
   end
-  bool_arry.each_index.select { |i| bool_arry[i] }
+  bool_arry.each_index.select{ |i| bool_arry[i] }
 end
 
-def f(n, primes)
-  h = prime_factors(n, primes).sort_by { |k,v| k }
-  ("%-#{primes.length}s" % h.collect { |x| x[1] % 2 }.join).gsub(/ /,"0")
+def f(n, primes, m=primes.length)
+  h = prime_factors(n, primes).sort#_by { |k,v| k }
+  m = 0
+  h.reverse.each { |x| m <<= 1; m += x[1] % 2 }
+  m
 end
-
-def xor(ary1, ary2)
-  return "array lengths don't match" unless ary1.length == ary2.length
-  (0...ary1.length).collect do |i|
-    ary1[i] == ary2[i] ? 0 : 1
-  end
-end
-
-ps = sieve_of_eratosthenes(5000)
 
 ##############################################################################
 
-def first_odd_prime(binary_string, primes)
-  primes[binary_string.split("").index("1")]
-end
+class BooleanMatrix
+  # a boolean matrix is an array of integers where each integer is a binary 
+  # representaion of a row.
+  # Example: 
+  #   [0 1 0 0]
+  #   [0 0 0 0]
+  #   [1 1 0 1]
+  # would be represented by the array [0b0100, 0b0000, 0b1101] == [4, 0, 13]
 
-def p_m(matrix)
-  matrix.each do |row|
-    print row.collect { |e| '%4.4s' % e.to_s }.join+"\n"
+  attr_accessor :column_count, :row_count, :matrix
+
+  def initialize(matrix, opts={})
+    @matrix = matrix
+    @column_count = opts[:column_count]
+    @column_count ||= @matrix.map { |row| row.to_s(2).length }.max
+    @row_count = opts[:row_count] || matrix.length
   end
-end
 
-def consistent?(a)
-  a.each do |row|
-    return false if row.last == 1 && row[0...-1].uniq == [0]
+  def self.construct(n, primes = false)
+    primes ||= sieve_of_eratosthenes(2*n)
+    upper_bound = (n > 3) ? (2 * n) : (4 * n)
+    x = (n+1..upper_bound).collect { |i| f(i, primes) } << f(n, primes)
+    BooleanMatrix.new(x).transpose
   end
-  return true
-end
 
+  def _i_j_entry(i, j)
+    shift = @column_count - j - 1
+    @matrix[i] >> shift & 1
+  end
 
-def reduce(matrix)
-  rows = matrix.length
-  columns = matrix[0].length
-  curr_col = 0
-  comp_rows = 0
-  r_i = 0
-
-  loop do
-    return matrix if curr_col >= columns || comp_rows >= rows
-
-    loop do # goes to next column if current column is all 0's.
-      break if matrix[comp_rows..-1].collect { |r| r[curr_col] }.uniq != [0]
-      curr_col += 1
-      return matrix if curr_col >= columns || comp_rows + 1 >= rows
+  def _read_column(j)
+    column_sum = 0
+    (0...@row_count).each do |i|
+      column_sum <<= 1
+      column_sum += _i_j_entry(i, j)
     end
+    column_sum
+  end
 
-    (comp_rows...rows).each do |row_i| # changes row index for swap
-      (r_i = row_i; break) if matrix[row_i][curr_col] == 1
+  def transpose
+    x = (0...@column_count).collect do |column_index|
+      _read_column(column_index)
     end
+    BooleanMatrix.new(x, {column_count: @row_count, row_count: @column_count})
+  end
 
-    # if no swap is going to happen, increment column
-    if matrix[comp_rows..-1].collect { |r| r[curr_col] }.uniq != [0]
-      matrix[r_i], matrix[comp_rows] = matrix[comp_rows], matrix[r_i]
+  def print
+    @matrix.each do |row|
+      puts row.to_s(2).rjust(@column_count, '0').split('').join(' ')
     end
+  end
 
-    (0...rows).each do |row_i| # each row index; clean matrix column
-      next if row_i == comp_rows
-      if matrix[row_i][curr_col] == 1
-        matrix[row_i] = xor(matrix[row_i], matrix[comp_rows])
+  def _done_reducing?(curr_col, comp_rows)
+    curr_col >= @column_count || comp_rows >= @row_count
+  end
+
+  def _swap_rows(r_1, r_2)
+    @matrix[r_1], @matrix[r_2] = @matrix[r_2], @matrix[r_1]
+  end
+
+  def _swap_to_the_top(column_index, top_row_index)
+    (top_row_index...@row_count).each do |row_index|
+      if _i_j_entry(row_index, column_index) == 1
+        _swap_rows(row_index, top_row_index)
+        return true
       end
     end
-    comp_rows += 1
-    curr_col += 1
+    false
+  end
+
+  def _clear_column(column_index, top_row_index)
+    (0...@row_count).each do |row_index|
+      next if row_index == top_row_index
+      if _i_j_entry(row_index, column_index) == 1
+        @matrix[row_index] ^= @matrix[top_row_index]
+      end
+    end
+    return self
+  end
+
+  def _rref
+    r_i, c_i = 0, 0
+    (0...column_count).each do |c_i|
+      if _swap_to_the_top(c_i, r_i)
+        _clear_column(c_i, r_i)
+        r_i += 1
+      end
+      break if c_i >= column_count || r_i >= row_count 
+    end
+    self
+  end
+
+  def _bytes(integer)
+    (0...integer.to_s(2).length).select do |bit_position|
+      integer & (1 << bit_position) != 0
+    end
+  end
+
+  def interpret
+    m = _rref.transpose.matrix
+    terms = [-1]
+    terms += _bytes(m.last).reverse.collect do |i|
+      m.index(1 << i)
+    end
+    terms.map { |x| x + @column_count }
   end
 end
 
-def interpret_matrix(a, n, primes)
-  return [n] if perfect_square?(n)
-  a = a.transpose
-  labels = ((n+1...n+a.length).to_a + [n])
-  terms = (0...a.length).collect do |x|
-    labels[x] if a[x].count(1) == 1 && a[-1][a[x].index(1)] == 1
-  end
-  ary = (terms.compact + [n]).sort
-  ary.group_by { |k| f(k, primes) }.collect { |k,v| v.min }.sort
-end
-
-def graham(n, ps)
-  return n if perfect_square?(n)
-  return 2 * n if ps.include?(n) && n > 8
-  upper_bound = n <= 8 ? 4*n : 2*n
-  a = (n+1..upper_bound).collect { |k| f(k, ps) } << f(n,ps)
-  a.collect! { |s| s.split("").map(&:to_i) }
-  a = a.transpose.select { |row| row.uniq != [0] }
-  sequence = interpret_matrix(reduce(a), n, ps)
-  return "==== PID #{n} ====" unless product_ary_is_square?(sequence, ps)
-  return sequence.last
-end
-
-ps = sieve_of_eratosthenes(2200 * 2 + 200)
-start_time = Time.now
-solution_array = []
-(2..50).each do |m|
-  start = Time.now
-  ps = sieve_of_eratosthenes(m + 100) if m % 100 == 0
-  solution_array << graham(m, ps)
-  p [m, solution_array.last, (Time.now-start).to_i, (Time.now-start_time).to_i]
-end
+primes = sieve_of_eratosthenes(2000)
+(4..1000).each { |n| p BooleanMatrix.construct(n, primes).interpret }
+# p BooleanMatrix.new([4,0,13]).print
+# p x._read_column(0)
+# 1 1 1
+# 0 1 0
