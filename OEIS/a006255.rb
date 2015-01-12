@@ -32,48 +32,6 @@
 # that f(N) XOR f(k_1) XOR ... XOR f(k_n) == 000000...
 # and k_n is minimized.
 
-def prime_factors(n, primes) # prime_factors(12, primes) = { 2=>2, 3=>1 }
-  factors_hash = {}
-  primes.each do |q|
-    factors_hash[q] = 0
-    (n /= q; factors_hash[q] += 1) while n % q == 0
-    break if n == 1
-  end
-  factors_hash
-end
-
-def product_ary_is_square?(ary, primes)
-  return true if ary == []
-  factors_hash = Hash.new(0)
-  ary.each do |n|
-    prime_factors(n, primes).each do |k,v|
-      factors_hash[k] += v
-    end
-  end
-  factors_hash.each { |k,v| return false if v % 2 == 1 }
-  true
-end
-
-def sieve_of_eratosthenes(n)
-  threshold = Math.sqrt(n).to_i
-  bool_arry = [false, false] + [true] * (n-1)
-  
-  p = 2
-  loop do
-    (p**2..n).step(p).each { |i| bool_arry[i] = false }
-    (p+1..threshold).each { |k| p = k; break if bool_arry[p] }
-    break if p >= threshold
-  end
-  bool_arry.each_index.select{ |i| bool_arry[i] }
-end
-
-def f(n, primes, m=primes.length)
-  h = prime_factors(n, primes).sort#_by { |k,v| k }
-  m = 0
-  h.reverse.each { |x| m <<= 1; m += x[1] % 2 }
-  m
-end
-
 ##############################################################################
 
 class BooleanMatrix
@@ -184,8 +142,58 @@ class BooleanMatrix
   end
 end
 
-primes = sieve_of_eratosthenes(2000)
-(4..1000).each { |n| p BooleanMatrix.construct(n, primes).interpret }
+class Primes
+  attr_reader :list
+
+  def initialize(upper_bound)
+    @list = _sieve(upper_bound)
+  end
+
+  def _sieve(n)
+    threshold = Math.sqrt(n).to_i
+    bool_arry = [false, false] + [true] * (n-1)
+    
+    prime = 2
+    loop do
+      (prime**2..n).step(prime).each { |i| bool_arry[i] = false }
+      (prime+1..threshold).each { |k| prime = k; break if bool_arry[prime] }
+      break if prime >= threshold
+    end
+    bool_arry.each_index.select{ |i| bool_arry[i] }
+  end
+
+  def f(n)
+    h = factors(n).sort
+    m = 0
+    h.reverse.each { |x| m <<= 1; m += x[1] % 2 }
+    m
+  end
+
+  def factors(n) # factors(12) = { 2=>2, 3=>1 }
+    factors_hash = {}
+    list.each do |q|
+      factors_hash[q] = 0
+      (n /= q; factors_hash[q] += 1) while n % q == 0
+      break if n == 1
+    end
+    factors_hash
+  end
+
+  def product_ary_is_square?(ary)
+    return true if ary == []
+    factors_hash = Hash.new(0)
+    ary.each do |n|
+      factors(n).each { |k,v| factors_hash[k] += v }
+    end
+    factors_hash.each { |k,v| return false if v % 2 == 1 }
+    true
+  end
+
+end
+
+p primes = Primes.new(10**5)
+(1..1000).each { |x| puts '%5s' % "#{x} " + primes.f(x).to_s }
+# (4..1000).each { |n| p BooleanMatrix.construct(n, primes).interpret }
 # p BooleanMatrix.new([4,0,13]).print
 # p x._read_column(0)
 # 1 1 1
