@@ -48,12 +48,12 @@ class BooleanMatrix
   def initialize(matrix, opts={})
     @matrix = matrix
     @column_count = opts[:column_count]
-    @column_count ||= @matrix.map { |row| row.to_s(2).length }.max
+    @column_count ||= matrix.map { |row| row.to_s(2).length }.max
     @row_count = opts[:row_count] || matrix.length
   end
 
   def self.construct(n, primes = false)
-    primes ||= sieve_of_eratosthenes(2*n)
+    primes ||= Primes.sieve(2*n)
     upper_bound = (n > 3) ? (2 * n) : (4 * n)
     x = (n+1..upper_bound).collect { |i| f(i, primes) } << f(n, primes)
     BooleanMatrix.new(x).transpose
@@ -61,7 +61,7 @@ class BooleanMatrix
 
   def _i_j_entry(i, j)
     shift = @column_count - j - 1
-    @matrix[i] >> shift & 1
+    matrix[i] >> shift & 1
   end
 
   def _read_column(j)
@@ -77,21 +77,21 @@ class BooleanMatrix
     x = (0...@column_count).collect do |column_index|
       _read_column(column_index)
     end
-    BooleanMatrix.new(x, {column_count: @row_count, row_count: @column_count})
+    BooleanMatrix.new(x, {column_count: row_count, row_count: @column_count})
   end
 
   def print
-    @matrix.each do |row|
+    matrix.each do |row|
       puts row.to_s(2).rjust(@column_count, '0').split('').join(' ')
     end
   end
 
   def _done_reducing?(curr_col, comp_rows)
-    curr_col >= @column_count || comp_rows >= @row_count
+    curr_col >= column_count || comp_rows >= row_count
   end
 
   def _swap_rows(r_1, r_2)
-    @matrix[r_1], @matrix[r_2] = @matrix[r_2], @matrix[r_1]
+    matrix[r_1], matrix[r_2] = matrix[r_2], matrix[r_1]
   end
 
   def _swap_to_the_top(column_index, top_row_index)
@@ -108,34 +108,37 @@ class BooleanMatrix
     (0...@row_count).each do |row_index|
       next if row_index == top_row_index
       if _i_j_entry(row_index, column_index) == 1
-        @matrix[row_index] ^= @matrix[top_row_index]
+        matrix[row_index] ^= matrix[top_row_index]
       end
     end
-    return self
+    self
   end
 
   def _rref
     r_i, c_i = 0, 0
     (0...column_count).each do |c_i|
+    break if _done_reducing?(c_i, r_i)
       if _swap_to_the_top(c_i, r_i)
         _clear_column(c_i, r_i)
         r_i += 1
-      end
-      break if c_i >= column_count || r_i >= row_count 
+      end 
     end
     self
   end
 
   def _bytes(integer)
-    (0...integer.to_s(2).length).select do |bit_position|
+    # given some integer _bytes(integer) returns the positions of non-zero indices
+    # e.g. _bytes(0b10010) = [1,4] 
+    base_two_digits = integer.to_s(2).length
+    (0...base_two_digits).select do |bit_position|
       integer & (1 << bit_position) != 0
     end
   end
 
   def interpret
     m = _rref.transpose.matrix
-    terms = [-1]
-    terms += _bytes(m.last).reverse.collect do |i|
+    terms = [-1] +
+    _bytes(m.last).reverse.collect do |i|
       m.index(1 << i)
     end
     terms.map { |x| x + @column_count }
@@ -143,6 +146,7 @@ class BooleanMatrix
 end
 
 class Primes
+
   attr_reader :list
 
   def initialize(upper_bound)
@@ -191,20 +195,5 @@ class Primes
 
 end
 
-p primes = Primes.new(10**5)
-(1..1000).each { |x| puts '%5s' % "#{x} " + primes.f(x).to_s }
-# (4..1000).each { |n| p BooleanMatrix.construct(n, primes).interpret }
-# p BooleanMatrix.new([4,0,13]).print
-# p x._read_column(0)
-# 1 1 1
-# 0 1 0
-
-# ps = sieve_of_eratosthenes(2200 * 2 + 200)
-# start_time = Time.now
-# solution_array = []
-# (2..50).each do |m|
-#   start = Time.now
-#   ps = sieve_of_eratosthenes(m + 100) if m % 100 == 0
-#   solution_array << graham(m, ps)
-#   p [m, solution_array.last, (Time.now-start).to_i, (Time.now-start_time).to_i]
-# end
+primes = Primes.new(10**5)
+(1..200).each { |x| puts '%5s' % "#{x} " + primes.f(x).to_s }
