@@ -51,3 +51,7 @@ Analogous sequences for k letter alphabets: A252696 (k=3), A252697 (k=4), A25269
 
 print "easy,nonn,walk\n\n"
 
+
+(0..1000).each do |i|
+	print "#{i} #{seq[i]}\n"
+end
