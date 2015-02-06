@@ -53,9 +53,9 @@ class BooleanMatrix
   end
 
   def self.construct(n, primes = false)
-    primes ||= Primes.sieve(2*n)
+    primes ||= Primes.new(2*n)
     upper_bound = (n > 3) ? (2 * n) : (4 * n)
-    x = (n+1..upper_bound).collect { |i| f(i, primes) } << f(n, primes)
+    x = (n+1..upper_bound).collect { |i| primes.f(i) } << primes.f(n)
     BooleanMatrix.new(x).transpose
   end
 
@@ -166,6 +166,15 @@ class Primes
     bool_arry.each_index.select{ |i| bool_arry[i] }
   end
 
+  # f(n): N -> N maps a natural number to a binary representation of the parity
+  # of the factors in the prime factorization.
+  # For instance: f(2^2 * 5^3 * 7) = f(3500) = 0b1100 = 12
+  #     2^2 has an even power, so the 1s place is 0 ^
+  #    3^0 has an even power, so the 2s place is 0 ^
+  #    5^3 has an odd power, so the 4s place is 1 ^
+  #   7^1 has an odd power, so the 8s place is 1 ^
+  #
+  # f(a*b) = f(a) XOR f(b)
   def f(n)
     h = factors(n).sort
     m = 0
@@ -195,5 +204,15 @@ class Primes
 
 end
 
-primes = Primes.new(10**5)
-(1..200).each { |x| puts '%5s' % "#{x} " + primes.f(x).to_s }
+def perfect_square?(n)
+  (n**0.5).round**2 == n
+end
+
+primes = Primes.new(2 * 10**4)
+
+m = 4930
+(5000..6000).each do |index|
+  next if perfect_square?(index)
+  puts "#{m} #{BooleanMatrix.construct(index, primes).interpret.last}"
+  m += 1
+end
