@@ -195,5 +195,5 @@ class Primes
 
 end
 
-primes = Primes.new(10**5)
-(1..200).each { |x| puts '%5s' % "#{x} " + primes.f(x).to_s }
+# primes = Primes.new(10**5)
+# (1..200).each { |x| puts '%5s' % "#{x} " + primes.f(x).to_s }
