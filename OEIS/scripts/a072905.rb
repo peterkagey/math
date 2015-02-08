@@ -1,4 +1,3 @@
-require_relative 'prime_factor_hash'
 require_relative 'a000188'
 require_relative 'a007913'
 

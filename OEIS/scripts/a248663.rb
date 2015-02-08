@@ -1,5 +1,5 @@
 require 'prime'
-require_relative 'prime_factor_hash'
+require_relative 'prime_factors_hash'
 
 class OEIS
   def self.a248663(n)
