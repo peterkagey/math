@@ -1,11 +1,10 @@
 # A252699: Number of strings of length n over a 6 letter alphabet that do not 
 # begin with a palindrome.
-
-require 'nonpalindrome_counter'
+require_relative 'nonpalindrome_counter'
 
 class OEIS
   def self.a252699(n)
-    nonpalindrome_counter(n, 6)
+    nonpalindrome_count(n, 6)
   end
 end
 

@@ -1,11 +1,10 @@
 # A252698: Number of strings of length n over a 5 letter alphabet that do not 
 # begin with a palindrome.
-
-require 'nonpalindrome_counter'
+require_relative 'nonpalindrome_counter'
 
 class OEIS
   def self.a252698(n)
-    nonpalindrome_counter(n, 5)
+    nonpalindrome_count(n, 5)
   end
 end
 

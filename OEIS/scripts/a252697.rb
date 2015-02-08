@@ -1,10 +1,10 @@
 # A252697: Number of strings of length n over a 4 letter alphabet that do not 
 # begin with a palindrome.
-require 'nonpalindrome_counter'
+require_relative 'nonpalindrome_counter'
 
 class OEIS
   def self.a252697(n)
-    nonpalindrome_counter(n, 4)
+    nonpalindrome_count(n, 4)
   end
 end
 

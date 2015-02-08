@@ -5,6 +5,8 @@ require_relative 'boolean_matrix'
 class OEIS
 
   def self.a006255(n, opts = {})
+    # Ron Graham's sequence
+    #
     seq = 
       case n
       when 1 then [1]

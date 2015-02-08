@@ -1,29 +1,13 @@
 class OEIS
-  def a254732(n)
+  def self.a254732(n)
     (n+1..2*n).find { |k| k**2 % n == 0 }
   end
 end
-
-# require_relative 'a006255'
-# require_relative 'a072905'
 
 # new sequence of sqrt(n * A072905(n))
 # min{ k: n*(n + b) = k^2 where b > 0 }
 # Least k > n such that n divides k^2.
 
-# class Primes
-# 	def foo(n)
-# 		product = 1
-# 		factors(n * a072905(n)).each do |prime, power|
-# 			raise "this doesn't appear to be square!" if power.odd?
-# 			product *= prime**(power/2)
-# 		end
-# 		product
-# 	end
-# end
-# (1..5000).each do |i|
-#   puts "#{i} #{a(i)}"
-# end
 
 # Comments: If n is squarefree then a(n) = 2 * n.
 # a072905(n) = squarefree_part(n)*(sqrt(square_part(n))+1)^2:

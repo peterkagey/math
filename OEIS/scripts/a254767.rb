@@ -1,7 +1,7 @@
 require_relative 'prime_factor_hash'
 
 class OEIS
-  def a254767(n)
+  def self.a254767(n, h = 3)
     # a(n) is the least k > n such that k*n is a perfect cube.
     prime_factors(n).collect { |prime, k| prime**(-k % h) }.reduce(:*) || 1
   end

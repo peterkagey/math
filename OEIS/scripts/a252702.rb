@@ -1,11 +1,10 @@
 # A252702: Number of strings of length n over a 9 letter alphabet that do not 
 # begin with a palindrome.
-
-require 'nonpalindrome_counter'
+require_relative 'nonpalindrome_counter'
 
 class OEIS
   def self.a252702(n)
-    nonpalindrome_counter(n, 9)
+    nonpalindrome_count(n, 9)
   end
 end
 

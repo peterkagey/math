@@ -1,10 +1,10 @@
 # A252696: Number of strings of length n over a 3 letter alphabet that do not 
 # begin with a palindrome.
-require 'nonpalindrome_counter'
+require_relative 'nonpalindrome_counter'
 
 class OEIS
   def self.a252696(n)
-    nonpalindrome_counter(n, 3)
+    nonpalindrome_count(n, 3)
   end
 end
 
@@ -54,4 +54,3 @@ end
 
 # print "#{old_seq} gives the number of strings of length n over a 3 letter alphabet that DO begin with a palindrome.
 # Analogous sequences for k letter alphabets: A252696 (k=3), A252697 (k=4), A252698 (k=5), A252699 (k=6), A252700 (k=7), A252701 (k=8), A252702 (k=9), A252703 (k=10).\n\n"
-

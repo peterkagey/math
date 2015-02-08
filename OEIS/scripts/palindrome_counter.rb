@@ -7,6 +7,7 @@ def palindrome_count(n, b)
     k = (i+1)/2
     a_i = b * seq[i-1] + b**k - seq[k]
     seq << a_i
+    i += 1
   end
 
 end

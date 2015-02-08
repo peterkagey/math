@@ -1,11 +1,10 @@
 # A252700: Number of strings of length n over a 7 letter alphabet that do not 
 # begin with a palindrome.
-
-require 'nonpalindrome_counter'
+require_relative 'nonpalindrome_counter'
 
 class OEIS
   def self.a252700(n)
-    nonpalindrome_counter(n, 7)
+    nonpalindrome_count(n, 7)
   end
 end
 
