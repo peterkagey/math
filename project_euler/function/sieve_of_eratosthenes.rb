@@ -1,7 +1,7 @@
 def sieve_of_eratosthenes(n)
     threshold = Math.sqrt(n).to_i
     bool_arry = [false, false] + [true] * (n-1)
-    
+
     p = 2
     loop do
         (p**2..n).step(p).each { |i| bool_arry[i] = false }

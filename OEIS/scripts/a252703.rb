@@ -2,7 +2,7 @@ require_relative 'nonpalindrome_counter'
 
 class OEIS
   def self.a252703(n)
-    # A252703: Number of strings of length n over a 10 letter alphabet that do not 
+    # A252703: Number of strings of length n over a 10 letter alphabet that do not
     # begin with a palindrome.
     nonpalindrome_count(n, 10)
   end

@@ -10,7 +10,7 @@ n = 4
 primes = sieve_of_eratosthenes(10**n)
 
 primes.each do |p|
-	loop do; (a % p == 0 ? a /= p : break) end	
+	loop do; (a % p == 0 ? a /= p : break) end
 	(p p; break) if a == 1
 end
 

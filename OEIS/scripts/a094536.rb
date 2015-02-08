@@ -5,7 +5,7 @@ class OEIS
     i = 2
     loop do
       return seq[n] if seq[n]
-      a_i = 2 * seq[-1] 
+      a_i = 2 * seq[-1]
       a_i += 2**(i/2) - seq[i/2] if i.even?
       seq << a_i
       i += 1

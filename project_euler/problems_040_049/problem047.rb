@@ -3,7 +3,7 @@
 # 14 = 2 × 7
 # 15 = 3 × 5
 
-# The first three consecutive numbers to have three distinct prime factors 
+# The first three consecutive numbers to have three distinct prime factors
 # are:
 
 # 644 = 2² × 7 × 23
@@ -17,7 +17,7 @@ start = Time.now
 
 def sieve(n) # primes greater than n/2 don't get marked (but that's okay!)
 	bool_arry = [0, 0] + [0] * (n-1)
-	
+
 	p = 2
 	loop do
 		(p..n).step(p).each { |i| bool_arry[i] += 1 }

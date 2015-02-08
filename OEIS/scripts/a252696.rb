@@ -1,4 +1,4 @@
-# A252696: Number of strings of length n over a 3 letter alphabet that do not 
+# A252696: Number of strings of length n over a 3 letter alphabet that do not
 # begin with a palindrome.
 require_relative 'nonpalindrome_counter'
 

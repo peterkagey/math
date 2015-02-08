@@ -40,7 +40,7 @@ def fib_digits(n)
 	phi = (1 + 5**0.5) / 2
 	(n * log(phi, 10) - log(5, 10)/2 + 1).floor
 end
-	
+
 n = 1
 loop do
 	break if fib_digits(n) >= 1000

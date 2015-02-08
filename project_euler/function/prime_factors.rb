@@ -4,7 +4,7 @@ def prime_factors(n, primes)
 		loop do
 			break if n % k != 0
 			n /= k
-			prime_factors_hash[k] += 1 
+			prime_factors_hash[k] += 1
 		end
 		break if n == 1
 	end

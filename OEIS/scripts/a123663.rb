@@ -5,7 +5,7 @@ class OEIS
     k = 0
     a_i = 0
     loop do
-      2.times do 
+      2.times do
         k.times do
           a_i += 2
           a123663 << a_i

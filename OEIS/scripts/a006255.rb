@@ -7,7 +7,7 @@ class OEIS
   def self.a006255(n, opts = {})
     # Ron Graham's sequence
     #
-    seq = 
+    seq =
       case n
       when 1 then [1]
       when 2 then [2,3,6]

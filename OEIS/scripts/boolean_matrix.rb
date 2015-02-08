@@ -1,7 +1,7 @@
 class BooleanMatrix
-  # a boolean matrix is an array of integers where each integer is a binary 
+  # a boolean matrix is an array of integers where each integer is a binary
   # representaion of a row.
-  # Example: 
+  # Example:
   #   [0 1 0 0]
   #   [0 0 0 0]
   #   [1 1 0 1]
@@ -87,7 +87,7 @@ class BooleanMatrix
         _clear_column(c_i, r_i)
         r_i += 1
       end
-      break if c_i >= column_count || r_i >= row_count 
+      break if c_i >= column_count || r_i >= row_count
     end
     self
   end

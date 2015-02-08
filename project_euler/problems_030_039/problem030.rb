@@ -1,4 +1,4 @@
-# Surprisingly there are only three numbers that can be written as the sum of 
+# Surprisingly there are only three numbers that can be written as the sum of
 # fourth powers of their digits:
 
 # 1634 = 1^4 + 6^4 + 3^4 + 4^4
@@ -8,7 +8,7 @@
 
 # The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 
-# Find the sum of all the numbers that can be written as the sum of fifth 
+# Find the sum of all the numbers that can be written as the sum of fifth
 # powers of their digits.
 
 start = Time.now

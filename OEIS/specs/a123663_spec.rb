@@ -15,7 +15,7 @@ describe OEIS do
     expect(a(3)).to eq 2
     expect(a(4)).to eq 4
     expect(a(5)).to eq 5
-    expect(a(6)).to eq 7    
+    expect(a(6)).to eq 7
   end
 
   it "should handle perfect squares" do
