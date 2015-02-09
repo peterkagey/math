@@ -1,3 +1,5 @@
+require_relative 'a248663'
+
 class BooleanMatrix
   # a boolean matrix is an array of integers where each integer is a binary
   # representaion of a row.
