@@ -1,2 +1,0 @@
-class OEIS
-end

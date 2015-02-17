@@ -79,7 +79,6 @@ class BooleanMatrix
       next if r_i == top_row_index
       @matrix[r_i] ^= @matrix[top_row_index] if _i_j_entry(r_i, c_i) == 1
     end
-    return self
   end
 
   def _rref
@@ -89,9 +88,26 @@ class BooleanMatrix
         _clear_column(c_i, r_i)
         r_i += 1
       end
+      # break if _found_solution?(c_i)
       break if c_i >= column_count || r_i >= row_count
     end
     self
+  end
+
+  def _found_solution?(c_i)
+    trans = self.transpose.matrix
+    last = trans.last
+    trans = trans[0...c_i]
+    puts trans.inspect
+    powers_of_2 = []
+    i = 1
+    until i > last
+      bit_mask = last & i
+      powers_of_2 << bit_mask unless bit_mask == 0
+      i <<= 1
+    end
+    # puts powers_of_2.inspect
+    trans & powers_of_2 == powers_of_2
   end
 
   def _bytes(integer)
