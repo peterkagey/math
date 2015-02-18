@@ -10,6 +10,9 @@ class BooleanMatrix
   #   [1 1 0 1]
   # would be represented by the array [0b0100, 0b0000, 0b1101] == [4, 0, 13]
 
+  # the method for dealing with these is to transpose, do operations, then
+  # transpose back.
+
   attr_accessor :column_count, :row_count, :matrix
 
   def initialize(matrix, opts={})
@@ -25,14 +28,9 @@ class BooleanMatrix
 
   def self.construct(n)
     upper_bound = (n > 3) ? (2 * n) : (4 * n)
-    k = pi_mask(n)
+    k = 2**pi(n) - 1 # 0b1111...111 with pi(n) 1s.
     x = (n+1..upper_bound).collect { |i| factor_parity(i) & k} << factor_parity(n)
     BooleanMatrix.new(x).transpose
-  end
-
-  def mask(n)
-    k = pi_mask(n)
-    @matrix.map! { |int| int & k }
   end
 
   def _i_j_entry(i, j)
@@ -44,7 +42,7 @@ class BooleanMatrix
     column_sum = 0
     (0...@row_count).each do |i|
       column_sum <<= 1
-      column_sum += _i_j_entry(i, j)
+      column_sum |= _i_j_entry(i, j)
     end
     column_sum
   end
@@ -53,7 +51,6 @@ class BooleanMatrix
     x = (0...@column_count).collect { |c_i| _read_column(c_i) }
     BooleanMatrix.new(x, {column_count: @row_count, row_count: @column_count})
   end
-
 
   def format(row)
     row.to_s(2).rjust(@column_count, '0').split('').join(' ')
@@ -72,6 +69,7 @@ class BooleanMatrix
   end
 
   def _swap_to_the_top(column_index, top_row_index)
+    # swaps row to place a 1 on the diagonal
     (top_row_index...@row_count).each do |row_index|
       if _i_j_entry(row_index, column_index) == 1
         _swap_rows(row_index, top_row_index)
@@ -82,6 +80,7 @@ class BooleanMatrix
   end
 
   def _clear_column(c_i, top_row_index)
+    # Clears any 1s above or below the 'diagonal'.
     (0...@row_count).each do |r_i|
       next if r_i == top_row_index
       @matrix[r_i] ^= @matrix[top_row_index] if _i_j_entry(r_i, c_i) == 1
@@ -95,26 +94,9 @@ class BooleanMatrix
         _clear_column(c_i, r_i)
         r_i += 1
       end
-      # break if _found_solution?(c_i)
-      break if c_i >= column_count || r_i >= row_count
+      break if _done_reducing?(c_i, r_i)
     end
     self
-  end
-
-  def _found_solution?(c_i)
-    trans = self.transpose.matrix
-    last = trans.last
-    trans = trans[0...c_i]
-    puts trans.inspect
-    powers_of_2 = []
-    i = 1
-    until i > last
-      bit_mask = last & i
-      powers_of_2 << bit_mask unless bit_mask == 0
-      i <<= 1
-    end
-    # puts powers_of_2.inspect
-    trans & powers_of_2 == powers_of_2
   end
 
   def _bytes(integer)
