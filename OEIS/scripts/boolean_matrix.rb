@@ -1,3 +1,4 @@
+require_relative 'pi'
 require_relative 'a248663'
 
 class BooleanMatrix
@@ -24,8 +25,14 @@ class BooleanMatrix
 
   def self.construct(n)
     upper_bound = (n > 3) ? (2 * n) : (4 * n)
-    x = (n+1..upper_bound).collect { |i| factor_parity(i) } << factor_parity(n)
+    k = pi_mask(n)
+    x = (n+1..upper_bound).collect { |i| factor_parity(i) & k} << factor_parity(n)
     BooleanMatrix.new(x).transpose
+  end
+
+  def mask(n)
+    k = pi_mask(n)
+    @matrix.map! { |int| int & k }
   end
 
   def _i_j_entry(i, j)

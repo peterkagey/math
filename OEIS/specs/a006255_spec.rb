@@ -26,7 +26,7 @@ describe OEIS do
 
   it "should handle highly composite numbers" do
     expect(a(2*3*5*7)).to eq 238
-    # expect(a(5000)).to eq 5046
+    expect(a(5000)).to eq 5046
     # expect(a(1000)).to eq 1044
   end
 
