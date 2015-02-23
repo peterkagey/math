@@ -1,5 +1,5 @@
-require_relative 'pi'
 require_relative 'a248663'
+require 'prime'
 
 class BooleanMatrix
   # a boolean matrix is an array of integers where each integer is a binary
@@ -28,7 +28,8 @@ class BooleanMatrix
 
   def self.construct(n)
     upper_bound = (n > 3) ? (2 * n) : (4 * n)
-    k = 2**pi(n) - 1 # 0b1111...111 with pi(n) 1s.
+    pi_n = Prime.each(n).to_a.length
+    k = 2**pi_n - 1 # 0b1111...111 with pi(n) 1s.
     x = (n+1..upper_bound).collect { |i| factor_parity(i) & k} << factor_parity(n)
     BooleanMatrix.new(x).transpose
   end
