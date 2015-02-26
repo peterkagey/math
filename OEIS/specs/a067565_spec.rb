@@ -1,10 +1,10 @@
 require 'prime'
-require_relative '../scripts/inverse_graham'
+require_relative '../scripts/A067565'
 
 describe OEIS do
 
   def a(n)
-    OEIS.inverse_graham(n)
+    OEIS.A067565(n)
   end
 
   it "should know the small cases" do

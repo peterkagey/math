@@ -21,7 +21,11 @@ describe OEIS do
   end
 
   it "should handle primes" do
-    expect(a(19)).to eq 38
+    expect(a(13, seq:true)).to eq [13, 18, 26]
+    expect(a(17, seq:true)).to eq [17, 32, 34]
+    expect(a(19, seq:true)).to eq [19, 32, 38]
+    expect(a(37, seq:true)).to eq [37, 72, 74]
+
   end
 
   it "should handle highly composite numbers" do

@@ -12,12 +12,15 @@ class OEIS
     # Ron Graham's sequence
     seq =
       case
-      when n == 2 then [2,3,6]
-      when n == 3 then [3,6,8]
+      when n == 2
+        [2,3,6]
+      when n == 3
+        [3,6,8]
       when Prime.prime?(n)
-        k = 2 * (n/2.0)**0.5.ceil
-        [n, k**2, 2*n]
-      when n.is_square? then [n]
+        k = (n**0.5).floor
+        [n, 2 * k**2, 2*n]
+      when n.is_square?
+        [n]
       else
         BooleanMatrix.construct(n).interpret
       end
