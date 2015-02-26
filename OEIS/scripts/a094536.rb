@@ -1,6 +1,7 @@
 class OEIS
 
   def self.a094536(n)
+    # number of binary strings that begin with an even-length palindrome
     seq = [0,0]
     i = 2
     loop do

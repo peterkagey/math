@@ -1,8 +1,10 @@
-require_relative 'inverse_graham_hash'
+require_relative 'b_file_to_hash'
 class OEIS
 
-  def self.A067565(n)
-    InverseGraham::HASH[n]
+  INVERSE_A006255_HASH = b_file_hash(67565)
+
+  def self.a067565(n)
+    INVERSE_A006255_HASH[n]
   end
 
 end

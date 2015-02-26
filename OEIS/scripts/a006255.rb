@@ -1,6 +1,7 @@
 # http://oeis.org/A006255
 require 'prime'
 require_relative 'boolean_matrix'
+require_relative 'is_square'
 
 # Speed this up by making it halt as soon as a solution is found (instead of
 # reducing the whole matrix).
@@ -16,7 +17,7 @@ class OEIS
       when Prime.prime?(n)
         k = 2 * (n/2.0)**0.5.ceil
         [n, k**2, 2*n]
-      when (n**0.5).round**2 == n then [n]
+      when n.is_square? then [n]
       else
         BooleanMatrix.construct(n).interpret
       end

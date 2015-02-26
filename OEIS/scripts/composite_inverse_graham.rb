@@ -1,8 +1,8 @@
-require_relative 'inverse_graham_hash'
+require_relative 'a067565'
 
 counter = 1
 (1..5000).each do |i|
-  v = InverseGraham::HASH[i]
+  v = a067565(i)
   if v != 0
     puts "#{counter} #{v}"
     counter += 1
