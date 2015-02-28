@@ -1,4 +1,8 @@
 require_relative 'a067565'
 
-seq = (1..5000).collect { |i| OEIS.a067565(i) }.reject { |a_i| a_i == 0 }
-seq.each_with_index { |a_i, index| puts "#{index + 1} #{a_i}"}
+class OEIS
+  SEQUENCE = (1..5000).collect { |i| OEIS.a067565(i) }.reject { |a_i| a_i == 0 }
+  def self.composite_inverse_graham(n)
+    SEQUENCE[n-1]
+  end
+end
