@@ -1,4 +1,4 @@
-require_relative 'b_file_hash'
+require_relative 'helpers/b_file_to_hash'
 
 class OEIS
   def self.a255167(n)

@@ -1,7 +1,7 @@
 # http://oeis.org/A006255
 require 'prime'
-require_relative 'boolean_matrix'
-require_relative 'is_square'
+require_relative 'helpers/boolean_matrix'
+require_relative 'helpers/is_square'
 
 # Speed this up by making it halt as soon as a solution is found (instead of
 # reducing the whole matrix).

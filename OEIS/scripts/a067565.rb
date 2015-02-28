@@ -1,4 +1,4 @@
-require_relative 'b_file_to_hash'
+require_relative 'helpers/b_file_to_hash'
 class OEIS
 
   INVERSE_A006255_HASH = b_file_hash(67565)

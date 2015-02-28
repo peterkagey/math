@@ -2,7 +2,7 @@
 # with a nontrivial palindrome.
 # a(0) = 0; a(1) = 0; a(n+1) = 3*a(n) + 3^ceil(n/2) - a(ceil(n/2))
 
-require_relative  'palindrome_counter'
+require_relative 'helpers/palindrome_counter'
 
 class OEIS
   def self.a248122(n)

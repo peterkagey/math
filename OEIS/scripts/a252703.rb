@@ -1,4 +1,4 @@
-require_relative 'nonpalindrome_counter'
+require_relative 'helpers/nonpalindrome_counter'
 
 class OEIS
   def self.a252703(n)

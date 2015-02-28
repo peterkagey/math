@@ -1,6 +1,5 @@
-require_relative 'is_square'
+require_relative 'helpers/is_square'
 require_relative 'a067565'
-require_relative 'b_file_to_hash'
 
 class OEIS
   def self.iterations(n)

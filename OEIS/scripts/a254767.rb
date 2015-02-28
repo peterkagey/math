@@ -1,4 +1,4 @@
-require_relative 'prime_factors_hash'
+require_relative 'helpers/prime_factors_hash'
 
 class OEIS
   def self.a254767(n, h = 3)
