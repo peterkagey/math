@@ -14,7 +14,8 @@
 start = Time.now
 
 def simp(a,b)
-	a = a.to_i; b = b.to_i
+	a = a.to_i
+	b = b.to_i
 	gcd = a.gcd(b)
 	[a / gcd, b / gcd]
 end
@@ -22,7 +23,7 @@ end
 n_product = 1
 d_product = 1
 (12...97).each do |n|
-	((n+1)..98).each do |d|
+	((n + 1)..98).each do |d|
 		next if d % 10 == 0 || n % 10 == 0  # contains zero
 		next if d % 11 == 0 || n % 11 == 0  # repdigits don't play ball
 		numerator = n.to_s.split("") 		# converts to digit array
@@ -34,7 +35,8 @@ d_product = 1
 		new_d = (denominator - intersection)[0]
 
 		if simp(new_n, new_d) == simp(n, d)
-			n_product *= n; d_product *= d
+			n_product *= n
+			d_product *= d
 		end
 	end
 end

@@ -9,8 +9,8 @@
 
 start = Time.now
 
-def amount_left(p=0, f=0, t=0, te=0, fi=0)
-	200 - 100*p - 50*f - 20*t - 10*te - 5*fi
+def amount_left(p = 0, f = 0, t = 0, te = 0, fi = 0)
+	200 - 100 * p - 50 * f - 20 * t - 10 * te - 5 * fi
 end
 
 total = 0

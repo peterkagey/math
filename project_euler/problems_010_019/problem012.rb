@@ -20,36 +20,36 @@
 
 start = Time.now
 require_relative '../function/sieve_of_eratosthenes'
-
 primes = sieve_of_eratosthenes(10000)
 
 def prime_factors(n, primes)
 	prime_factors_hash = Hash.new(0)
-	primes.each do |k|
-		loop do
-			break unless n % k == 0
-			n /= k
-			prime_factors_hash[k] += 1
+	primes.each do |q|
+		break if n < q
+		while n % q == 0
+			n /= q
+			prime_factors_hash[q] += 1
 		end
-		break if n == 1
 	end
 	prime_factors_hash
 end
 
 def number_of_factors(prime_factors_hash)
-	prime_factors_hash.collect{|k,v| v + 1}.reduce(:*)
+	prime_factors_hash.collect{ |_,v| v + 1 }.reduce(:*)
+end
+
+def triangle(i)
+	i * (i + 1)/2
 end
 
 i = 2
-loop do
-	i += 1
-	break if number_of_factors(prime_factors((i*(i+1)/2), primes)) >= 500
-end
+i += 1 until number_of_factors(prime_factors(triangle(i), primes)) >= 500
 
-p i*(i+1)/2
-p Time.now-start
+p triangle(i)
+
+p Time.now - start
 
 # 76576500
-# 1.163591 seconds
+# 0.633637 seconds
 
 # I'm not sure why this takes so long.
