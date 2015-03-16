@@ -14,6 +14,7 @@ def problem_9
 		(0..c).each do |b|
 			a = Math.sqrt(c**2 - b**2)
 			next unless a == a.to_i
+      return [a,b,c] if a + b + c == 1000
 			return (a*b*c).to_i if a + b + c == 1000
 		end
 	end
