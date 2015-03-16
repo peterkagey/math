@@ -6,7 +6,7 @@ describe OEIS do
     OEIS.a254128(n)
   end
 
-  it "should handle a(1)" do
+  it "should handle small values" do
     expect(a(0)).to eq 0
     expect(a(1)).to eq 0
     expect(a(2)).to eq 0
@@ -16,11 +16,8 @@ describe OEIS do
     expect(a(6)).to eq 40
   end
 
-  it "should know that a(2k) = 2*a(2k-1)" do
-    (1..5).each do |i|
-      k = 2*i
-      expect(a(k)).to eq 2*a(k-1)
-    end
+  it "should know that a(2 * k) = 2 * a(2 * k - 1)" do
+    (1..5).each { |i| expect(a(2 * i)).to eq 2 * a(2 * i - 1) }
   end
 
 end
