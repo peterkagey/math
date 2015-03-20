@@ -29,7 +29,12 @@ a =
 start = Time.now
 
 n = 13
-p (0..a.length-n).collect{|x|a[x...x+n].split("").map(&:to_i).reduce(:*)}.max
+ary = []
+(0 .. a.length - n).each do |x|
+  ary << (k = a[x...x + n].split("").map(&:to_i).reduce(:*))
+  p k if k == ary.max
+end
+p ary.max
 p Time.now-start
 
 # 23514624000

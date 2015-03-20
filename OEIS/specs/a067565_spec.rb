@@ -19,7 +19,7 @@ describe OEIS do
   end
 
   it "should know: a(k) == 0 iff k is prime" do
-    (1..5000).each do |k|
+    (1..100).each do |k|
       expect([k, a(k)]).to eq     [k, 0] if  Prime.prime?(k)
       expect([k, a(k)]).not_to eq [k, 0] if !Prime.prime?(k)
     end

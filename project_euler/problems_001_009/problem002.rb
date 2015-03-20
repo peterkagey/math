@@ -9,10 +9,15 @@
 start = Time.now
 seq = [1,1]
 
-loop do; (seq[-1] > 4000000 ? break : seq << seq[-1] + seq[-2]) end
+until seq[-1] > 4_000_000
+  seq << seq[-1] + seq[-2]
+end
 
-p seq.select{ |n| n % 2 == 0 }.reduce(:+)
+start = Time.now
+sum = 0
+x = (0...seq.length/3).each { |index| sum += seq[3 * index + 2] }
+p sum
 p Time.now - start
 
 # 4613732
-# 3.7e-05 seconds
+# 2.0e-05 seconds
