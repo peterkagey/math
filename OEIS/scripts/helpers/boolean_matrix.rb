@@ -20,7 +20,7 @@ class BooleanMatrix
   def initialize(matrix, opts={})
     @matrix = matrix
     @column_count = opts[:column_count]
-    @column_count ||= @matrix.map { |row| row.to_s(2).length }.max
+    @column_count ||= @matrix.map { |row| row.bit_length }.max
     @row_count = opts[:row_count] || matrix.length
   end
 
@@ -28,26 +28,16 @@ class BooleanMatrix
     OEIS.a248663(n)
   end
 
+  def self.pi(n)
+    Prime.each(n).to_a.length
+  end
+
   def self.construct(n)
     upper_bound = (n > 3) ? (2 * n) : (4 * n)
-    pi_n = Prime.each(n).to_a.length
-    k = 2**pi_n - 1 # 0b1111...111 with pi(n) 1s.
-    x = (n+1..upper_bound).collect { |i| factor_parity(i) & k} << factor_parity(n)
+    k = (1 << pi(n)) - 1 # 0b1111...111 with pi(n) 1s.
+    x = (n+1..upper_bound).collect { |i| factor_parity(i) & k}
+    x <<= factor_parity(n)
     BooleanMatrix.new(x).transpose
-  end
-
-  def _i_j_entry(i, j)
-    shift = @column_count - j - 1
-    @matrix[i] >> shift & 1
-  end
-
-  def _read_column(j)
-    column_sum = 0
-    (0...@row_count).each do |i|
-      column_sum <<= 1
-      column_sum |= _i_j_entry(i, j)
-    end
-    column_sum
   end
 
   def transpose
@@ -61,6 +51,29 @@ class BooleanMatrix
 
   def print
     @matrix.each { |row| puts format row }
+  end
+
+  def interpret
+    # only finds a solution when BooleanMatrix.construct(n) has n >= 4.
+    m = _rref.transpose.matrix
+    terms = [-1]
+    terms += _bit_indices(m.last).collect { |i| m.index(i) }
+    terms.map { |x| x + @column_count }
+  end
+
+  private
+
+  def _i_j_entry(i, j)
+    @matrix[i][@column_count - 1 - j]
+  end
+
+  def _read_column(j)
+    column_sum = 0
+    (0...@row_count).each do |i|
+      column_sum <<= 1
+      column_sum |= _i_j_entry(i, j)
+    end
+    column_sum
   end
 
   def _done_reducing?(curr_col, comp_rows)
@@ -102,17 +115,15 @@ class BooleanMatrix
     self
   end
 
-  def _bytes(i)
-    max = i.to_s(2).length
-    (0...max).select { |pos| i & (1 << pos) != 0 }
-  end
-
-  def interpret
-    # only finds a solution when BooleanMatrix.construct(n) has n >= 4.
-    m = _rref.transpose.matrix
-    terms = [-1]
-    terms += _bytes(m.last).reverse.collect { |i| m.index(1 << i) }
-    terms.map { |x| x + @column_count }
+  def _bit_indices(integer)
+    # This returns an array of indices of 1 bits.
+    # _bit_indices(0b1101)
+    #   >> [0b1000, 0b100, 0b1]
+    bits = integer.bit_length
+    bit_position_ary = (0...bits).select do |bit_position|
+      integer[bit_position] == 1
+    end
+    bit_position_ary.map { |pos| 1 << pos }.reverse
   end
 
 end
