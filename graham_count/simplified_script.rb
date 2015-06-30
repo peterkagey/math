@@ -9,7 +9,7 @@ class Array
   end
 
   def each_subset(&block)
-    (0...2**length).collect { |i| subset(i) }.each { |ary| yield(ary) }
+    (0...2**length).each { |i| yield(subset(i)) }
   end
 
 end
