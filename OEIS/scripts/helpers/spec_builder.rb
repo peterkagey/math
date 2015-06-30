@@ -28,7 +28,7 @@ describe OEIS do
 end
 )
 
-File.write(file_name, str)
+  File.write(file_name, str)
 end
 
 

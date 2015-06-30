@@ -27,5 +27,3 @@ def a(n)
   end
   counter
 end
-
-p a(20)

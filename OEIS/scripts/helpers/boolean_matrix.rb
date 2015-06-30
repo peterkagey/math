@@ -1,6 +1,8 @@
 require_relative '../a248663'
 require 'prime'
 
+# Speed this up by making it halt as soon as a solution is found (instead of
+# reducing the whole matrix).
 class BooleanMatrix
   # a boolean matrix is an array of integers where each integer is a binary
   # representaion of a row.
@@ -154,7 +156,7 @@ end
 # Thus f(2*7*13) = 1001010...
 
 # Now we have a list of binary strings, and we want to find the way to XOR
-# combine some subset of them, using only the beginning* of the list
+# combine some subset of them, using only the beginning of the list
 
 # in other words, we're looking for f(N) XOR f(k_1) XOR ... XOR f(k_n) such
 # that f(N) XOR f(k_1) XOR ... XOR f(k_n) == 000000...
