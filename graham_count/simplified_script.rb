@@ -42,13 +42,13 @@ end
 # Let S = {n = a_0, a_1, a_2, ..., a_t = g(n)}.
 # The product of S is a perfect square if and only if
 # h(a_0) ^ h(a_1) ^ ... ^ h(a_t) == 0
-def perfect_square?(n, subset)
-  product = h(n) ^ h(g(n))
-  subset.each { |a_i| product ^= h(a_i) }
-  product == 0
+def perfect_square?(sequence)
+  sequence.map{ |i| h(i) }.reduce(:^) == 0
 end
 
 # We want to count all subsets whose product is a perfect square.
 def a(n)
-  middle_terms(n).count_subsets { |subset| perfect_square?(n, subset) }
+  middle_terms(n).count_subsets { |subset| perfect_square?([n, g(n)] + subset) }
 end
+
+p a(ARGV[0].to_i)
