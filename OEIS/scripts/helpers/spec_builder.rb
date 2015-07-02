@@ -62,5 +62,3 @@ end
   end
 
 end
-
-TestBuilder.new(72905)
