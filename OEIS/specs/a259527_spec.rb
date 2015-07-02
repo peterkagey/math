@@ -36,4 +36,11 @@ describe OEIS do
     expect(a(5**2)).to eq 1
   end
 
+  it "should be pretty quick!" do
+    start = Time.now
+    expect(a(19)).to eq 128
+    expect(Time.now - start).to be < 0.1
+  end
+
+
 end
