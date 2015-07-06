@@ -25,7 +25,7 @@ class TestBuilder
   end
 
   def sequence_hash
-    @sequence_hash ||= seq_to_hash(@sequence_id)
+    @sequence_hash ||= seq_to_hash(@id)
   end
 
   def minimum_argument
@@ -62,3 +62,5 @@ end
   end
 
 end
+
+TestBuilder.new(ARGV[0])
