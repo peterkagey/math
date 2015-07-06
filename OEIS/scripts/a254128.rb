@@ -1,7 +1,7 @@
 class OEIS
+  # Number of binary strings of length n that begin with an odd-length
+  # palindrome.
   def self.a254128(n)
-    # Number of binary strings of length n that begin with an odd-length
-    # palindrome.
     s = [0, 0]
     i = 1
     while s[n].nil? && i += 1

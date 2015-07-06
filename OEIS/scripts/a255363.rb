@@ -2,6 +2,7 @@ require_relative 'a070229'
 require_relative 'a006255'
 
 class OEIS
+  # Numbers with the property that A006255(k) = A070229(k).
   def self.a255363(n)
     k, counter = 0, 0
     while k += 1 do

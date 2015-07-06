@@ -1,6 +1,7 @@
 class OEIS
+
+  # Number of shared edges in a spiral of n unit squares.
   def self.a123663(n)
-    # A123663: Number of shared edges in a spiral of n unit squares.
     a123663 = [0]
     k = 0
     a_i = 0

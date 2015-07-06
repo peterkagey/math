@@ -1,7 +1,8 @@
 class OEIS
 
+  # Number of binary words of length n that are not "bifix-free".
+  # Also the number of binary strings of length n that begin with an even length palindrome.
   def self.a094536(n)
-    # number of binary strings that begin with an even-length palindrome
     seq = [0,0]
     i = 2
     loop do
@@ -14,9 +15,3 @@ class OEIS
   end
 
 end
-
-# (2..1000).each { |n| s << 2 * s[-1] + (n.odd? ? 0 : 2**(n/2) - s[n/2]) }
-
-# s.each_with_index do |a,i|
-#   puts a/(2**i).to_f
-# end
