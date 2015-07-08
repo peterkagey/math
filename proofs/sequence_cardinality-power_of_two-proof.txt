@@ -1,3 +1,6 @@
+Prove that there are 2^k strictly increasing sequences {n, ..., g(n)} whose
+product is a perfect square.
+
 Consider the set S(a,b) = ℘{a, a+1, a+2, ..., b-1, b}.
 
 Example:
