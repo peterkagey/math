@@ -1,0 +1,10 @@
+Proof that A072905 is a bijection onto A013929 (non-squarefree numbers).
+
+(1) Injection: Suppose that b<c and a(b) == a(c). By definition and assumption,
+b < c < a(c) = a(b). Because a(c) = a(b), b, c, a(b), and a(c) must all have the
+same squarefree part, thus b*c must be a perfect square. However
+c < a(b), so a(b) must not be the minimal solution. This is a contradiction.
+If b<c, then a(b) != a(c) so the function is an injection.
+
+(2) Surjection: Given some number k in A013929,
+a(A007913(k)*(A000188(k)-1)^2.) = k
