@@ -1,4 +1,4 @@
-require '/Users/pkagey/personal/math/project_euler/ruby/helpers/triangle.rb'
+require_relative '../../helpers/triangle.rb'
 class ProjectEuler
   # The sum of the squares of the first ten natural numbers is,
 
@@ -13,7 +13,7 @@ class ProjectEuler
   # natural numbers and the square of the sum.
   def self.problem006
     n = 100
-    sum_to_n_squared = (n * (n + 1) / 2)**2         # = (1 + 2 + ... + n)^2
+    sum_to_n_squared = triangle(n)**2         # = (1 + 2 + ... + n)^2
     sum_of_squares   = n * (n + 1) * (2 * n + 1)/6  # = 1^2 + 2^2 + ... + n^2
 
     sum_to_n_squared - sum_of_squares

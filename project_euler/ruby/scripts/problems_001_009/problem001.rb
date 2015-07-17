@@ -1,4 +1,4 @@
-require '/Users/pkagey/personal/math/project_euler/ruby/helpers/triangle.rb'
+require_relative '../../helpers/triangle.rb'
 class ProjectEuler
   # If we list all the natural numbers below 10 that are multiples of 3 or 5,
   # we get 3, 5, 6 and 9. The sum of these multiples is 23.

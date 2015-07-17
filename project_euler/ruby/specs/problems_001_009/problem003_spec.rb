@@ -1,4 +1,4 @@
-require '/Users/pkagey/personal/math/project_euler/ruby/scripts/problems_001_009/problem003.rb'
+require_relative '../../scripts/problems_001_009/problem003.rb'
 describe ProjectEuler do
 
   it "should compute correctly" do
