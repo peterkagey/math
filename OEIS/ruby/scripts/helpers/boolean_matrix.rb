@@ -1,4 +1,4 @@
-require_relative '../a248663'
+require_relative '../graham/a248663'
 require 'prime'
 
 # Speed this up by making it halt as soon as a solution is found (instead of

@@ -1,4 +1,4 @@
-require_relative '../a248663'
+require_relative '../graham/a248663'
 
 class Array
 
