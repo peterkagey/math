@@ -1,4 +1,4 @@
-class Stopper
+class ToiletPaper
 
   attr_reader :count
 
@@ -30,6 +30,6 @@ class Stopper
 
 end
 
-def stopper(subtrahend, divisor, n)
-  Stopper.new(subtrahend,divisor,n).calculate!
+def toilet_paper(subtrahend, divisor, n)
+  ToiletPaper.new(subtrahend,divisor,n).calculate!
 end
