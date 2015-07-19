@@ -2,7 +2,7 @@ class ProjectEuler
   # The four adjacent digits in the 1000-digit number that have the greatest
   # product are 9 × 9 × 8 × 9 = 5832.
 
-  A =
+  A8 ||=
   "73167176531330624919225119674426574742355349194934" +
   "96983520312774506326239578318016984801869478851843" +
   "85861560789112949495459501737958331952853208805511" +
@@ -30,8 +30,8 @@ class ProjectEuler
     n = 13
     max = 0
     ary = []
-    (A.length - n + 1).times do |x|
-      product = PEHelper.string_product(A[x...x + n])
+    (A8.length - n + 1).times do |x|
+      product = PEHelper.string_product(A8[x...x + n])
       max = product if product > max
     end
     max
@@ -42,6 +42,7 @@ end
 
 class PEHelper
   def self.string_product(digit_string)
+    raise digit_string.to_s unless digit_string.is_a? String
     digit_string.split("").map(&:to_i).reduce(:*)
   end
 end

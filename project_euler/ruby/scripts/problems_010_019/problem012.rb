@@ -24,16 +24,13 @@ class ProjectEuler
 	def self.problem012
 		i = 2
 		primes = sieve_of_eratosthenes(10000)
-		i += 1 until number_of_factors(prime_factors(triangle(i), primes)) >= 500
+		i += 1 until number_of_factors(prime_factors_012(triangle(i), primes)) >= 500
 
 		triangle(i)
 	end
-	# 76576500
-	# 0.633637 seconds
-	# I'm not sure why this takes so long!
 end
 
-def prime_factors(n, primes)
+def prime_factors_012(n, primes)
 	prime_factors_hash = Hash.new(0)
 	primes.each do |q|
 		break if n < q
@@ -48,5 +45,8 @@ end
 def number_of_factors(prime_factors_hash)
 	prime_factors_hash.collect{ |_,v| v + 1 }.reduce(:*)
 end
+
+# 76576500
+# 0.633637 seconds
 
 # I'm not sure why this takes so long.
