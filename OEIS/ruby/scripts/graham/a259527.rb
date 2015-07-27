@@ -1,5 +1,5 @@
 require_relative 'a006255'
-require_relative '../helpers/subset_logic'
+require_relative 'a248663'
 require_relative '../helpers/perfect_square_product'
 
 class OEIS
