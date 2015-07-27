@@ -28,13 +28,10 @@ class BooleanMatrix
     OEIS.a248663(n)
   end
 
-  def self.pi(n)
-    Prime.each(n).to_a.length
-  end
-
   def self.construct(n)
     upper_bound = (n > 3) ? (2 * n) : (4 * n)
-    k = (1 << pi(n)) - 1 # 0b1111...111 with pi(n) 1s.
+    pi_n = Prime.each(n).to_a.length
+    k = (1 << pi_n) - 1 # 0b1111...111 with pi(n) 1s.
     x = (n+1..upper_bound).collect { |i| factor_parity(i) & k}
     x <<= factor_parity(n)
     BooleanMatrix.new(x).transpose
@@ -46,11 +43,11 @@ class BooleanMatrix
   end
 
   def format(row)
-    row.to_s(2).rjust(@column_count, '0').split('').join(' ')
+    "[" + row.to_s(2).rjust(@column_count, '0').split('').join(' ') + "]"
   end
 
-  def print
-    @matrix.each { |row| puts format row }
+  def inspect
+    _rref.matrix.collect { |row| format row }.join("\n")
   end
 
   def interpret
@@ -59,6 +56,15 @@ class BooleanMatrix
     terms = [-1]
     terms += _bit_indices(m.last).collect { |i| m.index(i) }
     terms.map { |x| x + @column_count }
+  end
+
+  def rank
+    reduced = _rref.matrix
+    reduced.length - reduced.count(0)
+  end
+
+  def dim_null_space
+    _rref.matrix.count(0)
   end
 
   private
