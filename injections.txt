@@ -1,0 +1,3 @@
+Explore:
+
+OEIS injections that are not monotonic.
