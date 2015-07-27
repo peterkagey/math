@@ -110,7 +110,7 @@ class BooleanMatrix
   end
 
   def _rref
-    r_i, c_i = 0, 0
+    r_i = 0
     (0...column_count).each do |c_i|
       if _swap_to_the_top(c_i, r_i)
         _clear_column(c_i, r_i)
