@@ -1,4 +1,4 @@
-require_relative '../helpers/nonpalindrome_counter'
+require_relative '../helpers/palindrome_counter'
 
 class OEIS
   # Number of strings of length n over a 3 letter alphabet that do not begin

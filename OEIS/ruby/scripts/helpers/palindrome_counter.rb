@@ -7,3 +7,8 @@ def palindrome_count(n, b)
   end
   seq[n]
 end
+
+def nonpalindrome_count(n, b)
+  return 0 if n == 0
+  b**n - palindrome_count(n,b)
+end
