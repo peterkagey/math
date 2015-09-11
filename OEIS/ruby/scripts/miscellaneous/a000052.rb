@@ -8,10 +8,8 @@ class OEIS
   end
 
   def self.a000052(n)
-    raise "Numbers this large are not supported: (#{n})" if n > 10000
-    A000052_SEQ[n]
+    raise "Valid range is 1-10000: (#{n})" if n > 10000 || n < 1
+    A000052_SEQ[n - 1]
   end
 
 end
-
-p OEIS.a000052(0)
