@@ -71,6 +71,10 @@ class SequenceAnalyzer
     @sequence.uniq == @sequence
   end
 
+  def small_terms?
+    @sequence.max < 10000
+  end
+
 end
 
 path = File.dirname(__FILE__) + "/OEIS_sequences.txt"
@@ -78,5 +82,5 @@ sequences = OEISAnalyzer.new(path)
 
 sequences.each_sequence do |oeis_seq|
   analyzer = SequenceAnalyzer.new(oeis_seq)
-  p oeis_seq #if analyzer.injection? && !analyzer.monotonic?
+  p oeis_seq if !analyzer.monotonic? && analyzer.injection? && analyzer.small_terms?
 end
