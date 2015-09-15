@@ -1,15 +1,16 @@
+require_relative "helpers/sequence_path_iterator"
 require_relative "download_hash"
 
 class TestBuilder
 
   def initialize(sequence_id)
-    @id = "a" + sequence_id.to_s[/\d+/].rjust(6, '0')
+    @sequence_number = sequence_id[/\d{6}$/]
     write_test unless test_already_exists?
   end
 
   def test_already_exists?
     if File.exist?(spec_file_path)
-      puts "Test already exists for #{@id}!"
+      puts "A#{@sequence_number} already exists"
       true
     else
       false
@@ -20,12 +21,16 @@ class TestBuilder
     File.dirname(__FILE__)
   end
 
+  def script_path
+    SequencePathIterator.sequence_path(@sequence_number)
+  end
+
   def spec_file_path
-    helpers_directory_root + "/../../specs/#{@id}_spec.rb"
+    OEISTestPathIterator.spec_file_path(script_path)
   end
 
   def sequence_hash
-    @sequence_hash ||= seq_to_hash(@id)
+    @sequence_hash ||= seq_to_hash(@sequence_number)
   end
 
   def minimum_argument
@@ -37,12 +42,12 @@ class TestBuilder
   end
 
   def test
-    %(require_relative '../scripts/#{@id}'
+    @test ||= %(require_relative '../../#{script_path[/script.+/][0...-3]}'
 
 describe OEIS do
 
   def a(n)
-    OEIS.#{@id}(n)
+    OEIS.a#{@sequence_number}(n)
   end
 
   it "should know first five values" do
@@ -58,7 +63,9 @@ end
   end
 
   def write_test
+    puts test
     File.write(spec_file_path, test)
+    "Successfully wrote a test to #{spec_file_path}"
   end
 
 end
