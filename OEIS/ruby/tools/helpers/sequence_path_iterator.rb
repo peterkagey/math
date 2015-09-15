@@ -17,6 +17,10 @@ class SequencePathIterator
     ""
   end
 
+  def self.sequence_numbers
+    sequence_paths.map { |path| extract_number(path) }
+  end
+
 end
 
 class BFilePathIterator < SequencePathIterator
