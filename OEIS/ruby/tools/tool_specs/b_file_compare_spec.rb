@@ -1,4 +1,4 @@
-require_relative '../b_file_uploaded'
+require_relative '../b_file_compare'
 
 describe "OEIS b-files" do
 
