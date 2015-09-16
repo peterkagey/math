@@ -4,6 +4,8 @@ require_relative 'helpers/sequence_path_iterator'
 class BFileCompare
 
   PENDING_SEQUENCES = {
+    "A000000" => "Awaiting naming and upload.",
+
     "A019555" => "Awaiting upload.",
     "A047932" => "Awaiting upload.",
     "A053797" => "Awaiting upload.",
@@ -13,6 +15,7 @@ class BFileCompare
     "A143051" => "Awaiting upload.",
     "A163325" => "Awaiting upload.",
     "A258448" => "Awaiting upload.",
+    "A173902" => "Awaiting upload.",
 
     "A143480" => "Draft (2015/09/03).",
     "A143481" => "Draft (2015/09/03).",
