@@ -30,7 +30,11 @@ class TestBuilder
   end
 
   def sequence_hash
-    @sequence_hash ||= seq_to_hash(@sequence_number)
+    begin
+      @sequence_hash ||= official_b_file_hash(@sequence_number)
+    rescue
+      @sequence_hash ||= local_b_file_hash(@sequence_number)
+    end
   end
 
   def minimum_argument
