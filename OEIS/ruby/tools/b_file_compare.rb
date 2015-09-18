@@ -6,6 +6,10 @@ class BFileCompare
   PENDING_SEQUENCES = {
     "A000000" => "Awaiting naming and upload.",
 
+    "A117484" => "Awaiting upload.",
+    "A262159" => "Awaiting upload.",
+    "A262343" => "Awaiting upload.",
+
     "A019555" => "Awaiting upload.",
     "A047932" => "Awaiting upload.",
     "A053797" => "Awaiting upload.",
