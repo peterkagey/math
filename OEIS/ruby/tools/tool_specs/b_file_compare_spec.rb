@@ -1,16 +1,15 @@
 require_relative '../b_file_compare'
 
-describe "OEIS b-files" do
 
-  SequencePathIterator.sequence_numbers.each do |id|
-    compare = BFileCompare.new(id)
-    next if compare.skip?
+SequencePathIterator.sequence_numbers.each do |id|
+  compare = BFileCompare.new(id)
+  next if compare.skip?
 
-    it "A#{id}: Local b-file should match OEIS version." do
+  describe "A#{id}" do
+    it "should have a b-file that matches the OEIS version." do
       pending "#{compare.pending_reason}" if compare.pending?
-      expect(compare.oeis_range).to eq compare.local_range
+      expect(compare.official_range).to eq compare.local_range
     end
-
   end
 
 end
