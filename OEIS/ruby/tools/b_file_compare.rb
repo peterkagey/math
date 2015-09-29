@@ -16,7 +16,6 @@ class BFileCompare
     "A163325" => "Awaiting upload.",
     "A173902" => "Awaiting upload.",
 
-    "A117484" => "Awaiting approval of Robert Israel's b-file.",
 
     "A258448" => "Edit (2015/09/09).",
     "A262159" => "Edit (2015/09/17).",
