@@ -10,6 +10,7 @@ class BFileCoverage
     "b000073", # Tribonacci numbers
     "b000188", # Square root of largest square dividing n.
     "b005117", # Squarefree numbers
+    "b006995", # Binary palindromes.
     "b007913", # Squarefree part of n
     "b070229", # Next m>n such that m is divisible by lpf(n)
     "b071068", # Number of partitions of n into two squarefree numbers.
