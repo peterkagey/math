@@ -14,5 +14,6 @@ class BFileCoverage
     "b007913", # Squarefree part of n
     "b070229", # Next m>n such that m is divisible by lpf(n)
     "b071068", # Number of partitions of n into two squarefree numbers.
+    "b117484", # Number of triangular numbers mod n.
   ]
 end
