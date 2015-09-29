@@ -1,9 +1,9 @@
-require_relative '../../scripts/miscellaneous/a000000'
+require_relative '../../scripts/miscellaneous/a262436'
 
 describe OEIS do
 
   def a(n)
-    OEIS.a000000(n)
+    OEIS.a262436(n)
   end
 
   it "should be consistent with A212292." do

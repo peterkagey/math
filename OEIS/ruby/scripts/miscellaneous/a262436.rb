@@ -1,4 +1,4 @@
-class A000000Builder
+class A262436Builder
   # A212292
 
   # number of ways to represent
@@ -9,7 +9,7 @@ class A000000Builder
   require 'prime'
 
   def self.sequence(target_length = 1000)
-    a000000 = Array.new(target_length) {0}
+    a262436 = Array.new(target_length) {0}
 
     primes = Prime.each(2 * target_length).to_a
 
@@ -17,11 +17,11 @@ class A000000Builder
       primes.each do |r_0|
         a_i = p_0**2 + q_0**2 + r_0
         break if a_i > 2 * target_length
-        a000000[(a_i - 1)/2] += 1 if a_i.odd?
+        a262436[(a_i - 1)/2] += 1 if a_i.odd?
       end
     end
 
-    a000000
+    a262436
   end
 
   def self.each_pair_of_primes(max)
@@ -35,10 +35,10 @@ end
 
 class OEIS
 
-  A000000_SEQUENCE = A000000Builder.sequence(10000)
+  A262436_SEQUENCE = A262436Builder.sequence(10000)
 
-  def self.a000000(n)
-    raise "A000000 is not defined for n = #{n}" if n < 1
-    A000000_SEQUENCE[n-1]
+  def self.a262436(n)
+    raise "A262436 is not defined for n = #{n}" if n < 1
+    A262436_SEQUENCE[n-1]
   end
 end
