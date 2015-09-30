@@ -1,7 +1,7 @@
 SETTINGS = {
   cmd: 'bundle exec rspec',
   notification: false,
-  spec_paths: ['OEIS/ruby/specs', 'project_euler/ruby/specs', 'OEIS/ruby/tools/tool_specs']
+  spec_paths: ['OEIS/ruby/specs', 'project_euler/ruby/specs', 'OEIS/ruby/tools/tool_specs', 'OEIS']
 }
 
 guard :rspec, SETTINGS do

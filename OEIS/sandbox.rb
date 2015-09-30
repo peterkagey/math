@@ -1,40 +1,32 @@
-class Sandbox
+require "/Users/pkagey/personal/math/OEIS/ruby/scripts/helpers/subset_logic.rb"
 
-  def initialize(a_0, a_1, base = 3)
-    @b = base
-    a_1, a_0 = [a_0, a_1].sort
-    @b_0 = a_0.to_s(base)
-    @b_1 = a_1.to_s(base).rjust(@b_0.length, '0')
-  end
+module Sandbox
 
-  def xor
-    ary_0 = @b_0.split("").map(&:to_i)
-    ary_1 = @b_1.split("").map(&:to_i)
-    result_ary = (0...ary_0.length)
-    result_ary.map { |i| ary_0[i] + ary_1[i] % @b}.join.to_i(@b)
-  end
+  class A067597
 
-end
-
-class XOR
-  def initialize(a_0, a_1, base = 3)
-    @base = base
-    @a_1, @a_0 = [a_0, a_1].sort
-  end
-
-  def b
-    @base
-  end
-
-  def xor
-    ary = []
-    10.times do
-      ary << (@a_0 % b + @a_1 % b) % b
-      @a_0 /= b
-      @a_1 /= b
+    def initialize
+      p binary_palindromes
+      a = []
+      binary_palindromes.each_subset do |subset|
+        break if subset.length > 1 && subset[-1] + subset[-2] > 0b111111
+        a << subset.reduce(:+)
+      end
+      p a
+      p (0..64).to_a.map { |i| a.count(i) }
     end
 
-    ary.reverse.map(&:to_s).join.to_i(b)
+    def binary_palindromes
+      ary = []
+      (1...2**4).each do |i|
+        b = i.to_s(2)
+        ary << (b + b.reverse)
+        ary << (b + b.reverse[1..-1])
+      end
+      ary.map { |i| i.to_i(2) }.sort
+    end
+
   end
 
 end
+
+# Sandbox::A067597.new
