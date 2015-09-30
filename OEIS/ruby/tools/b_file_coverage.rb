@@ -9,6 +9,7 @@ class BFileCoverage
     "b000002", # a(n) is length of n-th run
     "b000073", # Tribonacci numbers
     "b000188", # Square root of largest square dividing n.
+    "b004489", # Base-3 XOR table.
     "b005117", # Squarefree numbers
     "b006995", # Binary palindromes.
     "b007913", # Squarefree part of n
