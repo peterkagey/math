@@ -20,7 +20,7 @@ describe OEIS do
   end
 
   it "should handle large values" do
-    expect(a(4944)).to eq 22
+    expect(a(53)).to eq 10
   end
 
 end

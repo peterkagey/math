@@ -7,11 +7,8 @@ class BFileCompare
 
   PENDING_SEQUENCES ||= {
     "A258448" => "Edit (2015/09/09).",
-    "A262159" => "Edit (2015/09/17).",
     "A262343" => "Edit (2015/09/18).",
 
-    "A049581" => "Draft (2015/09/29).",
-    "A051125" => "Draft (2015/09/29).",
     "A053797" => "Draft (2015/09/22).",
     "A259439" => "Draft (2015/09/03).",
   }
@@ -21,6 +18,7 @@ class BFileCompare
   def initialize(sequence_id)
     @id = sequence_id
     set_b_file_classes
+    return if skip?
     set_ranges
     update_cache if cache_should_be_updated?
   end

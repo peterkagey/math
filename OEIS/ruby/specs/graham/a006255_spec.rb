@@ -29,8 +29,7 @@ describe OEIS do
   end
 
   it "should handle highly composite numbers" do
-    expect(a(2 * 3 * 5 * 7)).to eq 238
-    expect(a(1000)).to eq 1044
+    expect(a(120)).to eq 135
   end
 
 end
