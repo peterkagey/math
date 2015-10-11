@@ -1,10 +1,7 @@
-# 215 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+class ProjectEuler
 
-# What is the sum of the digits of the number 2^1000?
+  def self.problem016
+    (2**1000).to_s.split("").map(&:to_i).reduce(:+)
+  end
 
-start = Time.now
-p (2**1000).to_s.split("").map(&:to_i).reduce(:+)
-p Time.now-start
-
-# 1366
-# 0.000208 seconds
+end

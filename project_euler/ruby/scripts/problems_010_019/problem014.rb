@@ -1,53 +1,26 @@
-# The following iterative sequence is defined for the set of positive
-# integers:
-
-# n → n/2 (n is even)
-# n → 3n + 1 (n is odd)
-
-# Using the rule above and starting with 13, we generate the following
-# sequence:
-
-# 13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1
-# It can be seen that this sequence (starting at 13 and finishing at 1)
-# contains 10 terms. Although it has not been proved yet (Collatz Problem),
-# it is thought that all starting numbers finish at 1.
-
-# Which starting number, under one million, produces the longest chain?
-
-# NOTE: Once the chain starts the terms are allowed to go above one million.
-
-start = Time.now
-def f(n)
-	return n/2 if n % 2 == 0
-	3 * n + 1
-end
-
-def collatz_count(n, h={1=>1})
-	i = 0
-	n_copy = n
-	loop do
-		break if h[n]
-		n = f(n)
-		i += 1
-	end
-	h[n_copy] = i + h[n]
-	h
-end
-
-h = {1=>1}
-(2..10**6).each do |i|
-	h = collatz_count(i, h)
-end
-
-j = h.values.max
-h.each do |k,v|
-	if v == j
-		p k
-		break
-	end
-end
-p Time.now - start
-
-# 837799
-# 4.523849 seconds
 # inelegant solution
+
+class ProjectEuler
+
+	def self.f(n)
+		n % 2 == 0 ? n/2 : 3 * n + 1
+	end
+
+	def self.collatz_count(n, h={1=>1})
+		i = 0
+		n_copy = n
+		(n = f(n); i += 1) until h[n]
+
+		h[n_copy] = i + h[n]
+		h
+	end
+
+	def self.problem014
+		h = {1=>1}
+		(2..10**6).each { |i| h = collatz_count(i, h) }
+
+		j = h.values.max
+		h.each { |k,v| return k if v == j }
+	end
+
+end
