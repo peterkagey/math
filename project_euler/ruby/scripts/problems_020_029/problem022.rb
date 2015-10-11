@@ -17,14 +17,14 @@ h = {}
 ('A'..'Z').to_a.each_with_index{|l,i| h[l] = i+1}
 
 def letter_sum(string, h=nil)
-	h ||= {}
-	('A'..'Z').to_a.each_with_index{|l,i| h[l] = i+1} if h.length == 0
-	string.split("").collect{|x| h[x]}.reduce(:+)
+  h ||= {}
+  ('A'..'Z').to_a.each_with_index{|l,i| h[l] = i+1} if h.length == 0
+  string.split("").collect{|x| h[x]}.reduce(:+)
 end
 
 name_sum = 0
 file.each_with_index do |name, index|
-	name_sum += letter_sum(name) * (index+1)
+  name_sum += letter_sum(name) * (index+1)
 end
 
 p name_sum

@@ -3,7 +3,7 @@ require_relative '../../helpers/factorial'
 class ProjectEuler
 
   def self.n_choose_k(n,k)
-  	factorial(n)/factorial(k)/factorial(n-k)
+    factorial(n)/factorial(k)/factorial(n-k)
   end
 
   def self.problem015

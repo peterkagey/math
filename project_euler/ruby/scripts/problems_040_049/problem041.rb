@@ -7,12 +7,12 @@
 start = Time.now
 
 def is_prime?(p) # Trial dividing is faster than sieving here
-	(2..Math.sqrt(p)).each { |i| return false if p % i == 0 }
-	return true
+  (2..Math.sqrt(p)).each { |i| return false if p % i == 0 }
+  return true
 end
 
 def n_pandigital?(a,n)
-	!!("#{a}".split("").uniq.join =~ /^[1-#{n}]{#{n}}$/)
+  !!("#{a}".split("").uniq.join =~ /^[1-#{n}]{#{n}}$/)
 end
 
 # It can't be 9 digits long because 1 + 2 + ... + 9 = 45 is divisible by 9
@@ -20,11 +20,11 @@ end
 # It can be a seven digit number, but no larger than 7,654,321.
 
 7654321.downto(7650000).each do |i| # Slow, but quick enough
-	next unless n_pandigital?(i, 7)
-	if is_prime?(i)
-		p i
-		break
-	end
+  next unless n_pandigital?(i, 7)
+  if is_prime?(i)
+    p i
+    break
+  end
 end
 
 p Time.now - start

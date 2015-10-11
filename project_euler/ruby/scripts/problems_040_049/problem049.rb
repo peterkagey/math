@@ -13,22 +13,22 @@ start = Time.now
 require_relative '../function/sieve_of_eratosthenes'
 
 def geometric_subsequence?(ary)
-	max = ary.sort!.last # assumes ary of integers
-	(0...ary.length-2).each do |a|
-		(a+1...ary.length-1).each do |b|
-			test_val = ary[b] + (ary[b] - ary[a])
-			return [ary[a], ary[b], test_val] if ary.include?(test_val)
-		end
-	end
-	return false
+  max = ary.sort!.last # assumes ary of integers
+  (0...ary.length-2).each do |a|
+    (a+1...ary.length-1).each do |b|
+      test_val = ary[b] + (ary[b] - ary[a])
+      return [ary[a], ary[b], test_val] if ary.include?(test_val)
+    end
+  end
+  return false
 end
 
 primes = sieve_of_eratosthenes(9999).select!{|x| x > 1000}
 primes = primes.group_by{ |p| p.to_s.split("").sort.join }
 primes.each do |k,v|
-	next unless v.length >=3
-	seq = geometric_subsequence?(v)
-	p seq.join("").to_i if seq && !seq.include?(1487)
+  next unless v.length >=3
+  seq = geometric_subsequence?(v)
+  p seq.join("").to_i if seq && !seq.include?(1487)
 end
 
 p Time.now - start

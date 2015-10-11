@@ -10,8 +10,8 @@
 start = Time.now
 pal_ary = []
 (1..999).each do |i|
-	pal_ary << i.to_s[0...-1] + i.to_s.reverse
-	pal_ary << i.to_s + i.to_s.reverse
+  pal_ary << i.to_s[0...-1] + i.to_s.reverse
+  pal_ary << i.to_s + i.to_s.reverse
 end
 
 p pal_ary.map(&:to_i).select{|n| n.to_s(2) == n.to_s(2).reverse}.reduce(:+)

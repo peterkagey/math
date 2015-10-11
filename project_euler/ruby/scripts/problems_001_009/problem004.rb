@@ -6,11 +6,11 @@ class ProjectEuler
   def self.problem004
     c = 0
     999.downto(100).each do |a|
-    	k = [c/a, a].max
-    	(k...999).each do |b|
-    		str = (a*b).to_s
-    		c = a * b if str == str.reverse
-    	end
+      k = [c/a, a].max
+      (k...999).each do |b|
+        str = (a*b).to_s
+        c = a * b if str == str.reverse
+      end
     end
     c
   end

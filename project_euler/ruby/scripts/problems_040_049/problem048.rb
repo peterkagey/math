@@ -5,14 +5,14 @@
 start = Time.now
 
 def product_mod_k(n,k)
-	product = 1
-	n.times {product = n * product % 10**10}
-	product
+  product = 1
+  n.times {product = n * product % 10**10}
+  product
 end
 
 sum = 0
 (1..1000).each do |i|
-	sum += product_mod_k(i,10**10)
+  sum += product_mod_k(i,10**10)
 end
 
 p sum % 10**10

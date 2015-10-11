@@ -14,12 +14,12 @@
 start = Time.now
 
 def digit_power_sum(n, k)
-	n.to_s.split("").map{ |x| (x.to_i)**k }.reduce(:+)
+  n.to_s.split("").map{ |x| (x.to_i)**k }.reduce(:+)
 end
 
 # 6 * 9^5 = 354,294 < 999,999
 sum = (2**5..354294).select do |i|
-	i == digit_power_sum(i, 5)
+  i == digit_power_sum(i, 5)
 end
 
 p sum.reduce(:+)

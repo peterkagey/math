@@ -16,17 +16,17 @@
 start = Time.now
 
 def pandigital?(a)
-	!!("#{a}".split("").uniq.join =~ /^[1-9]{9}$/)
+  !!("#{a}".split("").uniq.join =~ /^[1-9]{9}$/)
 end
 
 pandigital_ary = []
 (1..9300).each do |i|
-	s = ""
-	(1..9).each do |c|
-		s += (i * c).to_s
-		break if s.length >= 9
-	end
-	pandigital_ary << s if s.length == 9 && pandigital?(s)
+  s = ""
+  (1..9).each do |c|
+    s += (i * c).to_s
+    break if s.length >= 9
+  end
+  pandigital_ary << s if s.length == 9 && pandigital?(s)
 end
 
 p pandigital_ary.map(&:to_i).max

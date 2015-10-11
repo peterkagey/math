@@ -18,37 +18,31 @@
 
 start = Time.now
 
-require_relative '../function/sieve_of_eratosthenes'
-require_relative '../function/prime_factors'
-require_relative '../function/proper_factor_sum'
+require_relative '../../helpers/sieve_of_eratosthenes'
+require_relative '../../helpers/prime_factors'
+require_relative '../../helpers/proper_factor_sum'
 
 primes = sieve_of_eratosthenes(10000)
 
-##############################################
-# 4 seconds									 #
-			 								 #
-h = Hash.new(0)								 #
-abundant_numbers = (2...28123).select do |i| #
-	i < proper_factor_sum(i, primes)		 #
-end 										 #
-			 								 #
-##############################################
 
-##############################################
-# 9 seconds									 #
-			 								 #
-abundant_sum_boo = [false] * 28124 			 #
-abundant_numbers.reverse.each do |a| 		 #
-	abundant_numbers.each do |b| 			 #
-		break if a + b > 28123 				 #
-		abundant_sum_boo[a + b] = true 		 #
-	end 									 #
-end 										 #
-			 								 #
-##############################################
+def abundant_numbers_calc(primes)
+  # 2.3 seconds
+  (2...28123).select { |i| i < proper_factor_sum(i, primes) }
+end
+
+abundant_numbers = abundant_numbers_calc(primes)
+
+
+abundant_sum_bool = [false] * 28124
+abundant_numbers.reverse.each do |a|
+  abundant_numbers.each do |b|
+    break if a + b > 28123
+    abundant_sum_bool[a + b] = true
+  end
+end
 
 asl = []
-abundant_sum_boo.each_with_index{ |v, i| asl << i if v}
+abundant_sum_bool.each_with_index{ |v, i| asl << i if v}
 p ((1..28123).to_a - asl).reduce(:+)
 p Time.now - start
 

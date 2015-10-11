@@ -18,7 +18,7 @@
 start = Time.now
 
 x = (1..500).collect{ |i| (2*i + 1)**2 }
-y =	(1..x.length).collect{ |i| 2 * i }
+y = (1..x.length).collect{ |i| 2 * i }
 
 p 4 * x.reduce(:+) - 6 * y.reduce(:+) + 1
 p Time.now - start

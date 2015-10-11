@@ -14,18 +14,18 @@
 start = Time.now
 
 def pandigital_product?(a, b)
-	!!("#{a}#{b}#{a * b}".split("").uniq.join =~ /^[1-9]{9}$/)
+  !!("#{a}#{b}#{a * b}".split("").uniq.join =~ /^[1-9]{9}$/)
 end
 
 def l(i); i.to_s.length end
 
 a_b_list = []
 (1..98).each do |x|
-	(x...4999).each do |y|
-		break if l(x) + l(y) + l(x*y) > 9
-		next unless pandigital_product?(x,y) && l(x) + l(y) + l(x*y) == 9
-		a_b_list << x * y
-	end
+  (x...4999).each do |y|
+    break if l(x) + l(y) + l(x*y) > 9
+    next unless pandigital_product?(x,y) && l(x) + l(y) + l(x*y) == 9
+    a_b_list << x * y
+  end
 end
 
 p a_b_list.uniq.reduce(:+)

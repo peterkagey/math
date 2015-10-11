@@ -10,24 +10,24 @@
 start = Time.now
 
 def amount_left(p = 0, f = 0, t = 0, te = 0, fi = 0)
-	200 - 100 * p - 50 * f - 20 * t - 10 * te - 5 * fi
+  200 - 100 * p - 50 * f - 20 * t - 10 * te - 5 * fi
 end
 
 total = 0
 (0..200/100).each do |p|
-	al = amount_left(p)
-	(0..al/50).each do |f|
-		al = amount_left(p, f)
-		(0..al/20).each do |t|
-			al = amount_left(p, f, t)
-			(0..al/10).each do |te|
-				al = amount_left(p, f, t, te)
-				(0..al/5).each do |fi|
-					total += amount_left(p, f, t, te, fi)/2 + 1
-				end
-			end
-		end
-	end
+  al = amount_left(p)
+  (0..al/50).each do |f|
+    al = amount_left(p, f)
+    (0..al/20).each do |t|
+      al = amount_left(p, f, t)
+      (0..al/10).each do |te|
+        al = amount_left(p, f, t, te)
+        (0..al/5).each do |fi|
+          total += amount_left(p, f, t, te, fi)/2 + 1
+        end
+      end
+    end
+  end
 end
 
 p total + 1 # for the £2 coin

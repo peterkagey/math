@@ -16,23 +16,23 @@ def is_pent?(k)
 # 3 * n**2 - n - 2k = 0 where n is an integer
 # 1 +- sqrt(1 - 4*3*(-2k)) / 6
 # 1 + 24*k must be a perfect square and 1 + sqrt(24*k) % 6 == 0
-	(Math.sqrt(1 + 24*k).to_i)**2 == 1 + 24*k &&
-	(1 + Math.sqrt(1 + 24*k)) % 6 == 0
+  (Math.sqrt(1 + 24*k).to_i)**2 == 1 + 24*k &&
+  (1 + Math.sqrt(1 + 24*k)) % 6 == 0
 end
 
 def pent(n); n * (3*n -1)/2 end
 
 def pentagonal_loop
-	i = 2
-	loop do # this loop finds all pairs (a,b) such that a > b & a+b = i
-		x = i
-		((i)/2).times do
-			b = [pent(x), pent(i-x+1)]
-			return b[0]-b[1] if is_pent?(b[0]+b[1]) && is_pent?(b[0]-b[1])
-			x -= 1
-		end
-		i += 1
-	end
+  i = 2
+  loop do # this loop finds all pairs (a,b) such that a > b & a+b = i
+    x = i
+    ((i)/2).times do
+      b = [pent(x), pent(i-x+1)]
+      return b[0]-b[1] if is_pent?(b[0]+b[1]) && is_pent?(b[0]-b[1])
+      x -= 1
+    end
+    i += 1
+  end
 end
 
 p pentagonal_loop

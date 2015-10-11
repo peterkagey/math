@@ -38,20 +38,20 @@ h = {}
 max_val = 0
 
 b_candidates.reverse.each do |b|
-	break if b < h.values.max.to_i
-	a_candidates.each do |a|
-		n = 0
-		loop do
-			n += 1
-			if !primes.include?(f(a,b,n))
-				if n > max_val
-					max_val = n
-					h[a*b] = n
-				end
-				break
-			end
-		end
-	end
+  break if b < h.values.max.to_i
+  a_candidates.each do |a|
+    n = 0
+    loop do
+      n += 1
+      if !primes.include?(f(a,b,n))
+        if n > max_val
+          max_val = n
+          h[a*b] = n
+        end
+        break
+      end
+    end
+  end
 end
 
 p h.key(h.values.max)

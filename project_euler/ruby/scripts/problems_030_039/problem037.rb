@@ -15,22 +15,22 @@ require 'prime'
 primes = sieve_of_eratosthenes(10**3)
 
 def is_prime?(p, primes_ary = {})
-	p = p.to_i
-	Prime.prime?(p)
+  p = p.to_i
+  Prime.prime?(p)
 end
 
 def left_trunc?(p) # can remove left digits
-	(0...p.to_s.length).each do |l|
-		return false unless is_prime?(p.to_s[l..-1])
-	end
-	true
+  (0...p.to_s.length).each do |l|
+    return false unless is_prime?(p.to_s[l..-1])
+  end
+  true
 end
 
 def right_trunc?(p) # can remove right digits
-	(0...p.to_s.length).each do |r|
-		return false unless is_prime?(p.to_s[0..r])
-	end
-	true
+  (0...p.to_s.length).each do |r|
+    return false unless is_prime?(p.to_s[0..r])
+  end
+  true
 end
 
 # middle digits odd
@@ -40,13 +40,13 @@ primes_list = []
 candidates = [3,5,7]
 
 loop do
-	candidates.collect! do |p|
-		[1,2,3,5,7,9].collect{|q| q.to_s + p.to_s}
-	end
-	candidates = candidates.flatten.map(&:to_i)
-	primes_list += candidates.select!{|x| left_trunc?(x)}
-	pl = primes_list.select{|x| right_trunc?(x)}
-	break if pl.length == 11
+  candidates.collect! do |p|
+    [1,2,3,5,7,9].collect{|q| q.to_s + p.to_s}
+  end
+  candidates = candidates.flatten.map(&:to_i)
+  primes_list += candidates.select!{|x| left_trunc?(x)}
+  pl = primes_list.select{|x| right_trunc?(x)}
+  break if pl.length == 11
 end
 
 p primes_list.sort.select{|x| right_trunc?(x)}.reduce(:+)

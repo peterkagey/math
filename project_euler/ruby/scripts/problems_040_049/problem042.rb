@@ -16,8 +16,8 @@ start = Time.now
 file = File.open("accessory_p042.txt", "rb").read
 words = file.gsub(/\"/, "").split(",")
 
-def value(a_z); 	 (('A'..'Z').to_a).index(a_z.upcase) + 1 end
-def letter_sum(w); 	 w.split("").collect{ |l| value(l) }.reduce(:+) end
+def value(a_z);      (('A'..'Z').to_a).index(a_z.upcase) + 1 end
+def letter_sum(w);   w.split("").collect{ |l| value(l) }.reduce(:+) end
 def is_triangle?(k); (Math.sqrt(1+8*k).to_i)**2 == 1 + 8*k end
 
 p words.select{ |w|  is_triangle?(letter_sum(w)) }.length

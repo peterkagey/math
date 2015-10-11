@@ -20,22 +20,22 @@ require_relative '../function/sieve_of_eratosthenes'
 primes = sieve_of_eratosthenes(10**4)[1..-1]
 
 def is_square?(k)
-	s = Math.sqrt(k)
-	s == s.to_i
+  s = Math.sqrt(k)
+  s == s.to_i
 end
 
 def goldbach(n, odd_primes)
-	odd_primes.each do |p|
-		break if p > n
-		return true if is_square?((n - p)/2)
-	end
-	return false
+  odd_primes.each do |p|
+    break if p > n
+    return true if is_square?((n - p)/2)
+  end
+  return false
 end
 
 i = 9
 loop do
-	break unless goldbach(i, primes)
-	i += 2
+  break unless goldbach(i, primes)
+  i += 2
 end
 
 p i

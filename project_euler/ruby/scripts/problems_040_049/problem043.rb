@@ -23,8 +23,8 @@ seeds = (0..9).to_a.map(&:to_s)
 p = [1,17,13,11,7,5,3,2,1]
 
 (0...9).each do |i|
-	seeds.collect!{ |x| other_numbers(x).map{|a| a + x}}.flatten!
-	seeds.select!{ |x| first_three_divisible_by?(x, p[i]) }
+  seeds.collect!{ |x| other_numbers(x).map{|a| a + x}}.flatten!
+  seeds.select!{ |x| first_three_divisible_by?(x, p[i]) }
 end
 
 p seeds.select{|x| x[0] != 0}.map(&:to_i).reduce(:+)

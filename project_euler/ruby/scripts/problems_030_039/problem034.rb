@@ -12,11 +12,11 @@ require_relative '../function/factorial'
 # 7*9! = 2,540,160 < 9,999,999 is an upper bound.
 
 def digit_factorial_sum(n)
-	n.to_s.split("").collect{ |d| factorial(d.to_i) }.reduce(:+)
+  n.to_s.split("").collect{ |d| factorial(d.to_i) }.reduce(:+)
 end
 
 sum = (10..10**5).select do |i|
-	i == digit_factorial_sum(i)
+  i == digit_factorial_sum(i)
 end
 
 p sum.reduce(:+)

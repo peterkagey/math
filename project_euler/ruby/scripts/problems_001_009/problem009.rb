@@ -9,13 +9,13 @@
 
 class ProjectEuler
   def self.problem009
-  	(334...500).each do |c|
-  		(0..c).each do |b|
-  			a = Math.sqrt(c**2 - b**2)
-  			next unless a == a.to_i
-  			return (a*b*c).to_i if a + b + c == 1000
-  		end
-  	end
+    (334...500).each do |c|
+      (0..c).each do |b|
+        a = Math.sqrt(c**2 - b**2)
+        next unless a == a.to_i
+        return (a*b*c).to_i if a + b + c == 1000
+      end
+    end
   end
 end
 # 31875000

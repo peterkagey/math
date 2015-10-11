@@ -11,8 +11,8 @@ start = Time.now
 require_relative '../function/sieve_of_eratosthenes'
 
 def rotate(i)
-	return i if i < 10
-	(i.to_s[1..-1] + i.to_s[0]).to_i
+  return i if i < 10
+  (i.to_s[1..-1] + i.to_s[0]).to_i
 end
 
 primes = sieve_of_eratosthenes(10**6)
