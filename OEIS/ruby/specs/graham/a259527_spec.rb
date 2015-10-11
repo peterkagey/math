@@ -42,5 +42,4 @@ describe OEIS do
     expect(Time.now - start).to be < 0.1
   end
 
-
 end

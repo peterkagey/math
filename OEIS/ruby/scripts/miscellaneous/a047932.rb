@@ -24,4 +24,3 @@ class OEIS
   end
 
 end
-

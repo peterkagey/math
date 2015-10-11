@@ -49,7 +49,6 @@ loop do
 	break if pl.length == 11
 end
 
-
 p primes_list.sort.select{|x| right_trunc?(x)}.reduce(:+)
 p Time.now - start
 

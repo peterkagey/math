@@ -1,6 +1,5 @@
 require_relative '../b_file_compare'
 
-
 SequencePathIterator.sequence_numbers.each do |id|
   compare = BFileCompare.new(id)
   next if compare.skip?

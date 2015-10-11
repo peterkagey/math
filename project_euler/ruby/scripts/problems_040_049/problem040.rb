@@ -28,7 +28,6 @@ def f(n) # number of n-digit terms * n
 	(10**n - index_for_first_digit_of_10_n(index_to_order_of_magnitude(10**n)))
 end
 
-
 product = 1
 (1..6).each do |i|
 	product *= (10**(i-1) + f(i)/i).to_s[f(i) % i].to_i

@@ -7,7 +7,6 @@ class OEIS
   end
 end
 
-
 # This is the number of numbers required for
 # 0 != 1
 # 0 != 1 != 2 != 0

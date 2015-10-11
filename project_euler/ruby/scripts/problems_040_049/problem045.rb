@@ -31,7 +31,6 @@ loop do
 	end
 end
 
-
 p Time.now - start
 
 # 1533776805

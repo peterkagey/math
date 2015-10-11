@@ -1,12 +1,9 @@
+require 'prime'
+
 class A262436Builder
-  # A212292
 
-  # number of ways to represent
-  # 2 * n - 1 as p^2 + q^2 + r
+  # number of ways to represent 2 * n - 1 as p^2 + q^2 + r
   # with p, q, r prime and p >= q
-
-
-  require 'prime'
 
   def self.sequence(target_length = 1000)
     a262436 = Array.new(target_length) {0}

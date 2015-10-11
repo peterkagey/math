@@ -19,7 +19,6 @@ def factorial3(n)
 	k
 end
 
-
 def factorial_recursion(n)
 	return 1 if n == 0
 	n * factorial2(n-1)

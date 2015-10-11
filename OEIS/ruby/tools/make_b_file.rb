@@ -1,8 +1,8 @@
 project_root = File.dirname(File.absolute_path(__FILE__))
+
 Dir.glob(project_root + '/*.rb').each do |file|
   require file unless file =~ /#{__FILE__}/
 end
-
 
 Dir.glob(project_root + '/*.rb').each do |file|
   p sequence = file[-10...-3]
