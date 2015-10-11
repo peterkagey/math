@@ -11,6 +11,7 @@ class BFileCompare
 
     "A053797" => "Draft (2015/09/22).",
     "A259439" => "Draft (2015/09/03).",
+    "A263135" => "Draft (2015/10/11).",
   }
 
   attr_reader :local_range, :official_range, :cached_range, :id
