@@ -1,4 +1,4 @@
-require_relative '../../scripts/miscellaneous/a047932'
+require_relative '../../scripts/coins/a047932'
 
 describe OEIS do
 
