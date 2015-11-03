@@ -5,15 +5,6 @@ require_relative 'helpers/cached_b_file'
 
 class BFileCompare
 
-  PENDING_SEQUENCES ||= {
-    "A258448" => "Edit (2015/09/09).",
-    "A262343" => "Edit (2015/09/18).",
-
-    "A053797" => "Draft (2015/09/22).",
-    "A259439" => "Draft (2015/09/03).",
-    "A263135" => "Draft (2015/10/11).",
-  }
-
   attr_reader :local_range, :official_range, :cached_range, :id
 
   def initialize(sequence_id)
@@ -26,14 +17,6 @@ class BFileCompare
 
   def skip?
     @local_b_file.missing?
-  end
-
-  def pending?
-    !!pending_reason
-  end
-
-  def pending_reason
-    PENDING_SEQUENCES["A#{id}"]
   end
 
   private
