@@ -4,7 +4,7 @@ class A260643Builder
   require 'set'
   attr_reader :seq
 
-  def self.sequence(length = 10000)
+  def self.sequence(length = 100)
     A260643Builder.new(length).seq
   end
 
@@ -21,17 +21,12 @@ class A260643Builder
   A080037 = SortedSet.new([0] + A080037_ARY)
 
   def a080037_inv; A080037.find_index(@seq.length + 1) end
-  def a083479(n); n.nil? ? nil : n + 2 - ((4*n)**0.5).ceil end
+  def a083479(n); n.nil? ? [] : @seq[n + 1 - ((4 * n - 1)**0.5).ceil, 1] end
 
   def extend_sequence
     update_connections_and_neighbors
     existing_connections = @new_neighbors.map { |i| @connections[i] }.reduce(:|)
     @seq << (1..Float::INFINITY).find { |i| !existing_connections.include?(i) }
-  end
-
-  def new_neighbors
-    index = a083479(a080037_inv)
-    [@seq.last] + [index ? @seq[index - 1] : nil].compact
   end
 
   def update_connections_and_neighbors
@@ -40,6 +35,7 @@ class A260643Builder
     refresh_neighbors
   end
 
+  def new_neighbors; [@seq.last] + a083479(a080037_inv) end
   def refresh_neighbors; @new_neighbors = new_neighbors end
 
 end
@@ -53,5 +49,3 @@ class OEIS
     A260643_SEQUENCE[n - 1] || A260643Builder.sequence(n).last
   end
 end
-
-# p (1..1000).map { |n| OEIS.a260643(n) }
