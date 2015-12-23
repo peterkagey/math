@@ -1,4 +1,4 @@
-require_relative '../helpers/b_file_to_hash'
+require_relative '../helpers/b_file'
 
 class OEIS
 
@@ -9,7 +9,7 @@ class OEIS
   end
 
   def self.inverse_hash
-    @inverse_hash ||= b_file_hash(67565)
+    @inverse_hash ||= BFile.new(67565).to_hash
   end
   private_class_method :inverse_hash
 
