@@ -25,7 +25,7 @@ class BFileCache
   def self.add_term(id)
     old_hash = JSON.parse(File.read(PATH))
     updated_hash = old_hash.merge new_term(id)
-    File.write(PATH, updated_hash.to_json)
+    File.write(PATH, JSON.pretty_generate(updated_hash))
   end
 
 end
