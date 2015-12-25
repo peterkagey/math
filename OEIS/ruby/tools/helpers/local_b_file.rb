@@ -1,26 +1,40 @@
 require_relative 'sequence_path_iterator'
-class LocalBFile
+require_relative '../b_file_parser'
 
-  def initialize(b_file_compare)
-    @id = b_file_compare.id
+class LocalBFile # Functions about a particular sequence's local b-file.
+
+  def initialize(id)
+    @id = id.to_s[/\d+/].rjust(6, '0')
+  end
+
+  def to_hash
+    BFileParser.parse(raw_file).to_hash
+  end
+
+  def to_ary
+    BFileParser.parse(raw_file).to_ary
+  end
+
+  def raw_file
+    @raw_file ||= File.read(path)
   end
 
   def missing?
-    !!BFilePathIterator.missing_b_files.find { |file| file =~ /#{@id}/ }
-  end
-
-  def path
-    @path ||= BFilePathIterator.number_to_path(@id)
+    BFilePathIterator.missing_b_files.find { |file| file =~ /#{@id}/ }
   end
 
   def range
-    return "missing (local)" if !File.exists? path
-    pairs = File.read(path).split(/\s/).each_slice(2).map(&:first)
+    lines = raw_file.split("\n").select { |s| s =~ /^\d+ / }
+    pairs = lines.map(&:split).map(&:first)
     pairs.first + ".." + pairs.last
   end
 
   def last_updated
     File.mtime(path)
+  end
+
+  def path
+    @path ||= BFilePathIterator.find_b_file(@id)
   end
 
 end

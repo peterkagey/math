@@ -8,44 +8,45 @@ class SequencePathIterator
   end
 
   def self.sequence_path(sequence_number)
-    sequence_paths.find { |path| path =~ /a#{sequence_number}.rb/ }
+    sequence_paths.find { |path| path =~ /#{sequence_number}.rb/i }
   end
 
-  def self.extract_number(file_path)
+  def self.id_from_path(file_path)
     sequence_match_data = file_path.match /\/[ab](\d{6})\.(rb|txt)/
     return sequence_match_data[1].upcase if sequence_match_data
     ""
   end
 
   def self.sequence_numbers
-    sequence_paths.map { |path| extract_number(path) }
+    sequence_paths.map { |path| id_from_path(path) }
   end
 
 end
 
 class BFilePathIterator < SequencePathIterator
 
-  def self.b_file_paths
+  def self.b_file_paths # with corresponding script files
     sequence_paths.map { |path| script_path_to_b_file(path) }
   end
 
-  def self.missing_b_files
+  def self.missing_b_files # script files without matching b-file
     missing = b_file_paths.select { |path| !File.exists? path }
-    missing.map { |path| "b" + extract_number(path) }
+    missing.map { |path| "b" + id_from_path(path) }
   end
 
   def self.b_file_exists?(sequence_number)
-    File.exists? number_to_path(sequence_number)
+    File.exists? find_b_file(sequence_number)
   end
 
-  def self.number_to_path(sequence_number)
+  def self.find_b_file(sequence_name)
     b_file_path = "/Users/pkagey/personal/math/OEIS/b-files/b"
+    sequence_number = sequence_name[/\d+/].rjust(6, '0')
     extension = ".txt"
     b_file_path + sequence_number + extension
   end
 
   def self.script_path_to_b_file(script_path)
-    number_to_path SequencePathIterator.extract_number(script_path)
+    find_b_file SequencePathIterator.id_from_path(script_path)
   end
 
 end
@@ -58,8 +59,7 @@ class OEISTestPathIterator < SequencePathIterator
 
   def self.untested_sequences
     missing = sequence_paths.select { |path| !File.exist? spec_file_path(path) }
-
-    missing.map { |i| "A" + extract_number(i) }
+    missing.map { |path| "A" + id_from_path(path) }
   end
 
 end
