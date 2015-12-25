@@ -1,7 +1,7 @@
 class CachedBFile
 
-  def initialize(b_file_compare)
-    @id = b_file_compare.id
+  def initialize(id)
+    @id = id
   end
 
   def metadata

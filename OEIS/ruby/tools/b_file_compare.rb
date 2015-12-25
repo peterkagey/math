@@ -16,25 +16,26 @@ class BFileCompare
   end
 
   def skip?
-    @local_b_file.missing?
+    @local_b_file.missing? # Handled by b-file coverage spec.
   end
 
   private
 
   def set_b_file_classes
-    @cached_b_file   = CachedBFile.new(self)
-    @local_b_file    = LocalBFile.new(self.id)
-    @official_b_file = OfficialBFile.new(self)
+    @cached_b_file   = CachedBFile.new(@id)
+    @local_b_file    = LocalBFile.new(@id)
+    @official_b_file = OfficialBFile.new(@id)
   end
 
   def set_ranges
     @cached_range    = @cached_b_file.range
     @local_range     = @local_b_file.range
-    @official_range  = @official_b_file.range
+    @official_range  = @cached_range || @official_b_file.range
   end
 
   def cache_should_be_updated?
-    return false if skip? || @cached_b_file.current?(@local_b_file.last_updated)
+    return false if skip?
+    return false if @cached_b_file.current?(@local_b_file.last_updated)
     @official_range == @local_range
   end
 

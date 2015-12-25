@@ -2,9 +2,8 @@ require 'open-uri'
 
 class OfficialBFile
 
-  def initialize(b_file_compare)
-    @id = b_file_compare.id
-    @b_file_compare = b_file_compare
+  def initialize(id)
+    @id = id
   end
 
   def to_hash
@@ -26,8 +25,6 @@ class OfficialBFile
   end
 
   def range
-    return @b_file_compare.cached_range if @b_file_compare.cached_range
-
     range_regex = /^%H.+\d+\.\.\d+/
     b_file_descriptor = rows.find { |line| line =~ range_regex }
     return "missing (OEIS)" if b_file_descriptor.nil?
