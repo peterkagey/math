@@ -1,7 +1,7 @@
-require_relative '../helpers/b_file'
+require_relative '../../tools/helpers/local_b_file'
 
 class A265415Builder
-  A260643 = BFile.new(260643).to_ary
+  A260643 = LocalBFile.new(260643).to_ary
   def self.sequence
     A260643.each_index.select { |i| A260643[i] == 1 }.map(&:next)
   end

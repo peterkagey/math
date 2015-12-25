@@ -1,7 +1,7 @@
-require_relative '../helpers/b_file'
+require_relative '../../tools/helpers/local_b_file'
 
 class A265414Builder
-  A260643 = BFile.new(260643).to_ary
+  A260643 = LocalBFile.new(260643).to_ary
   def self.sequence
     (1..A260643.max).map { |i| A260643.index(i) + 1 }
   end

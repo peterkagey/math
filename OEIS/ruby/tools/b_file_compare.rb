@@ -23,7 +23,7 @@ class BFileCompare
 
   def set_b_file_classes
     @cached_b_file   = CachedBFile.new(self)
-    @local_b_file    = LocalBFile.new(self)
+    @local_b_file    = LocalBFile.new(self.id)
     @official_b_file = OfficialBFile.new(self)
   end
 

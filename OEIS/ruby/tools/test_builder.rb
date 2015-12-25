@@ -31,9 +31,11 @@ class TestBuilder
 
   def sequence_hash
     begin
-      @sequence_hash ||= official_b_file_hash(@sequence_number)
+      puts "Building test from official file."
+      @sequence_hash ||= OfficialBFile(@sequence_number).to_hash
     rescue
-      @sequence_hash ||= local_b_file_hash(@sequence_number)
+      puts "Building test from local file."
+      @sequence_hash ||= LocalBFile(@sequence_number).to_hash
     end
   end
 
