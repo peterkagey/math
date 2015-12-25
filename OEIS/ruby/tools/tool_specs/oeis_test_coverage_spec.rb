@@ -1,9 +1,11 @@
-require_relative '../oeis_test_coverage'
+require_relative '../helpers/sequence_path_iterator'
 
 describe "OEIS Tests" do
 
+  TEST_EXCEPTIONS = %w[]
+
   it "should test every sequence script" do
-    untested = OEISTestCoverage.untested_sequences - OEISTestCoverage::EXCEPTIONS
+    untested = OEISTestPathIterator.untested_sequences - TEST_EXCEPTIONS
     expect(untested).to eq []
   end
 
