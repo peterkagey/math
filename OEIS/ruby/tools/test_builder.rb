@@ -1,5 +1,6 @@
 require_relative "helpers/sequence_path_iterator"
-require_relative "download_hash"
+require_relative "helpers/local_b_file"
+require_relative "helpers/official_b_file"
 
 class TestBuilder
 
@@ -7,6 +8,8 @@ class TestBuilder
     @sequence_number = sequence_id[/\d{6}$/]
     write_test unless test_already_exists?
   end
+
+  private
 
   def test_already_exists?
     if File.exist?(spec_file_path)
@@ -30,13 +33,15 @@ class TestBuilder
   end
 
   def sequence_hash
+    return @sequence_hash if @sequence_hash
     begin
+      @sequence_hash ||= OfficialBFile.new(@sequence_number).to_hash
       puts "Building test from official file."
-      @sequence_hash ||= OfficialBFile(@sequence_number).to_hash
     rescue
+      @sequence_hash ||= LocalBFile.new(@sequence_number).to_hash
       puts "Building test from local file."
-      @sequence_hash ||= LocalBFile(@sequence_number).to_hash
     end
+    @sequence_hash
   end
 
   def minimum_argument
