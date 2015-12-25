@@ -7,7 +7,13 @@ PENDING_SEQUENCES ||= {
 
 SequencePathIterator.sequence_numbers.each do |id|
 
-  compare = BFileCompare.new(id)
+  begin
+    compare = BFileCompare.new(id)
+  rescue SocketError
+    puts "Could not connect to internet to check official b-file for A#{id}."
+    next
+  end
+
   next if compare.skip?
 
   describe "A#{id}" do
