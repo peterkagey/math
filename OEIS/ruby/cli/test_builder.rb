@@ -1,10 +1,12 @@
-require_relative "helpers/sequence_path_iterator"
-require_relative "helpers/local_b_file"
-require_relative "helpers/official_b_file"
+PROJECT_ROOT = File.dirname(File.dirname(__FILE__))
+require PROJECT_ROOT + "/tools/helpers/sequence_path_iterator"
+require PROJECT_ROOT + "/tools/helpers/local_b_file"
+require PROJECT_ROOT + "/tools/helpers/official_b_file"
 
 class TestBuilder
 
   def initialize(sequence_id)
+    return puts "Sequence ID must be included!" if sequence_id.nil?
     @sequence_number = sequence_id[/\d{6}$/]
     write_test unless test_already_exists?
   end
@@ -13,7 +15,7 @@ class TestBuilder
 
   def test_already_exists?
     if File.exist?(spec_file_path)
-      puts "A#{@sequence_number} already exists"
+      puts "A test for A#{@sequence_number} already exists!"
       true
     else
       false
