@@ -10,10 +10,10 @@ class BFileBuilder
 
   def initialize(sequence_name, min, max)
     @id = "A" + sequence_name[/\d+/].rjust(6, '0')
+    raise "Could not parse range!" if max.nil?
     @min, @max = [min, max].map(&:to_i)
 
-    validate_and_require_file!
-    define_function!
+    validate_script!
     validate_range!
   end
 
@@ -41,6 +41,7 @@ class BFileBuilder
     @annotated_range ||= BFileParser.parse(@raw_data).annotated_range
   end
 
+
   def annotation(range)
     "# Table of n, #{@id}(n) for n = #{range}.\n"
   end
@@ -55,26 +56,30 @@ class BFileBuilder
   end
 
   def computed_data
-    (@min..@max).map { |i| "#{i} #{@a.yield(i)}" }.join("\n")
+    (@min..@max).map { |i| "#{i} #{@a.yield(i)}\n" }.join
   end
 
   def define_function!
     @a = ->(n){OEIS.send(@id.downcase, n)}
   end
 
-  def validate_and_require_file!
-    begin
-      require SequencePathIterator.sequence_path(@id)
-    rescue
+  def sequence_file
+    @seq_file ||= SequencePathIterator.sequence_path(@id)
+  end
+
+  def validate_script!
+    unless File.exist?(sequence_file)
       raise "Could not find function definition file for #{@id}."
     end
   end
 
   def validate_range!
-    raise "Invalid range!" if @min.nil? || @max.nil?
+    raise "Invalid range!" if @max == 0
   end
 
   def write_b_file!
+    require sequence_file
+    define_function!
     File.write(b_file_path, annotation(@min..@max) + computed_data)
     puts "Wrote b-file for #{@id} (#{@min..@max}) to #{b_file_path}."
   end
