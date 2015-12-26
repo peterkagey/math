@@ -39,8 +39,9 @@ class TestBuilder
     begin
       @sequence_hash ||= OfficialBFile.new(@sequence_number).to_hash
       puts "Building test from official file."
-    rescue
+    rescue StandardError => e
       @sequence_hash ||= LocalBFile.new(@sequence_number).to_hash
+      puts "Could not build from official file: " + e.message
       puts "Building test from local file."
     end
     @sequence_hash

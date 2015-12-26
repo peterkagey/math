@@ -17,7 +17,7 @@ class OfficialBFile
   def official_metadata
     base = "https://oeis.org/search?q=id:A"
     format = "&fmt=text"
-    open("#{base}#{@id}#{format}") { |f| f.read }
+    @metadata ||= open("#{base}#{@id}#{format}") { |f| f.read }
   end
 
   def metadata_rows
@@ -25,7 +25,9 @@ class OfficialBFile
   end
 
   def raw_file
-    extension = official_metadata[/A#{@id}\/.+\.txt/]
+    regex = /A#{@id}\/.+\.txt/
+    raise "Could not find b-file listed!" unless official_metadata =~ regex
+    extension = official_metadata[regex]
     open("https://oeis.org/" + extension) { |f| f.read }
   end
 
