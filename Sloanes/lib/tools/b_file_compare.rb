@@ -29,7 +29,7 @@ class BFileCompare
 
   def set_ranges
     @cached_range    = @cached_b_file.range
-    @local_range     = @local_b_file.range
+    @local_range     = @local_b_file.annotated_range
     @official_range  = @cached_range || @official_b_file.range
   end
 

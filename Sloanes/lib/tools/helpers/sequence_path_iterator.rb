@@ -14,7 +14,7 @@ class SequencePathIterator
   def self.id_from_path(file_path)
     sequence_match_data = file_path.match /\/[ab](\d{6})\.(rb|txt)/
     return sequence_match_data[1].upcase if sequence_match_data
-    ""
+    raise "Could not extract ID from path: #{file_path}"
   end
 
   def self.sequence_numbers
@@ -39,7 +39,7 @@ class BFilePathIterator < SequencePathIterator
   end
 
   def self.find_b_file(sequence_name)
-    b_file_path = "/Users/pkagey/personal/math/OEIS/b-files/b"
+    b_file_path = "/Users/pkagey/personal/math/Sloanes/lib/b-files/b"
     sequence_number = sequence_name[/\d+/].rjust(6, '0')
     extension = ".txt"
     b_file_path + sequence_number + extension

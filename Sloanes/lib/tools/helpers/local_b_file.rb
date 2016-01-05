@@ -23,6 +23,13 @@ class LocalBFile # Functions about a particular sequence's local b-file.
     BFilePathIterator.missing_b_files.find { |file| file =~ /#{@id}/ }
   end
 
+  def annotated_range
+    annotation = File.open(path, &:readline)
+    regex = /\d+\.\.\d+/
+    raise "A#{@id} has a b-file that is not annotated" unless annotation =~ regex
+    annotation[regex]
+  end
+
   def range
     lines = raw_file.split("\n").select { |s| s =~ /^\d+ / }
     pairs = lines.map(&:split).map(&:first)

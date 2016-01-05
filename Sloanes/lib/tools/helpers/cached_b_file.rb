@@ -1,27 +1,24 @@
 class CachedBFile
 
+  PATH = File.dirname(__FILE__) + "/b_file_lookup_table.json"
+  METADATA = JSON.parse(File.read(PATH))
+
   def initialize(id)
     @id = id
   end
 
   def metadata
-    return @oeis_cache if @oeis_cache
-    path = File.dirname(__FILE__) + "/b_file_lookup_table.json"
-    @oeis_cache = JSON.parse(File.read(path))
-  end
-
-  def sequence_metadata
-    metadata["A#{@id}"]
+    METADATA["A#{@id}"]
   end
 
   def range
-    return if sequence_metadata.nil?
-    "#{sequence_metadata["min"]}..#{sequence_metadata["max"]}"
+    return if metadata.nil?
+    "#{metadata["min"]}..#{metadata["max"]}"
   end
 
   def current?(b_file_update_time)
-    return false if sequence_metadata.nil?
-    last_updated = Time.parse(sequence_metadata["last_updated"])
+    return false if metadata.nil?
+    last_updated = Time.parse(metadata["last_updated"])
     last_updated > b_file_update_time
   end
 
