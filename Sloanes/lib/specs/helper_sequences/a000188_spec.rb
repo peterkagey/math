@@ -1,4 +1,4 @@
-require_relative '../../scripts/power_divisibility/a000188'
+require __FILE__.sub("/specs/", "/scripts/").sub("_spec", "")
 
 describe OEIS do
 

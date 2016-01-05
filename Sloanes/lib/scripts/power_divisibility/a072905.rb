@@ -1,5 +1,5 @@
-require_relative 'a000188'
-require_relative '../miscellaneous/a007913'
+require_relative '../helper_sequences/a000188'
+require_relative '../helper_sequences/a007913'
 
 class OEIS
   # a(n) is the least k > n such that k*n is a square.

@@ -1,4 +1,4 @@
-require_relative '../../scripts/miscellaneous/a070229'
+require __FILE__.sub("/specs/", "/scripts/").sub("_spec", "")
 
 describe OEIS do
 

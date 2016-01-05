@@ -1,4 +1,4 @@
-require_relative '../miscellaneous/a070229'
+require_relative '../helper_sequences/a070229'
 require_relative 'a006255'
 
 class OEIS
