@@ -1,4 +1,4 @@
-require_relative 'a005117'
+require_relative '../helper_sequences/a005117'
 require_relative 'a261865'
 
 class A262036Builder

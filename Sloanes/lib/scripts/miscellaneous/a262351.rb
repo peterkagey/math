@@ -1,4 +1,4 @@
-require_relative 'a071068'
+require_relative '../helper_sequences/a071068'
 
 class OEIS
 

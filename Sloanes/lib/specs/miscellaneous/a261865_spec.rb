@@ -1,5 +1,4 @@
 require_relative '../../scripts/miscellaneous/a261865'
-require_relative '../../scripts/miscellaneous/a005117'
 
 describe OEIS do
 
