@@ -18,6 +18,8 @@ class OEIS
   end
 end
 
+# https://www.reddit.com/r/math/comments/3hgxp6/a000002_kolakoski_sequence_discussion/cu7fsi3
+
 class A000002TreeDrawer
 
   def initialize(term_count)
