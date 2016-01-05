@@ -1,0 +1,32 @@
+SETTINGS = {
+  cmd: 'bundle exec rspec',
+  notification: false,
+  spec_paths: ['lib/specs', 'lib/tools/tool_specs']
+}
+
+guard :rspec, SETTINGS do
+  # Scripts
+  watch(%r{^lib/specs/(.+)_spec\.rb$}) do |m|
+    "lib/specs/#{m[1]}_spec.rb"
+  end
+
+  watch(%r{^lib/scripts/(.+)\.rb$}) do |m|
+    "lib/specs/#{m[1]}_spec.rb"
+  end
+
+
+  # Tooling
+  watch(%r{^lib/tools/(.+)\.rb$}) do |m|
+    "lib/tools/tool_specs/#{m[1]}_spec.rb"
+  end
+
+  watch(%r{^.+/tool_specs/(.+)_spec\.rb$}) do |m|
+    "lib/tools/tool_specs/#{m[1]}_spec.rb"
+  end
+
+  # Sandbox
+  watch("OEIS/sandbox.rb") do |m|
+    "OEIS/sandbox_spec.rb"
+  end
+
+end
