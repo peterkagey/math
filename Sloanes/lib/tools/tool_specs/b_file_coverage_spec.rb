@@ -6,6 +6,7 @@ describe "OEIS Tests" do
     "b000002", # a(n) is length of n-th run
     "b000188", # Square root of largest square dividing n.
     "b000196", # Integer part of square root of n.
+    "b000217", # Triangle numbers.
     "b000330", # n*(n+1)*(2*n+1)/6
     "b001057", # (-1)^(n+1) * floor((n+1) / 2)
     "b002024", # n appears n times
