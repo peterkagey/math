@@ -1,27 +1,14 @@
+require_relative "../helper_sequences/a003056"
+require_relative "../helper_sequences/a000217"
+
 class OEISTable
 
-  def self.collect_coordinates(terms = 10)
-    coordinate_list = []
-    (0..terms).each do |i|
-      n, k = n_k(i)
-      coordinate_list << yield(n, k)
-    end
-    coordinate_list
-  end
+  def self.n_k(i)
+    a003056 = OEIS.a003056(i)
+    a002262 = i - OEIS.a000217(a003056)
+    a025581 = a003056 - a002262
 
-  def self.triangle(n)
-    n * (n + 1)/2
-  end
-
-  def self.ith_triangle_number_less_than(n)
-    0.5 * ((8 * n + 1)**0.5 - 1)
-  end
-
-  def self.n_k(j)
-    i = (ith_triangle_number_less_than j).to_i
-    k = j - triangle(i)
-    n = i - k
-    [n, k]
+    [a025581, a002262]
   end
 
 end
