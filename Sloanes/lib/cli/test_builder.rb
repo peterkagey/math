@@ -5,9 +5,10 @@ require PROJECT_ROOT + "/tools/helpers/official_b_file"
 
 class TestBuilder
 
-  def initialize(sequence_id)
+  def initialize(sequence_id, number_of_terms = nil)
     return puts "Sequence ID must be included!" if sequence_id.nil?
     @sequence_number = sequence_id[/\d{6}$/]
+    @number_of_terms = (number_of_terms || 5)
     write_test unless test_already_exists?
   end
 
@@ -51,11 +52,13 @@ class TestBuilder
     sequence_hash.keys.min
   end
 
-  def r # range (first five values)
-    (minimum_argument...minimum_argument+5).to_a
+  def range
+    (0...@number_of_terms.to_i).map { |i| i + minimum_argument }
   end
 
   def test
+    expectations = range.map { |t| "expect(a(#{t})).to eq #{sequence_hash[t]}"}.join("\n    ")
+
     @test ||= %(require_relative '../../#{script_path[/script.+/][0...-3]}'
 
 describe OEIS do
@@ -64,12 +67,8 @@ describe OEIS do
     OEIS.a#{@sequence_number}(n)
   end
 
-  it "should know first five values" do
-    expect(a(#{r[0]})).to eq #{sequence_hash[r[0]]}
-    expect(a(#{r[1]})).to eq #{sequence_hash[r[1]]}
-    expect(a(#{r[2]})).to eq #{sequence_hash[r[2]]}
-    expect(a(#{r[3]})).to eq #{sequence_hash[r[3]]}
-    expect(a(#{r[4]})).to eq #{sequence_hash[r[4]]}
+  it "should know first #{@number_of_terms} values" do
+    #{expectations}
   end
 
 end
@@ -84,4 +83,4 @@ end
 
 end
 
-TestBuilder.new(ARGV[0])
+TestBuilder.new(ARGV[0], ARGV[1])
