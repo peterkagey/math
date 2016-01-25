@@ -1,9 +1,9 @@
-require_relative '../../scripts/tables/a999999'
+require_relative '../../scripts/tables/a268040'
 
 describe OEIS do
 
   def a(n)
-    OEIS.a999999(n)
+    OEIS.a268040(n)
   end
 
   it "should know first fifteen values" do
