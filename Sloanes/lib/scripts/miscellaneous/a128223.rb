@@ -1,9 +1,9 @@
-class OEIS
+require_relative "../helper_sequences/a000217"
+require_relative "../helper_sequences/a047838"
 
-  # a(n) = if n mod 2 = 0 then n*(n+1)/2 otherwise (n+1)^2/2-1.
+class OEIS
   def self.a128223(n)
-    return n * (n+1)/2 if n.even?
-    (n+1)**2/2 - 1
+    n.even? ? a000217(n) : a047838(n + 1)
   end
 end
 

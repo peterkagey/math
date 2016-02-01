@@ -6,10 +6,9 @@ class Integer
 
     ary = []
     until [a, b] == [0, 0] do
-      ary << (a % base + b % base) % base
+      ary << (a + b) % base
 
-      a /= base # Shift to the right one digit
-      b /= base #
+      a, b = a/base, b/base
     end
 
     ary.reverse.map(&:to_s).join.to_i(base)

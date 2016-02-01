@@ -35,7 +35,7 @@ class TestBuilder
     OEISTestPathIterator.spec_file_path(script_path)
   end
 
-  def sequence_hash
+  def a
     return @sequence_hash if @sequence_hash
     begin
       @sequence_hash ||= OfficialBFile.new(@sequence_number).to_hash
@@ -49,7 +49,7 @@ class TestBuilder
   end
 
   def minimum_argument
-    sequence_hash.keys.min
+    a.keys.min
   end
 
   def range
@@ -57,9 +57,10 @@ class TestBuilder
   end
 
   def test
-    expectations = range.map { |t| "expect(a(#{t})).to eq #{sequence_hash[t]}"}.join("\n    ")
+    expect = range.map { |t| "expect(a(#{t})).to eq #{a[t]}"}.join("\n    ")
+    @test ||=
 
-    @test ||= %(require_relative '../../#{script_path[/script.+/][0...-3]}'
+%(require_relative '../../#{script_path[/script.+/][0...-3]}'
 
 describe OEIS do
 
@@ -68,7 +69,7 @@ describe OEIS do
   end
 
   it "should know first #{@number_of_terms} values" do
-    #{expectations}
+    #{expect}
   end
 
 end
