@@ -1,11 +1,11 @@
 require 'prime'
-require_relative '../helpers/prime_factors_hash'
+require_relative '../helpers/prime_factors'
 
 class OEIS
 
   # a(A000040(n)) = 2^(n-1), and a(n*m) = a(n) XOR a(m).
   def self.a248663(n)
-    factors = prime_factors(n).sort.reverse
+    factors = PrimeFactors.hash(n).sort.reverse
     m = 0
     factors.each do |prime_power_ary|
       m <<= 1
