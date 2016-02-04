@@ -23,6 +23,8 @@ describe "OEIS Tests" do
     "b060432", # Partial sums of A002024.
     "b070229", # Next m>n such that m is divisible by lpf(n)
     "b071068", # Number of partitions of n into two squarefree numbers.
+    "b080715", # Sums of divisors are prime
+    "b085731", # gcd(n, a003415(n))
   ]
 
   it "should check that all b-files are present." do
