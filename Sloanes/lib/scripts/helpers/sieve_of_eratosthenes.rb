@@ -1,3 +1,5 @@
+require 'set'
+
 def sieve_of_eratosthenes(n)
   threshold = Math.sqrt(n).to_i + 1
   bool_arry = [false, false] + [true] * (n-1)
@@ -11,7 +13,7 @@ def sieve_of_eratosthenes(n)
   # actually faster than
   #   bool_arry.each_index.select { |i| bool_arry[i] }
   # and its variants
-  x = []
+  x = SortedSet.new
   bool_arry.each_index.each { |i| x << i if bool_arry[i] }
   x
 end

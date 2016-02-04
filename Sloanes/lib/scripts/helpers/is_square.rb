@@ -1,6 +1,6 @@
 class SquareLookup
 
-  MAX = 40_000
+  MAX = 60_000
 
   def self.squarefree_numbers
     squares = (2..MAX**0.5).to_a.map { |i| i**2 }
@@ -37,12 +37,11 @@ class Integer
 
   def is_squarefree?
     return SQUAREFREE[self] if self <= UPPER_BOUND && self >= 0
-    raise "Input is out of range! (#{n} is not in (0..UPPER_BOUND)"
+    raise "Input is out of range! (#{self} is not in (0..#{UPPER_BOUND})"
   end
 
   def is_nonsquarefree?
-    return !SQUAREFREE[self] if self <= UPPER_BOUND && self >= 0
-    raise "Input is out of range! (#{n} is not in (0..UPPER_BOUND)"
+    !is_squarefree?
   end
 
 end
