@@ -21,6 +21,7 @@ describe "OEIS Tests" do
     "b007913", # Squarefree part of n
     "b057944", # Largest triangular number less than or equal to n
     "b060432", # Partial sums of A002024.
+    "b064413", # EKG sequence
     "b070229", # Next m>n such that m is divisible by lpf(n)
     "b071068", # Number of partitions of n into two squarefree numbers.
     "b080715", # Sums of divisors are prime
