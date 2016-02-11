@@ -1,4 +1,4 @@
-# Table of n, A999998(n) for n = 1..39627.
+# Table of n, A268403(n) for n = 1..39627.
 1 1
 2 3
 3 9
