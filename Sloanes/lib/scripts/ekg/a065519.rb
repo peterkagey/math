@@ -1,6 +1,7 @@
 require_relative '../helpers/ekg_builder'
+require_relative '../helper_sequences/a064413'
+
 class OEIS
-  A064413_SEQUENCE = EKGBuilder.sequence(10_000, [1, 2])
   A065519_SEQUENCE = A064413_SEQUENCE.each_with_index.map { |e, i| e - 1 - i }
 
   def self.a065519(n)
