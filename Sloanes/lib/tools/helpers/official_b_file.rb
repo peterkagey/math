@@ -1,3 +1,4 @@
+require_relative '../b_file_parser'
 require 'open-uri'
 
 class OfficialBFile
