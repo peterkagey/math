@@ -27,6 +27,7 @@ describe "OEIS Tests" do
     "b080715", # Sums of divisors are prime
     "b085731", # gcd(n, a003415(n))
     "b256417", # Smoothed EKG sequence
+    "b269347", # Alec's first sequence
   ]
 
   it "should check that all b-files are present." do

@@ -1,6 +1,7 @@
 require_relative '../b_file_compare'
 
 PENDING_SEQUENCES ||= {
+  "A094820" => "Draft (2015/02/24).",
   "A268978" => "Draft (2015/02/16).",
   "A269045" => "Draft (2015/02/22).",
   "A269267" => "Draft (2015/02/24).",
