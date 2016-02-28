@@ -9,7 +9,7 @@ end
 class OEIS
   A269423_SEQUENCE = A269423Builder.sequence
 
-  def self.a269423(n) # A269423
+  def self.a269423(n)
     raise "A269423 is not defined for n = #{n} < 1" if n < 1
     A269423_SEQUENCE[n - 1] || A269423Builder.sequence(n).last
   end
