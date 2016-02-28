@@ -3,7 +3,7 @@ class SequencePathIterator
   def self.sequence_paths
     current_directory = File.dirname(__FILE__)
     parent_directory = File.dirname(current_directory)
-    path = File.dirname(parent_directory) + "**/scripts/*/a*.rb"
+    path = File.dirname(parent_directory) + "**/scripts/*/a[0123456789]*.rb"
     Dir[path]
   end
 
