@@ -3,14 +3,10 @@ class OEIS
   # Number of binary words of length n that are not "bifix-free".
   # Also the number of binary strings of length n that begin with an even length palindrome.
   def self.a094536(n)
-    seq = [0,0]
-    i = 2
-    loop do
+    (2..Float::INFINITY).inject([0, 0]) do |seq, i|
       return seq[n] if seq[n]
-      a_i = 2 * seq[-1]
-      a_i += 2**(i/2) - seq[i/2] if i.even?
-      seq << a_i
-      i += 1
+      delta = i.even? ? 2**(i/2) - seq[i/2] : 0
+      seq << 2 * seq[-1] + delta
     end
   end
 

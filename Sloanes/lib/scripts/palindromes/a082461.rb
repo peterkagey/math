@@ -3,13 +3,10 @@ require_relative '../helpers/palindromic_partitions'
 class A082461Builder
 
   def self.sequence(terms = 100)
-    ary = []
-    c = 1010
-    until ary.length == terms
-      ary << c if is_smarandache?(c) && c.to_s != c.to_s.reverse
-      c += 1
+    (1010...Float::INFINITY).inject([]) do |ary, c|
+      return ary if ary.length == terms
+      is_smarandache?(c) && c.to_s != c.to_s.reverse ? ary << c : ary
     end
-    ary
   end
 
   def self.is_smarandache?(n)
