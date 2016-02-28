@@ -1,11 +1,12 @@
 require_relative '../b_file_compare'
 
 PENDING_SEQUENCES ||= {
-  "A094820" => "Draft (2015/02/24).",
-  "A268978" => "Draft (2015/02/16).",
-  "A269045" => "Draft (2015/02/22).",
-  "A269267" => "Draft (2015/02/24).",
-  "A269331" => "Draft (2015/02/23).",
+  "A268978" => "Draft (2016/02/16).",
+  "A269045" => "Draft (2016/02/22).",
+  "A269267" => "Draft (2016/02/24).",
+  "A269331" => "Draft (2016/02/23).",
+  "A269423" => "Draft (2016/02/26).",
+  "A269427" => "Draft (2016/02/26).",
 }
 
 SequencePathIterator.sequence_numbers.each do |id|
