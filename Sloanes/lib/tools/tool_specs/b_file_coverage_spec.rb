@@ -26,6 +26,7 @@ describe "OEIS Tests" do
     "b071068", # Number of partitions of n into two squarefree numbers.
     "b080715", # Sums of divisors are prime
     "b085731", # gcd(n, a003415(n))
+    "b169849", # EKG Sequence starting at 9.
     "b256417", # Smoothed EKG sequence
     "b269347", # Alec's first sequence
   ]
