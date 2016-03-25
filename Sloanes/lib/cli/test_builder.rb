@@ -60,7 +60,7 @@ class TestBuilder
     expect = range.map { |t| "expect(a(#{t})).to eq #{a[t]}"}.join("\n    ")
     @test ||=
 
-%(require_relative '../../#{script_path[/script.+/][0...-3]}'
+%(require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
 
 describe OEIS do
 

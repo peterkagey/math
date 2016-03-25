@@ -1,4 +1,4 @@
-require_relative '../../scripts/helpers/palindromic_partitions.rb'
+require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
 
 # a(6)
 # 0b000 | 0 ->  oooooo      = [6]

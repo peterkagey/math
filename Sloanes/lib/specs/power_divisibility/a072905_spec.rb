@@ -1,9 +1,9 @@
-require_relative '../../scripts/power_divisibility/a072905'
-# A072905: Least k > n such that k*n is a square.
+require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
 
 describe OEIS do
 
   def a(n)
+    # A072905: Least k > n such that k*n is a square.
     OEIS.a072905(n)
   end
 

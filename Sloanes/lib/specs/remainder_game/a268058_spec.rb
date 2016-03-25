@@ -1,4 +1,4 @@
-require_relative '../../scripts/remainder_game/a268058'
+require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
 
 describe OEIS do
 

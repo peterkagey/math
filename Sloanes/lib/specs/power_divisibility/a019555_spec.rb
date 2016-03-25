@@ -1,8 +1,9 @@
-require_relative '../../scripts/power_divisibility/a019555'
-# A019555: Smallest number whose cube is divisible by n.
+require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
+
 describe OEIS do
 
   def a(n)
+    # A019555: Smallest number whose cube is divisible by n.
     OEIS.a019555(n)
   end
 

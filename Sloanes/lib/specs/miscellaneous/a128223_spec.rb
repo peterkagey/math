@@ -1,9 +1,9 @@
-require_relative '../../scripts/miscellaneous/a128223'
+require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
 
-#a(n) = if n mod 2 = 0 then n*(n+1)/2 otherwise (n+1)^2/2-1.
 describe OEIS do
 
   def a(n)
+    # a(n) = if n mod 2 = 0 then n*(n+1)/2 otherwise (n+1)^2/2-1.
     OEIS.a128223(n)
   end
 

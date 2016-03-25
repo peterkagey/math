@@ -1,5 +1,5 @@
 require 'prime'
-require_relative '../../scripts/graham/a067565'
+require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
 
 describe OEIS do
 

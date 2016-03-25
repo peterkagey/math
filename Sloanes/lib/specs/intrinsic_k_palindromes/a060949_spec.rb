@@ -1,4 +1,4 @@
-require_relative '../../scripts/intrinsic_k_palindromes/a060949'
+require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
 
 describe OEIS do
 

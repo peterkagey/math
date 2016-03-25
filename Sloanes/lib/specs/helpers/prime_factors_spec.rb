@@ -1,4 +1,4 @@
-require_relative '../../scripts/helpers/prime_factors'
+require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
 
 describe PrimeFactors do
   it "should handle small values" do
