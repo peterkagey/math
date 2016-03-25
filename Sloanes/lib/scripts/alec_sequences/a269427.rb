@@ -1,13 +1,13 @@
+require_relative '../helpers/alec_sequences'
+
 class A269427Builder
-  def self.sequence(terms = 1, seed = [1])
-    (seed.length + 1..terms).inject(seed) do |seq, n|
-      seq << (1...n).count { |i| seq[i - 1] % i == n % i }
-    end
+  def self.sequence(terms, seed)
+    AlecSequences.count(terms, seed) { |a_i, n, i| a_i % i == n % i }
   end
 end
 
 class OEIS
-  @@a269427 = A269427Builder.sequence
+  @@a269427 = A269427Builder.sequence(1, [1])
 
   def self.a269427(n)
     raise "A269427 is not defined for n = #{n} < 1" if n < 1
