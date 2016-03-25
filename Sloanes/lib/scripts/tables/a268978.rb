@@ -3,7 +3,7 @@ require_relative "../helpers/table"
 
 class PascalsTriangle
   def self.builder(rows = 10)
-    rows.times.collect do |n|
+    rows.times.map do |n|
       (0..n).map { |k| n.choose(k) }
     end
   end

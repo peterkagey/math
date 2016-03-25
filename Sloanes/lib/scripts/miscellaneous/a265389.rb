@@ -2,7 +2,7 @@ class A265389Builder
 
   def self.sequence(terms = 100)
     x = (1..10 * terms).to_a
-    (0...terms).collect do
+    (0...terms).map do
       y = x.shift(3).reduce(:+); x.delete_at x.index(y); y
     end
   end

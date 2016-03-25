@@ -32,13 +32,13 @@ class BooleanMatrix
     upper_bound = (n > 3) ? (2 * n) : (4 * n)
     pi_n = Prime.each(n).to_a.length
     k = (1 << pi_n) - 1 # 0b1111...111 with pi(n) 1s.
-    x = (n+1..upper_bound).collect { |i| factor_parity(i) & k}
+    x = (n+1..upper_bound).map { |i| factor_parity(i) & k}
     x <<= factor_parity(n)
     BooleanMatrix.new(x).transpose
   end
 
   def transpose
-    x = (0...@column_count).collect { |c_i| _read_column(c_i) }
+    x = (0...@column_count).map { |c_i| _read_column(c_i) }
     BooleanMatrix.new(x, {column_count: @row_count, row_count: @column_count})
   end
 
@@ -47,14 +47,14 @@ class BooleanMatrix
   end
 
   def inspect
-    _rref.matrix.collect { |row| format row }.join("\n")
+    _rref.matrix.map { |row| format row }.join("\n")
   end
 
   def interpret
     # only finds a solution when BooleanMatrix.construct(n) has n >= 4.
     m = _rref.transpose.matrix
     terms = [-1]
-    terms += _bit_indices(m.last).collect { |i| m.index(i) }
+    terms += _bit_indices(m.last).map { |i| m.index(i) }
     terms.map { |x| x + @column_count }
   end
 
