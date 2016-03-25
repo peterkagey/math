@@ -15,6 +15,7 @@ describe "OEIS Tests" do
     "b003056", # n appears n+1 times
     "b003415", # arithmetic derivative of n
     "b004489", # Base-3 XOR table.
+    "b032741", # Number of divisors of n
     "b047838", # floor(n^2/2) - 1.
     "b005117", # Squarefree numbers
     "b006995", # Binary palindromes.
