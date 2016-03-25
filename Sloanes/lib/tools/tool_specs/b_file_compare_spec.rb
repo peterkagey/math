@@ -7,6 +7,7 @@ PENDING_SEQUENCES ||= {
   "A269331" => "Draft (2016/02/23).",
   "A269423" => "Draft (2016/02/26).",
   "A269427" => "Draft (2016/02/26).",
+  "A270654" => "Draft (2016/03/25).",
 }
 
 SequencePathIterator.sequence_numbers.each do |id|
@@ -22,7 +23,7 @@ SequencePathIterator.sequence_numbers.each do |id|
 
   describe "A#{id}" do
     it "should have a b-file that matches the OEIS version." do
-      pending PENDING_SEQUENCES["A#{id}"] if PENDING_SEQUENCES["A#{id}"]
+      pending PENDING_SEQUENCES["A#{id}"] if PENDING_SEQUENCES["A#{id}"] || "#{id}" =~ /9{5}/
       expect(compare.official_range).to eq compare.local_range
     end
   end
