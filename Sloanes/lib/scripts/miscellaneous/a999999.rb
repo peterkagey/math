@@ -1,4 +1,4 @@
-require_relative 'a269347'
+require_relative '../alec_sequences/a269347'
 
 class OEIS
   def self.a999999(n)
