@@ -1,5 +1,5 @@
 require_relative '../helpers/alec_sequences'
-require_relative '../helper_sequences/a032741.rb'
+require_relative '../helper_sequences/a032741'
 
 class A269524Builder
   def self.sequence(terms, seed)
