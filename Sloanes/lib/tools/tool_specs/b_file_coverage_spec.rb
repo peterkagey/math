@@ -22,6 +22,7 @@ describe "OEIS Tests" do
     "b005117", # Squarefree numbers
     "b006995", # Binary palindromes.
     "b007913", # Squarefree part of n
+    "b054519", # 1 + sum of A000005
     "b057944", # Largest triangular number less than or equal to n
     "b060432", # Partial sums of A002024.
     "b064413", # EKG sequence
