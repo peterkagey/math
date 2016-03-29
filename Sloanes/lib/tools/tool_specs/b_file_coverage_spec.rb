@@ -18,6 +18,7 @@ describe "OEIS Tests" do
     "b004489", # Base-3 XOR table.
     "b032741", # Number of divisors of n
     "b047838", # floor(n^2/2) - 1.
+    "b007955", # Product of divisors of n
     "b005117", # Squarefree numbers
     "b006995", # Binary palindromes.
     "b007913", # Squarefree part of n
