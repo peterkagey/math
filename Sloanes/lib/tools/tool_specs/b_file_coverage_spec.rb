@@ -5,6 +5,7 @@ describe "OEIS Tests" do
   EXPECTED = [
     "b000002", # a(n) is length of n-th run
     "b000005", # Number of divisors of n.
+    "b000120", # Number of 1s in binary representation of n.
     "b000188", # Square root of largest square dividing n.
     "b000196", # Integer part of square root of n.
     "b000217", # Triangle numbers.
