@@ -9,4 +9,4 @@ class ProjectEuler
 end
 
 # 153
-# 0.17996
+# 0.17996 s
