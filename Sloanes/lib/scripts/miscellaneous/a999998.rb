@@ -1,10 +1,10 @@
-require_relative 'a999999'
+require_relative 'a271328'
 
 class A999998Builder
   def self.sequence(terms, seed)
     (seed.max + 1..Float::INFINITY).inject(seed) do |accum, i|
       return accum if accum.length >= terms
-      OEIS.a999999(i) != i**2 + 1 ? accum << i : accum
+      OEIS.a271328(i) != i**2 + 1 ? accum << i : accum
     end
   end
 end

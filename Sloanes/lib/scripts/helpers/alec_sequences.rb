@@ -11,7 +11,7 @@ class AlecSequences
   def self.count(terms = 10, given = [1], off = 1, &block)
     (given.length...terms).inject(given) do |seq|
       n = seq.length + off
-      seq << seq.each_index.count { |i| yield(seq[i], n, i + off) }
+      seq << seq.each_with_index.count { |e, i| yield(e, n, i + off) }
     end
   end
 
