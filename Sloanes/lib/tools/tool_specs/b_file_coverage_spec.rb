@@ -24,6 +24,7 @@ describe "OEIS Tests" do
     "b007913", # Squarefree part of n
     "b032741", # Number of divisors of n
     "b047838", # floor(n^2/2) - 1.
+    "b053645", # Distance to largest power of 2 less than or equal to n.
     "b054519", # 1 + sum of A000005
     "b057944", # Largest triangular number less than or equal to n
     "b060432", # Partial sums of A002024.
