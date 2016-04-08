@@ -10,6 +10,7 @@ describe "OEIS Tests" do
     "b000196", # Integer part of square root of n.
     "b000217", # Triangle numbers.
     "b000330", # n*(n+1)*(2*n+1)/6
+    "b000523", # Bit length - 1
     "b001057", # (-1)^(n+1) * floor((n+1) / 2)
     "b002024", # n appears n times
     "b002061", # n**2 - n + 1
