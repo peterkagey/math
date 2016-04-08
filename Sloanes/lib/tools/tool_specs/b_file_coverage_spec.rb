@@ -40,6 +40,7 @@ describe "OEIS Tests" do
 
   it "should check that all b-files are present." do
     unexpectedly_missing_b_files = BFilePathIterator.missing_b_files - EXPECTED
+    unexpectedly_missing_b_files.select! { |f| !(f =~ /^b9999..$/)}
     expect(unexpectedly_missing_b_files).to eq []
   end
 
