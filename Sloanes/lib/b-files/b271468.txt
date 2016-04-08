@@ -1,4 +1,4 @@
-# Table of n, A999998(n) for n = 1..10000.
+# Table of n, A271468(n) for n = 1..10000.
 1 1
 2 5
 3 10
