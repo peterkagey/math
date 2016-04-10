@@ -1,3 +1,5 @@
+require 'pathname'
+
 class SequencePathIterator
 
   def self.sequence_paths
@@ -12,7 +14,7 @@ class SequencePathIterator
   end
 
   def self.id_from_path(file_path)
-    sequence_match_data = file_path.match /\/[ab](\d{6})\.(rb|txt)/
+    sequence_match_data = file_path.to_s.match /\/[ab](\d{6})\.(rb|txt)/
     return sequence_match_data[1].upcase if sequence_match_data
     raise "Could not extract ID from path: #{file_path}"
   end
@@ -22,6 +24,7 @@ class SequencePathIterator
   end
 
 end
+
 
 class BFilePathIterator < SequencePathIterator
 
@@ -39,14 +42,13 @@ class BFilePathIterator < SequencePathIterator
   end
 
   def self.find_b_file(sequence_name)
-    b_file_path = "/Users/pkagey/personal/math/Sloanes/lib/b-files/b"
     sequence_number = sequence_name[/\d+/].rjust(6, '0')
-    extension = ".txt"
-    b_file_path + sequence_number + extension
+    root = Pathname(__FILE__).dirname.parent.parent
+    root + "b-files" + "b#{sequence_number}.txt"
   end
 
   def self.script_path_to_b_file(script_path)
-    find_b_file SequencePathIterator.id_from_path(script_path)
+    find_b_file(SequencePathIterator.id_from_path(script_path))
   end
 
 end
