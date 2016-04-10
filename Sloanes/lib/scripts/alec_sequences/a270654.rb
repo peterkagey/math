@@ -3,7 +3,9 @@ require 'prime'
 
 class A270654Builder
   def self.sequence(terms, seed)
-    AlecSequences.generate(terms, :+, seed) { |a_i, n| Prime.prime?(a_i + n) }
+    AlecSequences.generate(terms, :+, e = 0, seed) do |a_i, n|
+      Prime.prime?(a_i + n)
+    end
   end
 end
 

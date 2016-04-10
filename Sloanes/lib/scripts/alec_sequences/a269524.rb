@@ -3,7 +3,7 @@ require_relative '../helper_sequences/a032741'
 
 class A269524Builder
   def self.sequence(terms, seed)
-    AlecSequences.count(terms, seed) do |a_i, n|
+    AlecSequences.generate(terms, :increment, 0, seed) do |a_i, n|
       OEIS.a032741(a_i) <= OEIS.a032741(n)
     end
   end

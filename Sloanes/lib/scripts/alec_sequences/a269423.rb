@@ -2,7 +2,9 @@ require_relative '../helpers/alec_sequences'
 
 class A269423Builder
   def self.sequence(terms, seed)
-    AlecSequences.generate(terms, :+, seed) { |a_i, n, i| a_i % i == n % i }
+    AlecSequences.generate(terms, :+, e = 0, seed) do |a_i, n, i|
+      a_i % i == n % i
+    end
   end
 end
 
