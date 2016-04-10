@@ -2,8 +2,8 @@ class EKGBuilder
   require 'set'
 
   def self.sequence(terms, seed = [1, 2], proc = nil)
+    return seed if seed.length >= terms
     seq = seed
-    max_term = [terms * 2, 100].max
     used_terms = SortedSet.new(seed)
     proc = ->(a, b){ a.gcd(b) != 1 }
 
