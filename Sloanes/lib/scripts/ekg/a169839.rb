@@ -1,7 +1,9 @@
 require_relative '../helpers/ekg_builder'
 class OEIS
-  A169839_SEQUENCE = EKGBuilder.sequence(100, [4])
+  @@a169839 = [4]
+
   def self.a169839(n)
-    A169839_SEQUENCE[n - 1] || EKGBuilder.sequence(n, [4]).last
+    @@a169839 = EKGBuilder.sequence(n, @@a169839)
+    @@a169839[n - 1]
   end
 end
