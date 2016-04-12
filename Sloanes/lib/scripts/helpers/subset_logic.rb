@@ -1,3 +1,13 @@
+class Subset
+  def self.one_indexed(n)
+    zero_indexed(2 * n)
+  end
+
+  def self.zero_indexed(n)
+    (0...n.bit_length).select { |i| n[i] != 0 }
+  end
+end
+
 class Array
 
   def count_subsets(&block)
@@ -20,9 +30,7 @@ class Array
   # [1,2,3].subset(0b110) => [2,3]
   # [1,2,3].subset(0b111) => [1,2,3]
   def subset(index)
-    sub_array = []
-    (0...index.bit_length).each { |j| sub_array << self[j] if index[j] == 1 }
-    sub_array
+    (0...index.bit_length).select { |i| index[i] != 1 }.map { |i| self[i] }
   end
 
 end
