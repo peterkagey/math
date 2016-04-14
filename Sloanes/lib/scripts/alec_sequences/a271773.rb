@@ -1,24 +1,24 @@
 require_relative '../helpers/alec_sequences'
 
-class A999997Builder
+class A271773Builder
   def self.sequence(terms, seed)
     AlecSequences.generate(terms, :max, e = 0, seed) { |a_i, n, i| a_i % i == n % i }
   end
 end
 
 class OEIS
-  @@a999997 = A999997Builder.sequence(1, [0])
+  @@a271773 = A271773Builder.sequence(1, [0])
 
-  def self.a999997(n)
-    raise "A999997 is not defined for n = #{n} < 1" if n < 1
-    @@a999997 = A999997Builder.sequence(n, @@a999997)
-    @@a999997[n - 1]
+  def self.a271773(n)
+    raise "A271773 is not defined for n = #{n} < 1" if n < 1
+    @@a271773 = A271773Builder.sequence(n, @@a271773)
+    @@a271773[n - 1]
   end
 end
 
 # a(1) = 0, then a(n) is the maximum of all 0 < m < n for which n == a(m) (mod m).
 
-# a(1) = 1 by definition
+# a(1) = 0 by definition
 # a(2) = 1 because a(1) == 2 (mod 1)
 # a(3) = 2 because a(2) == 3 (mod 2)
 # a(4) = 1 because a(1) == 4 (mod 1)
