@@ -3,7 +3,7 @@ require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
 describe OEIS do
 
   def a(n)
-    OEIS.a999996(n)
+    OEIS.a271774(n)
   end
 
   it "should know first 25 values" do

@@ -1,8 +1,8 @@
 require_relative '../b_file_compare'
 
 PENDING_SEQUENCES ||= {
-  "A271709" => "Draft (04/12/2016).",
-  "A271710" => "Draft (04/12/2016).",
+  "A271773" => "Draft (2016/04/14)",
+  "A271774" => "Draft (2016/04/14)",
 }
 
 SequencePathIterator.sequence_numbers.each do |id|

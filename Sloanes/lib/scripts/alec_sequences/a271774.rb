@@ -1,18 +1,18 @@
 require_relative '../helpers/alec_sequences'
 
-class A999996Builder
+class A271774Builder
   def self.sequence(terms, seed)
     AlecSequences.generate(terms, :max, e = 0, seed) { |a_i, n| n % a_i == 0 }
   end
 end
 
 class OEIS
-  @@a999996 = A999996Builder.sequence(1, [1])
+  @@a271774 = A271774Builder.sequence(1, [1])
 
-  def self.a999996(n)
-    raise "A999996 is not defined for n = #{n} < 1" if n < 1
-    @@a999996 = A999996Builder.sequence(n, @@a999996)
-    @@a999996[n - 1]
+  def self.a271774(n)
+    raise "A271774 is not defined for n = #{n} < 1" if n < 1
+    @@a271774 = A271774Builder.sequence(n, @@a271774)
+    @@a271774[n - 1]
   end
 end
 
