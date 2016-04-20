@@ -38,7 +38,7 @@ class BFileParser # Methods that depend on parsing of individual b_files.
   private
 
   def rows
-    @rows ||= @raw_file.split("\n").select { |str| str =~ /^\d+ / }
+    @rows ||= @raw_file.split("\n").select { |str| str =~ /^\d+\s/ }
   end
 
 end
