@@ -1,4 +1,5 @@
-require_relative '/Users/pkagey/personal/math/Sloanes/lib/scripts/helper_sequences/a000120.rb'
+require_relative 'a000120'
+
 class A000788Builder
 
   def self.sequence(max, seed)
@@ -12,6 +13,7 @@ end
 
 class OEIS
   @@a000788 = [0]
+
   def self.a000788(n)
     @@a000788 = A000788Builder.sequence(n, @@a000788)
     @@a000788[n]

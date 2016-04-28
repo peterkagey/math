@@ -6,7 +6,7 @@ class SequencePathIterator
     current_directory = File.dirname(__FILE__)
     parent_directory = File.dirname(current_directory)
     path = File.dirname(parent_directory) + "**/scripts/*/a[0123456789]*.rb"
-    Dir[path]
+    Dir[path].reject { |s| s =~ /sandbox/ }
   end
 
   def self.sequence_path(sequence_number)
