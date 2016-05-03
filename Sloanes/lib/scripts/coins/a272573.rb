@@ -22,28 +22,26 @@ class Spokes
     ->(k) { (Math.sqrt(12 * k - 15) - 3).to_i/6 },
   ]
 
-  def spokify(i, b = 0)
+  # "k" is the name of a special hexagonal index that is on a "main diagonal"
+  # of the spiral. The second optional parameter "steps down" the spoke toward
+  # the center by b steps.
+  # This function will always be less than or equal to @index.
+  def k_on_spoke(i, b = 0)
     SPOKES[i].call(INVERSES[i].call(@index) - b)
   end
 
-  def last_spoke_value
-    @spoke_value ||= (0...6).map { |i| spokify(i) }.max
-  end
-
-  def last_spoke_index
-    @spoke_index ||= (0...6).find { |i| spokify(i) == last_spoke_value }
+  # This function gives the spoke-index of the spoke nearest to @index
+  def spoke_index
+    @max_k ||= (0...6).map { |i| k_on_spoke(i) }.max
+    @spoke_index ||= (0...6).find { |i| k_on_spoke(i) == @max_k }
   end
 
   def neighbors
     return [ ] if @index == 1
     return [1] if @index == 2
 
-    neighbors = [
-      @index - 1,
-      spokify(last_spoke_index, 1) + (@index - last_spoke_value)
-    ]
-
-    neighbors << neighbors.last - 1 if @index != last_spoke_value
+    neighbors = [@index - 1, k_on_spoke(spoke_index, 1) + (@index - @max_k)]
+    neighbors << neighbors.last - 1 if @index != @max_k
     neighbors
   end
 
