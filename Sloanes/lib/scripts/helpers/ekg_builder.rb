@@ -5,7 +5,7 @@ class EKGBuilder
     return seed if seed.length >= terms
     seq = seed
     used_terms = SortedSet.new(seed)
-    proc = ->(a, b){ a.gcd(b) != 1 }
+    proc ||= ->(a, b){ a.gcd(b) != 1 }
 
     (terms - seed.length).times do
       last_term = seq.last
