@@ -1,6 +1,8 @@
 require_relative '../b_file_compare'
 
-PENDING_SEQUENCES ||= {}
+PENDING_SEQUENCES ||= {
+  "A065413" => "Not yet published.",
+}
 
 SequencePathIterator.sequence_numbers.each do |id|
 
