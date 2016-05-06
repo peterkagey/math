@@ -1,13 +1,9 @@
 require_relative '../b_file_compare'
 
 PENDING_SEQUENCES ||= {
-  "A065413" => "Not yet published.",
-  "A065879" => "Draft (2015/05/05)",
-  "A065880" => "Draft (2015/05/05)",
-  "A272756" => "Draft (2015/05/05)",
-  "A272759" => "Draft (2015/05/05)",
-  "A272760" => "Draft (2015/05/05)",
-  "A272761" => "Not yet published.",
+  "A272573" => "Draft (2015/05/06)",
+  "A272756" => "Draft (2015/05/06)",
+  "A272761" => "Draft (2015/05/06)",
 }
 
 SequencePathIterator.sequence_numbers.each do |id|
@@ -23,7 +19,7 @@ SequencePathIterator.sequence_numbers.each do |id|
 
   describe "A#{id}" do
     it "should have a b-file that matches the OEIS version." do
-      pending PENDING_SEQUENCES["A#{id}"] if PENDING_SEQUENCES["A#{id}"] || "#{id}" =~ /9{5}/
+      pending PENDING_SEQUENCES["A#{id}"] if PENDING_SEQUENCES["A#{id}"] || "#{id}" =~ /9{4}\d{2}/
       expect(compare.official_range).to eq compare.local_range
     end
   end
