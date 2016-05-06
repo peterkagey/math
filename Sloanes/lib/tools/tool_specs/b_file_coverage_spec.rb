@@ -31,6 +31,7 @@ describe "OEIS Tests" do
     "b060432", # Partial sums of A002024.
     "b064413", # EKG sequence
     "b070229", # Next m>n such that m is divisible by lpf(n)
+    "b070939", # Length of binary representation of n.
     "b071068", # Number of partitions of n into two squarefree numbers.
     "b080715", # Sums of divisors are prime
     "b085731", # gcd(n, a003415(n))
