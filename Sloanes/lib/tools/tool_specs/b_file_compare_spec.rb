@@ -7,6 +7,7 @@ PENDING_SEQUENCES ||= {
   "A272756" => "Draft (2015/05/05)",
   "A272759" => "Draft (2015/05/05)",
   "A272760" => "Draft (2015/05/05)",
+  "A272761" => "Not yet published.",
 }
 
 SequencePathIterator.sequence_numbers.each do |id|
