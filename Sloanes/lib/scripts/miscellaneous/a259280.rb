@@ -29,7 +29,7 @@
 
 # Bounded below by -> (A060432(n - 1) + n - 1)/2 + 1
 
-require_relative "a060432"
+require_relative "../helper_sequences/a060432"
 
 class OEIS
 
