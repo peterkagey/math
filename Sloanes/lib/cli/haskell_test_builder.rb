@@ -16,20 +16,6 @@ main = hspec $
       take #{@number_of_terms} (map a#{@sequence_number} [#{minimum_argument}..]) `shouldBe` expectedValue where
         expectedValue = [#{expect}]
 )
-# require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
-
-# describe OEIS do
-
-#   def a(n)
-#     OEIS.a#{@sequence_number}(n)
-#   end
-
-#   it "should know first #{@number_of_terms} values" do
-#     #{expect}
-#   end
-
-# end
-# )
   end
 
 end
