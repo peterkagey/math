@@ -20,7 +20,7 @@ class LocalBFile # Functions about a particular sequence's local b-file.
   end
 
   def missing?
-    BFilePathIterator.missing_b_files.find { |file| file =~ /#{@id}/ }
+    BFilePathIterator.new.missing_b_files.find { |file| file =~ /#{@id}/ }
   end
 
   def annotated_range
@@ -41,7 +41,7 @@ class LocalBFile # Functions about a particular sequence's local b-file.
   end
 
   def path
-    @path ||= BFilePathIterator.find_b_file(@id)
+    @path ||= BFilePathIterator.new.find_b_file(@id)
   end
 
 end

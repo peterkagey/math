@@ -8,7 +8,7 @@ class BFileCompare
   attr_reader :local_range, :official_range, :cached_range, :id
 
   def initialize(sequence_id)
-    @id = sequence_id
+    @id = sequence_id[/\d{6}/]
     set_b_file_classes
     return if skip?
     set_ranges

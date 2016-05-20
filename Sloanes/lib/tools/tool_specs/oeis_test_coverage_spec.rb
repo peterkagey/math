@@ -5,7 +5,7 @@ describe "OEIS Tests" do
   TEST_EXCEPTIONS = %w[]
 
   it "should test every sequence script" do
-    untested = OEISTestPathIterator.untested_sequences - TEST_EXCEPTIONS
+    untested = OEISTestPathIterator.new.untested_sequences - TEST_EXCEPTIONS
     expect(untested).to eq []
   end
 

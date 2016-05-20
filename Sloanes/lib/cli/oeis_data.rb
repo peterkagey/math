@@ -9,7 +9,7 @@ class OEISDataBuilder
   end
 
   def sequence
-    require SequencePathIterator.sequence_path(@id)
+    require SequencePathIterator.new.sequence_path(@id)
     (@min..Float::INFINITY).inject([]) do |accum, i|
       new_string = accum + [OEIS.send(@id, i)]
       return accum.join(", ") if new_string.join(", ").length > 260

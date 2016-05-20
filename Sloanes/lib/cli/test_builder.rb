@@ -5,17 +5,22 @@ require PROJECT_ROOT + "/tools/helpers/official_b_file"
 
 class TestBuilder
 
-  def initialize(sequence_id, number_of_terms = nil)
+  def initialize(sequence_id, number_of_terms = nil, language = :ruby)
     return puts "Sequence ID must be included!" if sequence_id.nil?
+    @language = language
     @sequence_number = sequence_id[/\d{6}$/]
     @number_of_terms = (number_of_terms || 5)
-    write_test unless test_already_exists?
+    @iterator = OEISTestPathIterator.new(@language)
+    write_test unless abort_test?
   end
 
   private
 
-  def test_already_exists?
-    if File.exist?(spec_file_path)
+  def abort_test?
+    if sequence_missing?
+      puts "A script for this sequence does not exist."
+      true
+    elsif File.exist?(spec_file_path)
       puts "A test for A#{@sequence_number} already exists!"
       true
     else
@@ -27,12 +32,16 @@ class TestBuilder
     File.dirname(__FILE__)
   end
 
-  def script_path
-    SequencePathIterator.sequence_path(@sequence_number)
+  def sequence_path
+    @seq_path ||= @iterator.sequence_path(@sequence_number)
   end
 
   def spec_file_path
-    OEISTestPathIterator.spec_file_path(script_path)
+    @spec_path ||= @iterator.test_file_path(@sequence_number)
+  end
+
+  def sequence_missing?
+    sequence_path.nil?
   end
 
   def a
@@ -56,26 +65,6 @@ class TestBuilder
     (0...@number_of_terms.to_i).map { |i| i + minimum_argument }
   end
 
-  def test
-    expect = range.map { |t| "expect(a(#{t})).to eq #{a[t]}"}.join("\n    ")
-    @test ||=
-
-%(require_relative __FILE__.sub("specs", "scripts").sub("_spec", "")
-
-describe OEIS do
-
-  def a(n)
-    OEIS.a#{@sequence_number}(n)
-  end
-
-  it "should know first #{@number_of_terms} values" do
-    #{expect}
-  end
-
-end
-)
-  end
-
   def write_test
     puts test
     File.write(spec_file_path, test)
@@ -83,5 +72,3 @@ end
   end
 
 end
-
-TestBuilder.new(ARGV[0], ARGV[1])
