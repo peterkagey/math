@@ -2,12 +2,19 @@ require_relative 'test_builder'
 
 class HaskellTestBuilder < TestBuilder
 
+  def haskell_module_name
+    pattern = /haskellOEIS\/(.+?)\/A.+/
+    module_name = sequence_path.match(pattern)[1]
+    raise "Could not extract module name" if module_name.nil?
+    module_name
+  end
+
   def test
     expect = range.map { |t| "#{a[t]}"}.join(",")
     @test ||=
-%(module Tests.AlecSequences.A#{@sequence_number}Test where
+%(module Tests.#{haskell_module_name}.A#{@sequence_number}Test where
 import Test.Hspec
-import AlecSequences.A#{@sequence_number} (a#{@sequence_number})
+import #{haskell_module_name}.A#{@sequence_number} (a#{@sequence_number})
 main :: IO ()
 
 main = hspec $
