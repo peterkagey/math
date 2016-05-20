@@ -1,4 +1,4 @@
-require_relative '../miscellaneous/a271468'
+require_relative 'a271468'
 
 class A271471Builder
   def self.sequence(terms, seed)
@@ -6,8 +6,14 @@ class A271471Builder
     start = (1..Float::INFINITY).find { |i| OEIS.a271468(i) > seed.last }
 
     (start..Float::INFINITY).inject(seed) do |accum, i|
-      return accum if accum.length >= terms
-      seed.all? { |k| OEIS.a271468(i) % k != 0 } ? accum << OEIS.a271468(i) : accum
+      case
+      when accum.length >= terms
+        return accum
+      when accum.all? { |k| OEIS.a271468(i) % k != 0 }
+        accum << OEIS.a271468(i)
+      else
+        accum
+      end
     end
   end
 end

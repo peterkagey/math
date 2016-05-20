@@ -2,7 +2,10 @@
 class RemainderGame
 
   def self.length(n, k)
-    (0..Float::INFINITY).inject { |_, i| k = n % k; break i if k == 0 }
+    (0..Float::INFINITY).inject do |_, i|
+      k = n % k
+      break i if k == 0
+    end
   end
 
   def self.euclid(n, k)

@@ -1,4 +1,4 @@
-require_relative '../miscellaneous/a271328'
+require_relative 'a271328'
 
 class A271468Builder
   def self.sequence(terms, seed)

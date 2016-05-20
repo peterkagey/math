@@ -18,7 +18,7 @@ class A263135Builder
 
   def initialize(terms)
     @terms = terms
-    @sequence = [0, 0,1,2,3,4,6]
+    @sequence = [0,0,1,2,3,4,6]
     build_sequence
   end
 

@@ -6,7 +6,7 @@ require_relative '../helpers/sums_and_differences'
 # https://projecteuler.net/problem=484
 
 class A268398Builder
-  def self.sequence(terms = 100)
+  def self.sequence(terms = 5)
     (1..terms).map { |i| OEIS.a085731(i) }.cumulative_sum
   end
 end
