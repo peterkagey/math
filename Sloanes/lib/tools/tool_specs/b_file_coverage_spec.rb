@@ -13,6 +13,7 @@ describe "OEIS Tests" do
 
     # Helper sequences
     "b000005", # Number of divisors of n.
+    "b000045", # Fibonacci sequence.
     "b000120", # Number of 1s in binary representation of n.
     "b000188", # Square root of largest square dividing n.
     "b000196", # Integer part of square root of n.
