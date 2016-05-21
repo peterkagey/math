@@ -1,21 +1,14 @@
 require_relative '../helpers/haskell_comparison'
-PENDING = {
+PENDING_HASKELL = {
   "A000052" => "A000052 1-digit numbers arranged in alphabetical order, then the 2-digit numbers arranged in alphabetical order, then the 3-digit numbers, etc.",
   "A000523" => "A000523 a(n) = floor(log_2(n)).",
-  "A001057" => "A001057 Canonical enumeration of integers: interleaved positive and negative integers with zero prepended.",
-  "A002061" => "A002061 Central polygonal numbers: n^2 - n + 1.",
-  "A002522" => "A002522 a(n) = n^2 + 1.",
   "A003415" => "A003415 a(n) = n' = arithmetic derivative of n: a(0) = a(1) = 0, a(prime) = 1, a(mn) = m*a(n) + n*a(m).",
   "A004489" => "A004489 Table of tersums m + n (answers written in base 10).",
   "A005117" => "A005117 Squarefree numbers: numbers that are not divisible by a square greater than 1.",
   "A006255" => "A006255 Ron Graham's sequence: a(n) = smallest m for which there is a sequence n = b_1 < b_2 < ... < b_t = m such that b_1*b_2*...*b_t is a perfect square.",
-  "A006995" => "A006995 Binary palindromes: numbers whose binary expansion is palindromic.",
-  "A007913" => "A007913 Squarefree part of n: a(n) = smallest positive number m such that n/m is a square.",
   "A007955" => "A007955 Product of divisors of n.",
   "A019555" => "A019555 Smallest number whose cube is divisible by n.",
   "A031435" => "A031435 Reversal point for powers of consecutive natural numbers.",
-  "A048798" => "A048798 Smallest k > 0 such that n*k is a perfect cube.",
-  "A049581" => "A049581 Table T(n,k) = |n-k| read by antidiagonals (n >= 0, k >= 0).",
   "A053645" => "A053645 Distance to largest power of 2 less than or equal to n; write n in binary and change the first digit to zero.",
   "A053797" => "A053797 Lengths of successive gaps between squarefree numbers.",
   "A054519" => "A054519 Number of increasing arithmetic progressions of nonnegative integers ending in n, including those of length 1 or 2.",
@@ -34,20 +27,16 @@ PENDING = {
   "A065879" => "A065879 Lowest positive number that is n times the number of 1's in its binary expansion, or 0 if no such number exists.",
   "A065880" => "A065880 Largest positive number that is n times the number of 1's in its binary expansion, or 0 if no such number exists.",
   "A067565" => "A067565 Inverse of Ron Graham's sequence (A006255), or zero if and only if n is a prime.",
-  "A067722" => "A067722 Least positive integer k such that n*(n + k) is a perfect square.",
   "A070229" => "A070229 Next m>n such that m is divisible by lpf(n), lpf=A006530 largest prime factor.",
   "A071068" => "A071068 Number of ways to write n as a sum of two unordered squarefree numbers.",
-  "A072905" => "A072905 a(n) is the least k > n such that k*n is a square.",
   "A080715" => "A080715 Numbers n such that for any positive integers (a, b), if a * b = n then a + b is prime.",
   "A082461" => "A082461 Generalized Smarandache palindromes which are not palindromes: a generalized Smarandache palindrome (GSP) is a number of the form a1a2...anan...a2a1 or a1a2...an-1anan-1...a2a1, where all a1, a2, ..., an are positive integers of various number of digits.",
   "A082647" => "A082647 Number of ways n can be expressed as the sum of d consecutive positive integers (where d>0 is a divisor of n).",
   "A085731" => "A085731 Greatest common divisor of n and its arithmetic derivative.",
   "A094820" => "A094820 Partial sums of A038548.",
   "A098164" => "A098164 Smallest available number fitting the infinite repeating pattern of digits even/even/odd/odd/even/even/odd/odd/...",
-  "A107435" => "A107435 Triangle T(n,k), 1<=k<=n, read by rows : T(n,k) = length of Euclidean algorithm starting with n and k.",
   "A109451" => "A109451 a(1)=1; a(n) = smallest positive integer not already present such that a(n-1) and a(n) have a different number of 1's in their binary expansions.",
   "A121341" => "A121341 Number of decimal places before 1/n either recurs or terminates.",
-  "A137735" => "A137735 a(0)=1. a(n) = floor(n/b(n)), where b(n) is the largest value among (a(0),a(1),...,a(n-1)).",
   "A143051" => "A143051 Smallest number not occurring earlier and smaller than the largest square so far, the next square if no such number exists.",
   "A143480" => "A143480 a(1)=1. a(n) is the smallest positive multiple of n such that phi(a(n)) > phi(a(n-1)), where phi(m) is A000010(m).",
   "A143481" => "A143481 a(n) = phi(A143480(n)) where phi(m) = A000010(m).",
@@ -69,7 +58,6 @@ PENDING = {
   "A255167" => "A255167 a(n) = A072905(n) - A006255(n).",
   "A255363" => "A255363 Numbers with the property that A006255(k) = A070229(k).",
   "A255980" => "A255980 Number of iterations of A067565 required to reach a perfect square.",
-  "A256417" => "A256417 The EKG sequence (A064413) smoothed by replacing each prime p by 2p and each thrice-prime 3p also by 2p.",
   "A258448" => "A258448 a(5) = 0; a(n) = 1 + min{a(k + m): n = k * m}.",
   "A259439" => "A259439 a(n) = A143482(n)/n.",
   "A259527" => "A259527 a(n) counts the number of sequences n = b_1 < b_2 < ... < b_t = A006255(n) such that b_1*b_2*...*b_t is a perfect square.",
@@ -90,7 +78,6 @@ PENDING = {
   "A265579" => "A265579 a(n) = A260643(n) - 1.",
   "A268038" => "A268038 List of y-coordinates of point moving in clockwise spiral.",
   "A268040" => "A268040 Array y AND NOT x, read by antidiagonals.",
-  "A268057" => "A268057 Triangle T(n,k), 1<=k<=n, read by rows: T(n,k) = number of iterations of A048158(n, A048158(n,  ... A048158(n, k)...)) to reach 0.",
   "A268398" => "A268398 Partial sums of A085731.",
   "A268403" => "A268403 Partial sums of A080715.",
   "A268611" => "A268611 a(n) = A256417(n) - n.",
@@ -98,7 +85,6 @@ PENDING = {
   "A268681" => "A268681 Sum of unique squarefree numbers in first n rows of Pascal's triangle.",
   "A268978" => "A268978 Triangle T(n,k) read by rows with 1 <= k <= n: number of entries in the first n rows of Pascal's triangle that are divisible by k.",
   "A269045" => "A269045 Indices k such that A006255(k) != A070229(k); that is, the kth term of Ron Graham's sequence is not equal to k + lpf(k).",
-  "A269267" => "A269267 Indices k such that A107435(k) != A268057(k).",
   "A269331" => "A269331 Indices k such that A107435(k) = A268057(k).",
   "A269526" => "A269526 Diagonals of array in which each term is the least positive value satisfying the condition that no row, column, or diagonal contains a repeated term; see example below.",
   "A270536" => "A270536 a(1) = 0; a(n) is the sum of m < n for which a(m) + n is not prime.",
@@ -106,12 +92,20 @@ PENDING = {
   "A271439" => "A271439 If n is a triangular number, a(n) = 0, otherwise a(n) = n - A002024(n) + 1",
   "A272327" => "A272327 Table read by antidiagonals: T(n, k) is the least i > n such that n divides i^k (n > 0, k > 0).",
   "A272573" => "A272573 Start a spiral of numbers on a hexagonal tiling, with the initial hexagon as a(1) = 1. a(n) is the smallest positive integer not equal to or previously adjacent to its neighbors.",
+  "A999995" => "Unpublished"
+}
+
+PENDING_RUBY = {
+  "A002262" => "Triangle read by rows: T(n,k), 0 <= k <= n, in which row n lists the first n+1 nonnegative integers.",
+  "A025581" => "Triangle T(n, k) = n-k, 0 <= k <= n.",
+  "A035516" => "Triangular array formed from Zeckendorf expansion of integers: repeatedly subtract the largest Fibonacci number you can until nothing remains.",
+  "A273156" => "Product of all parts in Zeckendorf representation of n. ",
 }
 
 describe "Haskell files" do
   HaskellComparer.ruby_scripts.sort.each do |sequence_name|
     it "should include a script for #{sequence_name}" do
-      pending PENDING[sequence_name] if PENDING[sequence_name]
+      pending PENDING_HASKELL[sequence_name] if PENDING_HASKELL[sequence_name]
       included = HaskellComparer.haskell_scripts.include?(sequence_name)
       expect(included).to eq true
     end
@@ -121,6 +115,7 @@ end
 describe "Ruby files" do
   HaskellComparer.haskell_scripts.sort.each do |sequence_name|
     it "should include a script for #{sequence_name}" do
+      pending PENDING_RUBY[sequence_name] if PENDING_RUBY[sequence_name]
       included = HaskellComparer.ruby_scripts.include?(sequence_name)
       expect(included).to eq true
     end
