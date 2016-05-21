@@ -12,6 +12,7 @@ class TestBuilder
     @number_of_terms = (number_of_terms || 5)
     @iterator = OEISTestPathIterator.new(@language)
     write_test unless abort_test?
+    puts "runhaskell #{spec_file_path}"
   end
 
   private
