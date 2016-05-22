@@ -26,6 +26,7 @@ describe "OEIS Tests" do
     "b002061", # n**2 - n + 1
     "b002522", # n**2 + 1
     "b003056", # n appears n+1 times
+    "b003059", # n appears 2*n - 1 times.
     "b003415", # arithmetic derivative of n
     "b007955", # Product of divisors of n
     "b005117", # Squarefree numbers
