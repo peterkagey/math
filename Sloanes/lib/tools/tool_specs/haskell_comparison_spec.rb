@@ -29,7 +29,6 @@ PENDING_HASKELL = {
   "A080715" => "A080715 Numbers n such that for any positive integers (a, b), if a * b = n then a + b is prime.",
   "A082461" => "A082461 Generalized Smarandache palindromes which are not palindromes: a generalized Smarandache palindrome (GSP) is a number of the form a1a2...anan...a2a1 or a1a2...an-1anan-1...a2a1, where all a1, a2, ..., an are positive integers of various number of digits.",
   "A082647" => "A082647 Number of ways n can be expressed as the sum of d consecutive positive integers (where d>0 is a divisor of n).",
-  "A094820" => "A094820 Partial sums of A038548.",
   "A098164" => "A098164 Smallest available number fitting the infinite repeating pattern of digits even/even/odd/odd/even/even/odd/odd/...",
   "A109451" => "A109451 a(1)=1; a(n) = smallest positive integer not already present such that a(n-1) and a(n) have a different number of 1's in their binary expansions.",
   "A121341" => "A121341 Number of decimal places before 1/n either recurs or terminates.",
