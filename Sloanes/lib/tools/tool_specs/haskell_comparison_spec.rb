@@ -1,12 +1,11 @@
 require_relative '../helpers/haskell_comparison'
+
 PENDING_HASKELL = {
   "A000052" => "A000052 1-digit numbers arranged in alphabetical order, then the 2-digit numbers arranged in alphabetical order, then the 3-digit numbers, etc.",
   "A000523" => "A000523 a(n) = floor(log_2(n)).",
-  "A004489" => "A004489 Table of tersums m + n (answers written in base 10).",
   "A005117" => "A005117 Squarefree numbers: numbers that are not divisible by a square greater than 1.",
   "A006255" => "A006255 Ron Graham's sequence: a(n) = smallest m for which there is a sequence n = b_1 < b_2 < ... < b_t = m such that b_1*b_2*...*b_t is a perfect square.",
   "A007955" => "A007955 Product of divisors of n.",
-  "A019555" => "A019555 Smallest number whose cube is divisible by n.",
   "A031435" => "A031435 Reversal point for powers of consecutive natural numbers.",
   "A053645" => "A053645 Distance to largest power of 2 less than or equal to n; write n in binary and change the first digit to zero.",
   "A053797" => "A053797 Lengths of successive gaps between squarefree numbers.",
@@ -47,8 +46,6 @@ PENDING_HASKELL = {
   "A227192" => "A227192 Sum of the partial sums of the run lengths of binary expansion of n, when starting scanning from the least significant end; Row sums of A227188 and A227738.",
   "A233421" => "A233421 Let m = n-th nonsquare = A000037(n); then a(n) = A006255(m).",
   "A248663" => "A248663 a(1) = 0; a(A000040(n)) = 2^(n-1), and a(n*m) = a(n) XOR a(m).",
-  "A254732" => "A254732 a(n) is the least k > n such that n divides k^2.",
-  "A254733" => "A254733 a(n) is the least k > n such that n divides k^3.",
   "A254767" => "A254767 a(n) is the least k > n such that k*n is a cube.",
   "A255167" => "A255167 a(n) = A072905(n) - A006255(n).",
   "A255363" => "A255363 Numbers with the property that A006255(k) = A070229(k).",
