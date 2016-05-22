@@ -12,7 +12,14 @@ class TestBuilder
     @number_of_terms = (number_of_terms || 5)
     @iterator = OEISTestPathIterator.new(@language)
     write_test unless abort_test?
-    puts "runhaskell #{spec_file_path}"
+    puts "#{test_command} #{spec_file_path}"
+  end
+
+  def test_command
+    case @language
+    when :ruby then "bundle exec rspec"
+    when :haskell then "runhaskell"
+    end
   end
 
   private
