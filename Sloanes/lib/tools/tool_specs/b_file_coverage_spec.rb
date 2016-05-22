@@ -47,6 +47,9 @@ describe "OEIS Tests" do
     # Palindromes
     "b006995", # Binary palindromes.
 
+    # Power Divisibilty
+    "b019554", # Smallest number whose square is divisible by n.
+
     # Project Euler
     "b080715", # Sums of divisors are prime
     "b085731", # gcd(n, a003415(n))
