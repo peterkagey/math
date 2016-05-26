@@ -64,7 +64,7 @@ class BFileBuilder
   end
 
   def sequence_file
-    @seq_file ||= SequencePathIterator.sequence_path(@id)
+    @seq_file ||= SequencePathIterator.new.sequence_path(@id)
   end
 
   def validate_script!
