@@ -4,7 +4,7 @@ class OEIS
     (1..n**2 + 1).find do |k|
       sqrt_k = k**0.5
       c = (n/sqrt_k + 1).to_i
-      c * sqrt_k < n + 1
+      (c * sqrt_k).to_i < n + 1
     end
   end
 
