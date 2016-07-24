@@ -15,6 +15,7 @@ SKIPPING = [
   "A060948", # Intrinsic 11-palindromes: n is an intrinsic k-palindrome if it is a k-digit palindrome in some base.
   "A060949", # Intrinsic 12-palindromes: n is an intrinsic k-palindrome if it is a k-digit palindrome in some base.
   "A082461", # Generalized Smarandache palindromes which are not palindromes: a generalized Smarandache palindrome (GSP) is a number of the form a1a2...anan...a2a1 or a1a2...an-1anan-1...a2a1, where all a1, a2, ..., an are positive integers of various number of digits.
+  "A082647", # Number of ways n can be expressed as the sum of d consecutive positive integers (where d>0 is a divisor of n)
   "A098164", # Smallest available number fitting the infinite repeating pattern of digits even/even/odd/odd/even/even/odd/odd/...
   "A109451", #  a(1)=1; a(n) = smallest positive integer not already present such that a(n-1) and a(n) have a different number of 1's in their binary expansions.
   "A121341", # Number of decimal places before 1/n either recurs or terminates.
@@ -28,17 +29,17 @@ SKIPPING = [
   "A262159", # a(1) = 1, for n > 1 the least composite number k > a(n-1) such that a(n-1) + k is also a composite number.",
   "A262436", # Number of ways to represent 2n - 1 as p^2 + q^2 + r with p, q, and r prime, and p >= q.
   "A999995", # Unpublished
+
+  # A071068
+  "A071068", # Number of ways to write n as a sum of two unordered squarefree numbers.
+  "A262351", # Sum of the parts in the partitions of n into exactly two squarefree parts.
+
+  # A080715
+  "A080715", # Numbers n such that for any positive integers (a, b), if a * b = n then a + b is prime.
+  "A268403", # Partial sums of A080715.
 ]
 
 PENDING_HASKELL = {
-  # Phi
-  "A143480" => "A143480 a(1)=1. a(n) is the smallest positive multiple of n such that phi(a(n)) > phi(a(n-1)), where phi(m) is A000010(m).",
-  "A143481" => "A143481 a(n) = phi(A143480(n)) where phi(m) = A000010(m).",
-  "A143482" => "A143482 a(1)=1. For n>1, a(n) = the smallest positive multiple of n such that phi(a(n)) >= phi(a(n-1)), where phi(m) is A000010(m).",
-  "A143483" => "A143483 a(n) = phi(A143482(n)) where phi(m) = A000010(m).",
-  "A259439" => "A259439 a(n) = A143482(n)/n.",
-  "A261863" => "A261863 a(n) = A143480(n)/n.",
-
   # Graham
   "A006255" => "A006255 Ron Graham's sequence: a(n) = smallest m for which there is a sequence n = b_1 < b_2 < ... < b_t = m such that b_1*b_2*...*b_t is a perfect square.",
   "A067565" => "A067565 Inverse of Ron Graham's sequence (A006255), or zero if and only if n is a prime.",
@@ -56,30 +57,14 @@ PENDING_HASKELL = {
   "A265415" => "A265415 Positions of ones in A260643.",
   "A265579" => "A265579 a(n) = A260643(n) - 1.",
 
-  # A080715
-  "A080715" => "A080715 Numbers n such that for any positive integers (a, b), if a * b = n then a + b is prime.",
-  "A268403" => "A268403 Partial sums of A080715.",
-
-  # A261865
-  "A261865" => "A261865 a(n) is the least integer k such that some multiple of sqrt(k) falls strictly between n and n+1.",
-  "A262036" => "A262036 a(n) is the least k such that A261865(k) = A005117(n).",
-
-  # Squarefree
-  "A005117" => "A005117 Squarefree numbers: numbers that are not divisible by a square greater than 1.",
-  "A053797" => "A053797 Lengths of successive gaps between squarefree numbers.",
-
-    # A071068
-  "A071068" => "A071068 Number of ways to write n as a sum of two unordered squarefree numbers.",
-  "A262351" => "A262351 Sum of the parts in the partitions of n into exactly two squarefree parts.",
-
   # Other
-  "A082647" => "A082647 Number of ways n can be expressed as the sum of d consecutive positive integers (where d>0 is a divisor of n).",
   "A260896" => "A260896 a(n) counts the number of integers m such that there exist k and h with 2n^2 < mk^2 < 2(n+1)^2 and 2n^2 < 2mh^2 < 2(n+1)^2.",
-  "A269526" => "A269526 Diagonals of array in which each term is the least positive value satisfying the condition that no row, column, or diagonal contains a repeated term; see example below.",
   "A272573" => "A272573 Start a spiral of numbers on a hexagonal tiling, with the initial hexagon as a(1) = 1. a(n) is the smallest positive integer not equal to or previously adjacent to its neighbors.",
 }
 
 PENDING_RUBY = {
+  "A000010" => "Euler's phi function.",
+  "A000040" => "Prime numbers.",
   "A000194" => "n appears 2n times; also nearest integer to square root of n.",
   "A002262" => "Triangle read by rows: T(n,k), 0 <= k <= n, in which row n lists the first n+1 nonnegative integers.",
   "A006530" => "Gpf(n): greatest prime dividing n; a(1)=1. ",
@@ -90,6 +75,14 @@ PENDING_RUBY = {
   "A273185" => "Start with a(0) = 0. Thereafter a(n) is the number of m < n with the property that a(m) + n is a perfect square.",
   "A273190" => "a(0) = 0; thereafter a(n) is the number of m < n for which m + n is a perfect square.",
   "A273191" => "a(n) is the length of the n-th run of A273190.",
+  "A273620" => "Table read by antidiagonals: T(n, k) = floor(sqrt(k) * floor(n/sqrt(k) + 1)) with n >= 1, k >= 1.",
+
+  # A269526: Diagonals of array in which each term is the least positive value satisfying the condition that no row, column, or diagonal contains a repeated term.
+  "A273823" => "Table read by rows: the n-th row is the list of numbers to the left of n in the natural numbers read by antidiagonals.",
+  "A273824" => "Table read by rows: the n-th row is the list of numbers above n in the table natural numbers read by antidiagonals.",
+  "A273825" => "Table read by rows: the n-th row is the list of numbers diagonally up and to the left of n in the natural numbers read by antidiagonals.",
+  "A274079" => "Table read by rows: the n-th row is the list of numbers diagonally up and to the right of n in the natural numbers read by antidiagonals.",
+  "A274080" => "Table read by rows: row n gives all numbers in the same row, column, or diagonal as n in the table natural numbers read by antidiagonals.",
 }
 
 describe "Haskell files" do
@@ -112,4 +105,3 @@ describe "Ruby files" do
     end
   end
 end
-
