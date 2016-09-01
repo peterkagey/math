@@ -66,23 +66,44 @@ PENDING_RUBY = {
   "A000010" => "Euler's phi function.",
   "A000040" => "Prime numbers.",
   "A000194" => "n appears 2n times; also nearest integer to square root of n.",
+  "A000720" => "pi(n), the number of primes <= n.",
+  "A001511" => "The ruler function: 2^a(n) divides 2n",
   "A002262" => "Triangle read by rows: T(n,k), 0 <= k <= n, in which row n lists the first n+1 nonnegative integers.",
+  "A002808" => "Composite numbers",
+  "A006519" => "Highest power of 2 dividing n.",
   "A006530" => "Gpf(n): greatest prime dividing n; a(1)=1. ",
   "A007318" => "Pascal's triangle read by rows: C(n,k) = binomial(n,k) = n!/(k!*(n-k)!), 0 <= k <= n.",
+  "A007814" => "The 2-adic valuation of n",
+
   "A025581" => "Triangle T(n, k) = n-k, 0 <= k <= n.",
   "A035516" => "Triangular array formed from Zeckendorf expansion of integers: repeatedly subtract the largest Fibonacci number you can until nothing remains.",
+
+  "A066099" => "Triangle read by rows, in which row n lists the compositions of n in reverse lexicographic order.",
+  "A228351" => "Triangle read by rows in which row n lists the compositions (ordered partitions) of n",
+  "A228369" => "Triangle read by rows in which row n lists the compositions (ordered partitions) of n in lexicographic order.",
+  "A240024" => "Composite EKG",
+
   "A273156" => "Product of all parts in Zeckendorf representation of n. ",
   "A273185" => "Start with a(0) = 0. Thereafter a(n) is the number of m < n with the property that a(m) + n is a perfect square.",
   "A273190" => "a(0) = 0; thereafter a(n) is the number of m < n for which m + n is a perfect square.",
   "A273191" => "a(n) is the length of the n-th run of A273190.",
   "A273620" => "Table read by antidiagonals: T(n, k) = floor(sqrt(k) * floor(n/sqrt(k) + 1)) with n >= 1, k >= 1.",
-
-  # A269526: Diagonals of array in which each term is the least positive value satisfying the condition that no row, column, or diagonal contains a repeated term.
   "A273823" => "Table read by rows: the n-th row is the list of numbers to the left of n in the natural numbers read by antidiagonals.",
   "A273824" => "Table read by rows: the n-th row is the list of numbers above n in the table natural numbers read by antidiagonals.",
   "A273825" => "Table read by rows: the n-th row is the list of numbers diagonally up and to the left of n in the natural numbers read by antidiagonals.",
   "A274079" => "Table read by rows: the n-th row is the list of numbers diagonally up and to the right of n in the natural numbers read by antidiagonals.",
   "A274080" => "Table read by rows: row n gives all numbers in the same row, column, or diagonal as n in the table natural numbers read by antidiagonals.",
+  "A274701" => "First differences of A259280",
+  "A275673" => "List of numbers that are in a spoke of a hexagonal spiral.",
+  "A276117" => "A064664(A000040(n)) - A064664(A006093(n))",
+  "A276162" => "Square array read by antidiagonals: T(n,k) = Product_{i = 1..k} (GCD(n, i)).",
+  "A276163" => "a(n) is the maximum first-player score difference of a \"Coins in a Row\" game over all permutations of coins 1..n with both players using a minimax strategy.",
+  "A276164" => "a(n) is the maximum first-player score of a \"Coins in a Row\" game over all permutations of coins 1..n with both players using a minimax strategy.",
+  "A276165" => "a(n) is the first-player score difference of a \"Coins in a Row\" game over the nth row of A066099 using a minimax strategy.",
+  "A276166" => "a(n) is the first player's score in a \"Coins in a Row\" game over the nth row of A066099 using a minimax strategy.",
+  "A276167" => "a(n) is the second player's score in a \"Coins in a Row\" game over the nth row of A066099 using a minimax strategy.",
+  "A276374" => "Numbers n such that A240024(n) = A002808(n)",
+  "A276375" => "Numbers n such that A240024(n + 1) = A002808(n)",
 }
 
 describe "Haskell files" do
