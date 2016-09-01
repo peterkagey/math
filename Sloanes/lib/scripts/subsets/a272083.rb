@@ -21,6 +21,19 @@ class OEIS
   end
 end
 
+# values = File.
+#   read("/Users/pkagey/personal/math/Sloanes/lib/b-files/b272083.txt").
+#   split("\n")[1..-1].
+#   map { |s| s.split("\s")[1].to_i }
+
+# seqs =  values.
+#   zip(values[1..-1]).
+#   chunk { |a, b| !b || a < b }.
+#   map { |_, ary| ary.map(&:first) }[1..-1].
+#   each_slice(2).
+#   map(&:flatten).
+#   unshift([1])
+
 # Irregular triangle read by rows: Lexicographically ordered, strictly
 # decreasing integer sequences with the property that the sum of inverses
 # equals one.
