@@ -6,12 +6,16 @@ class SequencePathIterator
   HASKELL = :haskell
   SEQUENCE_FILE_PATTERN = "/*/[aA][0123456789]*."
 
+  CURRENT_DIRECTORY = Pathname(__FILE__).dirname
+  RUBY_ROOT    = 2.times.inject(CURRENT_DIRECTORY) { |d, _| d.parent }
+  HASKELL_ROOT = 4.times.inject(CURRENT_DIRECTORY) { |d, _| d.parent } + "haskellOEIS/"
+
   attr_reader :sequence_paths
 
   def root
     case @language
-    when RUBY    then File.expand_path("../" * 3 + "scripts",     __FILE__)
-    when HASKELL then File.expand_path("../" * 5 + "haskellOEIS", __FILE__)
+    when RUBY    then File.expand_path(RUBY_ROOT    + "scripts", __FILE__)
+    when HASKELL then File.expand_path(HASKELL_ROOT + "src",     __FILE__)
     end
   end
 
@@ -29,7 +33,11 @@ class SequencePathIterator
   end
 
   def sequence_path(sequence_number)
-    sequence_paths.find { |path| path =~ /#{sequence_number}/i }
+
+    paths = sequence_paths.select { |path| path =~ /#{sequence_number}/i }
+    raise "No b-files found!" if paths.empty?
+    raise "Multiple b-files found: #{paths}" if paths.length > 1
+    paths[0]
   end
 
   def id_from_path(file_path)
@@ -62,8 +70,14 @@ class BFilePathIterator < SequencePathIterator
 
   def find_b_file(sequence_name)
     sequence_number = sequence_name[/\d+/].rjust(6, '0')
-    root = Pathname(__FILE__).dirname.parent.parent
-    root + "b-files" + "b#{sequence_number}.txt"
+
+    ruby_path    = RUBY_ROOT    + "b-files/*"
+    haskell_path = HASKELL_ROOT + "b-files/*"
+
+    ruby_b_files    = Dir[ruby_path]
+    haskell_b_files = Dir[haskell_path]
+
+    p (ruby_b_files + haskell_b_files).find { |path| path =~ /#{sequence_name}/}
   end
 
   def script_path_to_b_file(script_path)
@@ -84,7 +98,7 @@ class OEISTestPathIterator < SequencePathIterator
     when RUBY
       path.sub("/scripts/", "/specs/").sub(".rb", "_spec.rb")
     when HASKELL
-      path.sub("haskellOEIS/", "haskellOEIS/Tests/").sub(".hs", "Test.hs")
+      path.sub("/src/", "/test/").sub(".hs", "Spec.hs")
     end
   end
 
@@ -100,8 +114,8 @@ class OEISTestPathIterator < SequencePathIterator
 
   def test_root
     case @language
-    when RUBY    then File.expand_path("../" * 3 + "specs",             __FILE__)
-    when HASKELL then File.expand_path("../" * 5 + "haskellOEIS/Tests", __FILE__)
+    when RUBY    then File.expand_path(RUBY_ROOT    + "specs", __FILE__)
+    when HASKELL then File.expand_path(HASKELL_ROOT + "test",  __FILE__)
     end
   end
 

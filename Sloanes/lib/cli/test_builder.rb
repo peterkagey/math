@@ -9,16 +9,17 @@ class TestBuilder
     return puts "Sequence ID must be included!" if sequence_id.nil?
     @language = language
     @sequence_number = sequence_id[/\d{6}$/]
+    return puts "Could not parse sequence number!" if @sequence_number.nil?
     @number_of_terms = (number_of_terms || 5)
     @iterator = OEISTestPathIterator.new(@language)
     write_test unless abort_test?
-    puts "#{test_command} #{spec_file_path}"
+    puts `#{test_command} #{spec_file_path}`
   end
 
   def test_command
     case @language
     when :ruby then "bundle exec rspec"
-    when :haskell then "runhaskell"
+    when :haskell then "runhaskell -isrc -itest"
     end
   end
 
