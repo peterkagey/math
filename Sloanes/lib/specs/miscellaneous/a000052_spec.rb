@@ -6,7 +6,7 @@ describe OEIS do
     OEIS.a000052(n)
   end
 
-  it "should know first six values" do
+  it "should know first 10 values" do
     expect(a(1)).to eq 8
     expect(a(2)).to eq 5
     expect(a(3)).to eq 4
