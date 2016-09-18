@@ -3,6 +3,8 @@ require_relative '../b_file_parser'
 
 class LocalBFile # Functions about a particular sequence's local b-file.
 
+  MISSING_B_FILES = BFilePathIterator.new.missing_b_files
+
   def initialize(id)
     @id = id.to_s[/\d+/].rjust(6, '0')
   end
@@ -20,7 +22,7 @@ class LocalBFile # Functions about a particular sequence's local b-file.
   end
 
   def missing?
-    BFilePathIterator.new.missing_b_files.find { |file| file =~ /#{@id}/ }
+    MISSING_B_FILES.find { |file| file =~ /#{@id}/ }
   end
 
   def annotated_range
