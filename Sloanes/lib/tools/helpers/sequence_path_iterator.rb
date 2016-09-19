@@ -6,8 +6,8 @@ class PathIterator
   SEQUENCE_FILE_PATTERN = "/*/[aA][0123456789]*\."
 
   CURRENT_DIRECTORY = Pathname(__FILE__).dirname
-  RUBY_ROOT    = 2.times.inject(CURRENT_DIRECTORY) { |d, _| d.parent }.to_path + "/"
-  HASKELL_ROOT = 4.times.inject(CURRENT_DIRECTORY) { |d, _| d.parent }.to_path + "/haskellOEIS/"
+  RUBY_ROOT    = 2.times.inject(CURRENT_DIRECTORY) { |d, _| d.parent }.to_path
+  HASKELL_ROOT = 4.times.inject(CURRENT_DIRECTORY) { |d, _| d.parent }.to_path + "/haskellOEIS"
 end
 
 class SequencePathIterator < PathIterator
@@ -34,8 +34,8 @@ class SequencePathIterator < PathIterator
 
   def sequence_path(sequence_number)
     paths = sequence_paths.select { |path| path =~ /#{sequence_number}/i }
-    raise "No b-files found!" if paths.empty?
-    raise "Multiple b-files found: #{paths}" if paths.length > 1
+    raise "No sequence files found!" if paths.empty?
+    raise "Multiple sequence files found: #{paths}" if paths.length > 1
     paths.first
   end
 

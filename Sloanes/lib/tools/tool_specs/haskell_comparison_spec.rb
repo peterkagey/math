@@ -40,16 +40,6 @@ SKIPPING = [
 ]
 
 PENDING_HASKELL = {
-  # Graham
-  "067565" => "A067565 Inverse of Ron Graham's sequence (A006255), or zero if and only if n is a prime.",
-  "233421" => "A233421 Let m = n-th nonsquare = A000037(n); then a(n) = A006255(m).",
-  "255167" => "A255167 a(n) = A072905(n) - A006255(n).",
-  "255363" => "A255363 Numbers with the property that A006255(k) = A070229(k).",
-  "255980" => "A255980 Number of iterations of A067565 required to reach a perfect square.",
-  "259527" => "A259527 a(n) counts the number of sequences n = b_1 < b_2 < ... < b_t = A006255(n) such that b_1*b_2*...*b_t is a perfect square.",
-  "260510" => "A260510 a(n) = log_2(A259527(n)).",
-  "269045" => "A269045 Indices k such that A006255(k) != A070229(k); that is, the kth term of Ron Graham's sequence is not equal to k + lpf(k).",
-
   # Square spiral
   "260643" => "A260643 Start a spiral of numbers on a square grid, with the initial square as a(1) = 1. a(n) is the smallest positive integer not equal to or previously adjacent (horizontally/vertically) to its neighbors. See the Comments section for a more exact definition.",
   "265414" => "A265414 a(n) = point where A260643 for the first time obtains value n.",
