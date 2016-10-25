@@ -6,7 +6,7 @@ class PathIterator
   SEQUENCE_FILE_PATTERN = "/*/[aA][0123456789]*\."
 
   CURRENT_DIRECTORY = Pathname(__FILE__).dirname
-  RUBY_ROOT    = 2.times.inject(CURRENT_DIRECTORY) { |d, _| d.parent }.to_path
+  RUBY_ROOT    = 2.times.inject(CURRENT_DIRECTORY) { |d, _| d.parent }.to_path + "/"
   HASKELL_ROOT = 4.times.inject(CURRENT_DIRECTORY) { |d, _| d.parent }.to_path + "/haskellOEIS"
 end
 
@@ -54,7 +54,7 @@ end
 class BFilePathIterator < SequencePathIterator
 
   RUBY_PATH    = RUBY_ROOT    + "b-files/*"
-  HASKELL_PATH = HASKELL_ROOT + "b-files/*"
+  HASKELL_PATH = HASKELL_ROOT + "/b-files/*"
   B_FILE_PATHS = (Dir[RUBY_PATH] + Dir[HASKELL_PATH])
 
   def missing_b_files # sequences with scripts but without b-files
