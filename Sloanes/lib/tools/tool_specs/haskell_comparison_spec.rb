@@ -40,12 +40,6 @@ SKIPPING = [
 ]
 
 PENDING_HASKELL = {
-  # Square spiral
-  "260643" => "A260643 Start a spiral of numbers on a square grid, with the initial square as a(1) = 1. a(n) is the smallest positive integer not equal to or previously adjacent (horizontally/vertically) to its neighbors. See the Comments section for a more exact definition.",
-  "265414" => "A265414 a(n) = point where A260643 for the first time obtains value n.",
-  "265415" => "A265415 Positions of ones in A260643.",
-  "265579" => "A265579 a(n) = A260643(n) - 1.",
-
   # Other
   "260896" => "A260896 a(n) counts the number of integers m such that there exist k and h with 2n^2 < mk^2 < 2(n+1)^2 and 2n^2 < 2mh^2 < 2(n+1)^2.",
   "272573" => "A272573 Start a spiral of numbers on a hexagonal tiling, with the initial hexagon as a(1) = 1. a(n) is the smallest positive integer not equal to or previously adjacent to its neighbors.",
@@ -53,6 +47,7 @@ PENDING_HASKELL = {
 
 PENDING_RUBY = {
   "000010" => "Euler's phi function.",
+  "000037" => "Numbers that are not squares (or, the nonsquares).",
   "000040" => "Prime numbers.",
   "000194" => "n appears 2n times; also nearest integer to square root of n.",
   "000720" => "pi(n), the number of primes <= n.",
@@ -70,12 +65,14 @@ PENDING_RUBY = {
   "035516" => "Triangular array formed from Zeckendorf expansion of integers: repeatedly subtract the largest Fibonacci number you can until nothing remains.",
 
   "066099" => "Triangle read by rows, in which row n lists the compositions of n in reverse lexicographic order.",
+  "092487" => "A006255(n) - n",
   "112798" => "Table where n-th row is factorization of n, with each prime p_i replaced by i.",
   "185869" => "(Odd,even)-polka dot array in the natural number array A000027; read by antidiagonals.",
   "228351" => "Triangle read by rows in which row n lists the compositions (ordered partitions) of n",
   "228369" => "Triangle read by rows in which row n lists the compositions (ordered partitions) of n in lexicographic order.",
   "238689" => "Table read by rows: first row is {1}; for n >1, T(n, k) is the k-th largest prime factor of n (repeated prime factors are counted repeatedly).",
   "240024" => "Composite EKG",
+  "265400" => "a(n) = one-based index to the nearest horizontally or vertically adjacent inner neighbor in square-grid spirals, or 0 if n is one of the corner cases A033638.",
 
   "273156" => "Product of all parts in Zeckendorf representation of n. ",
   "273185" => "Start with a(0) = 0. Thereafter a(n) is the number of m < n with the property that a(m) + n is a perfect square.",
@@ -98,7 +95,10 @@ PENDING_RUBY = {
   "276167" => "a(n) is the second player's score in a \"Coins in a Row\" game over the nth row of A066099 using a minimax strategy.",
   "276374" => "Numbers n such that A240024(n) = A002808(n)",
   "276375" => "Numbers n such that A240024(n + 1) = A002808(n)",
-  "276127" => "a(1) = 1; a(n) = A001414(A064413(n)) for n > 1."
+  "276127" => "a(1) = 1; a(n) = A001414(A064413(n)) for n > 1.",
+  "277278" => "a(n) = smallest m for which there is a sequence n = b_1 < b_2 < ... < b_t = m such that b_1 + b_2 +...+ b_t is a perfect square.",
+  "277494" => "a(n) = smallest m for which there is a sequence n = b_1 < b_2 <= b_3 <= ... <= b_t = m such that b_1*b_2*...*b_t is a perfect cube.",
+  "277516" => "a(n) = smallest k >= 0 for which there is a sequence n = b_1 < b_2 < ... < b_t = n + k such that b_1 + b_2 +...+ b_t is a perfect square.",
 }
 
 describe "Haskell files" do

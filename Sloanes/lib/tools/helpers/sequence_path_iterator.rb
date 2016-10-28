@@ -15,8 +15,8 @@ class SequencePathIterator < PathIterator
 
   attr_reader :sequence_paths
 
-  RUBY_PATH_FORMAT    = RUBY_ROOT + "/scripts" + SEQUENCE_FILE_PATTERN + "rb"
-  HASKELL_PATH_FORMAT = HASKELL_ROOT + "/src"  + SEQUENCE_FILE_PATTERN + "hs"
+  RUBY_PATH_FORMAT    = RUBY_ROOT + "scripts" + SEQUENCE_FILE_PATTERN + "rb"
+  HASKELL_PATH_FORMAT = HASKELL_ROOT + "src"  + SEQUENCE_FILE_PATTERN + "hs"
 
   RUBY_SEQUENCES    = Dir[RUBY_PATH_FORMAT].reject { |s| s =~ /(sandbox|helpers)/}
   HASKELL_SEQUENCES = Dir[HASKELL_PATH_FORMAT].reject { |s| s =~ /(sandbox|helpers)/ }
@@ -54,17 +54,21 @@ end
 
 class BFilePathIterator < SequencePathIterator
 
-  B_FILE_PATHS = Dir[PROJECT_ROOT + "b-files/*"]
+  B_FILE_ROOT = PROJECT_ROOT + "/b-files/*"
+  B_FILE_PATHS = Dir[B_FILE_ROOT]
 
   def missing_b_files # sequences with scripts but without b-files
     SequencePathIterator.new
     .sequence_numbers
-    .select { |seqeunce_number| !find_b_file(seqeunce_number) }
+    .select { |seqeunce_number| !find_b_file(seqeunce_number) rescue true}
   end
 
   def find_b_file(sequence_name)
     sequence_number = sequence_name[/\d+/].rjust(6, '0')
-    B_FILE_PATHS.find { |path| path =~ /#{sequence_name}/}
+    matching_path = B_FILE_PATHS.find { |path| path =~ /#{sequence_name}/}
+    return matching_path if matching_path
+    raise "Did not find matching b-file for '#{sequence_name}' at #{B_FILE_ROOT}." +
+      " Found #{B_FILE_PATHS.length} other b-files."
   end
 
   def script_path_to_b_file(script_path)
