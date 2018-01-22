@@ -13,13 +13,13 @@ class TestBuilder
     @number_of_terms = (number_of_terms || 5)
     @iterator = OEISTestPathIterator.new(@language)
     write_test unless abort_test?
-    puts `#{test_command} #{spec_file_path}`
+    puts `#{test_command(spec_file_path, @sequence_number)}`
   end
 
-  def test_command
+  def test_command(spec_file_path, sequence_number)
     case @language
-    when :ruby then "bundle exec rspec"
-    when :haskell then "runhaskell -isrc -itest"
+    when :ruby then "bundle exec rspec #{spec_file_path}"
+    when :haskell then "stack test --test-arguments \"-m \"A#{sequence_number}\"\""
     end
   end
 
