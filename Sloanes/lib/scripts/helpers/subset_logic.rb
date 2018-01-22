@@ -8,6 +8,10 @@ class Subset
   end
 end
 
+class Range
+  def map_subsets(&block); to_a.map_subsets { |i| yield(i) } end
+end
+
 class Array
 
   def count_subsets(&block)
@@ -20,6 +24,10 @@ class Array
     (0...2**length).each { |i| yield(subset(i)) }
   end
 
+  def map_subsets(&block)
+    (0...2**length).map { |i| yield(subset(i)) }
+  end
+
   private
   # [1,2,3].subset(0b0)   => []
   # [1,2,3].subset(0b1)   => [1]
@@ -30,7 +38,7 @@ class Array
   # [1,2,3].subset(0b110) => [2,3]
   # [1,2,3].subset(0b111) => [1,2,3]
   def subset(index)
-    (0...index.bit_length).select { |i| index[i] != 1 }.map { |i| self[i] }
+    (0...index.bit_length).select { |i| index[i] == 1 }.map { |i| self[i] }
   end
 
 end
