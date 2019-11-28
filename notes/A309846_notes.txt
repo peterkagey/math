@@ -1,0 +1,45 @@
+(*) 0      = 0
+(*) 0      = 0
+(*) 0      = 0
+(*) 0      = 0
+(0) 1      = 1
+(0) 2      = 2
+(+) 6      = 3*2
+(+) 10     = 5*2
+(+) 20     = 5*2^2
+(0) 32     = 2^5
+(0) 64     = 2^6
+(-) 120    = 15*2^3
+(0) 256    = 2^8
+(0) 512    = 2^9
+(+) 1056   = 33*2^5
+(+) 2080   = 65*2^5
+(+) 4160   = 65*2^6
+(0) 8192   = 2^13
+(0) 16384  = 2^14
+(-) 32640  = 255*2^7
+(0) 65536  = 2^16
+(0) 131072 = 2^17
+
+-------
+A309846
+
+-------
+A309846(7) = 6:
+x^7 + x^6 + x^5 + x^4
+x^7 + x^6 + x^4 + x^3
+x^7 + x^6 + x^5 + x^2
+x^7 + x^5 + x^4 + x^2
+x^7 + x^6 + x^3 + x^2
+x^7 + x^4 + x^3 + x^2
+
+f(0) says no constant part
+f(1) says chunks of size 4
+f(2) says no x part
+f(3) says that odd powers - even powers is congruent to 0 mod 4,
+and thus odd (resp even) powers show up an even number of times.
+
+so of the form x^{a_1} + ... + x^{a_m} where d = a_1 > ... > a_m, 4|m and
+an even number of a_i are even (resp odd).
+
+2^m * (2^{n-m-5} \pm 1) \approx 2^{n-5}

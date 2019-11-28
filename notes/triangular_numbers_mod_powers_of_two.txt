@@ -1,0 +1,26 @@
+0;
+0, 1;
+0, 1, 3, 2;
+0, 1, 3, 6, 2, 7, 5, 4;
+0, 1, 3, 6, 10, 15, 5, 12, 4, 13, 7, 2, 14, 11, 9, 8
+
+
+def inversions(l)
+  (0...l.length-1).reduce(0) do |accum, i|
+    accum + (i+1...l.length).count { |j| l[i] > l[j] }
+  end
+end
+
+def descents(l)
+  l[0...-1].zip(l[1..-1]).count { |a, b| a > b }
+end
+
+def a329230_row(n); (0...2**n).map { |k| k*(k+1)/2 % 2**n } end
+
+Suppose we have N specific vectors of length k with entries in {x_0, x_1, ..., x_m}, and
+I can ask questions about the $i$-th entry a_i, how do I compute a strategy to
+determine which vector I have in the fewest number of questions?
+
+Suppose that N and k are quite large. Is there any hope in writing the
+"minimal decision tree" If N = k*m, there will be k questions that need to be
+asked.
