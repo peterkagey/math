@@ -1,0 +1,5 @@
+--------------------------------------------------------------------------------
+-- Variants:
+--   Players coordinate to have the greatest score differential.
+--   Players coordinate to have the smallest score differential.
+--------------------------------------------------------------------------------

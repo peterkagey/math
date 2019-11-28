@@ -1,0 +1,159 @@
+Introduction
+  - less credentials/experience than most of the folks who speak at this lecture
+  - MTH 342
+  - So I hope that this talk will be interesting despite being elementary
+  - At the very least, hopefully I can inspire you with my childlike wonder.
+  - Not formally peer reviewed
+  - I spent the first number of months reverse-engineering the byte-code of BGM protocols, so I'm weirdly comfortable looking at 1s and 0s.
+  - What is OEIS
+    # Founded by Neil Sloane from Bell Labs
+    # 275k+ sequnces
+
+About Ron Graham's Sequence
+  - The Putnam exam is an undergraduate challenge exam; and earlier questions (like A2) tend to be easier.
+  - This is the precursor to The Art of Computer Programming which is a foundational text in Computer Science.
+  - And in order to write The Art of Computer Programming, Knuth also wrote TeX -- the typesetting system.
+  - Ron Graham, like Neil Sloane, is an alum of Bell Labs, Ramsey Theorist, and is well known for Graham's Number--an unimaginably large number that was used as an upper bound in a Ramsey Theory proof.
+
+Definition
+  - I want to pause for a couple of minutes so that folks can internalize and develop some intuition for this definition.
+  - If this already makes perfect sense to you, try to compute, say g(5) (easy!) and g(8) (less easy!)
+
+
+Generalizations
+  - Ordinarily Generalizations are saved for the end, but I want to give you a heads up
+    about two of the generalizations that I'm going to explore, and one that I haven't
+    explored due to lack of insight.
+  - Egyptian Fraction version -- a friend of mine suggested this!
+    # 1/2 + 1/3 + 1/6 = 1
+
+An upper bound for Ron Graham's sequence
+  - G-bar shares some interesting properties with Ron Graham's sequence in
+    addition to being an upper bound.
+  - Hopefully this sequence will let us build a bit more intuition for g(n)
+  - We're going to circle back to this observation at the end of the
+    presentation if we get a chance.
+  - And if folks are interested, we can talk about some heuristics for this.
+
+Properties of the upper bound
+  - This proof is (I believe) correct, but I'm going to present it in a bit of a
+    hand-wavy way for the sake of brevity.
+
+Injection
+  - This is what question A2 of the Putnam was about
+  - The proof has a similar flavor to the proof of G-bar
+
+Surjection
+  - This has been widely claimed, including in a recreational journal behing a paywall.
+  - Emperical evidence strongly suggests it.
+  - I haven't seen a satisfactory proof for this, but I'd really like to hear
+    one
+  - So please do let me know if you have a proof or ideas for a proof.
+
+A better upper bound
+  - So G-bar is certainly an upper bound. But most of the time it is looser than
+    following upper bound.
+  - The tightness of the upper bound is unimportant for mathematical reasons,
+    but it is important for computational reasons.
+  - We can use a very similar argument to show that for
+    # fixed coefficient k
+    # prime p > P
+    # g(pk) = p + pk
+
+    I'll skip these details for the sake of time.
+
+A lower bound
+  - It turns out that this lower bound is acheived for quite a large amount of
+    the sequence.
+
+The algorithm
+
+  - We basically need our vectors to be tall "enough", so I'll be a little bit
+    handwave-y about this because it's not deep or mathematically interesting.
+
+
+The algorithm
+  - This definition is to make sure that our matrix is "tall-enough" but we
+    could make it taller.
+
+Example M_8
+  -
+
+Example: rref(M_14)
+  - This is the precise technique that I used to compute the first 10,000
+    terms of the sequence
+
+Counting valid sequences (OEIS A259527)
+  - A259527 is an OEIS sequence that I authored that comes out of this work.
+  - When I first started computing it, I didn't see the connection between this
+    problem and the work that I had already done.
+  - Framing the problem as linear algebra gives us a lot for free.
+
+Counting valid sequences (Example)
+  - Use same techniques as above.
+
+A basis for the null space of C_20
+  Proof of 1 first/last entry
+    - I think this is terrifically cute!
+       (1) Suppose there exists a vector with a 1 as the first entry but not as the last,
+       Then g(n) is not minimal in the construction of $\mathcal{C}_{20}$ because there is a
+       solution with a smaller upper bound.
+       (2) Suppose there exists a vector with a 1 as the last entry but not as the first,
+       Then take this vector and add it to the principal vector. We have created a new vector in the
+       null space of $\mathcal{C}_{20}$ subject to condition 1. A contradiction.
+
+Generalize to cubes (A227494)
+  - This talk spawned a couple new sequences, and this is one of them.
+    - A277494 (Draft)
+  - We make the first term appear only once so that we don't do n^3 some other cube.
+  - There might be a way to do this with the strict inequalities, but then we'd
+    need to filter the nullspace for vectors that only include 1s and 0s.
+
+Generalize to cubes (A227494)
+  - Ha! You can't tell which 3 is which!
+  - I've chosen to have columns up to 6 because I know the solution, but we
+    need ``sufficiently many'' columns here.
+
+  - This is also bounded above by 2n for n > 4, which uses an almost identical
+    argument to the square case.
+      # Prove analytically that the bound holds for n > 117, and a case by case
+        basis for all n > 4.
+  - The same lower bound explored earlier (for the original version of the
+    sequence) also holds.
+
+  - We can multiply by the multiplicative inverse of the last term to meet our condition.
+
+  - Can we generalize this any further? Sure, for primes.
+  - But composite powers lack the field properties needed to do this.
+  - Perhaps we could be inventive with linear algebra over a commutative ring
+    with identity, but that's above my pay grade.
+
+Generalize to sums (A277278)
+  - You can do it (and I did!)
+  - But (unsurprisingly) there don't seem to be any obviously nice properties.
+
+Generalize to LCM
+    % You can do it (and I did!)
+    % Bounded above by the the least square multiple of square of the
+    % squarefree part that is larger than n.
+    % Instead of adding the exponents (mod 2) this is taking the max of the
+      exponents.
+
+Optimization
+  % Going back to the original sequence (square product)
+  % Let S_n be the set of sequences starting with n and ending with g(n) whose product is a perfect square
+
+    % We could, of course, do the same thing for maximization,
+    % maybe we want the maximum GCD or something.
+
+Final Conjecture
+  - I chatted about this conjecture a bit earlier.
+  - It seems entirely within reach, but I haven't been able to make meaningful
+    progress on it.
+  - You can see from the scatterplot that there doesn't seem to be an obvious
+    bound on g-bar minus g.
+
+Final:
+  - Thanks to Holly and Chris for inviting me.
+  - I'm going to swing by Bombs Away before I go and if anyone wants to join me,
+    I'll buy the first round.

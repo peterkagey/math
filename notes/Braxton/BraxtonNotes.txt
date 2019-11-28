@@ -1,0 +1,44 @@
+Braxton notes:
+Sequences with no repeated substrings.
+1,2,2,1,3,3,1,1
+
+1,1,2,1,3,1,4,1
+
+
+Necklace (6):
+1,2,1,1,3,1
+1,1,2,1,3,1
+
+
+(1) Minimal sum sequences start/end with 1
+(2) Nice way of counting necklaces
+  (a) Prove/disprove symmetrical necklaces
+(3) Prove a bijection between sequence and necklaces.
+(4) For a minimal sum sequence of length n, how many 1 exists in sequence
+
+
+(LCM/Max)
+(2)  (1, 1)
+(5)  (1, 2), (2, 1), (2, 2)
+(10) (1, 3), (2, 3), (3, 1), (3, 2), (3, 3)
+(17) (1, 4), (2, 4), (3, 4), (4, 1), (4, 2), (4, 3), (4, 4)
+
+(n - 1)**2 + 2 .. n**2 + 1 => n
+
+[1, 1]
+[1, 1, 2]
+[1, 1, 2, 1]
+[1, 1, 2, 2, 1]
+
+def A061799(k);
+  (1..Float::INFINITY).find { |i| A000005(i) >= k }
+end
+
+def A000005(n)
+  (1..n).count { |i| n % i == 0 }
+end
+
+def A003059(n); Math.sqrt(n).ceil end
+
+a(1) = 1
+a(n) = A061799(A003059(n - 1))

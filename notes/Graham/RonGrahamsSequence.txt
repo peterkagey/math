@@ -1,0 +1,47 @@
+Ron Graham’s Sequence
+
+Let g(n) be the nth term of Ron Graham’s Sequence (A006255): g(n) = smallest m for which there is a sequence n = b_1 < b_2 < ... < b_t = m such that b_1*b_2*...*b_t is a perfect square.
+Let f(n) be the least k > n such that k * n is a perfect square. (A072905, a surjection!)
+Let h(n) Smallest values of t arising in Ron Graham's sequence (A066400)
+
+Then I wish to prove the following three equivalent statements:
+(1) n * A006255(n) is never a perfect square.
+(2) f(n) > g(n) for all n; (i.e. A255167(n) > 0)
+(3) h(n) != 2 for all n. (i.e. h(k) > 2 for all nonsquare k.)
+
+g(n) & f(n) are bijections from N onto their domains. (Composites & nonsquarefree numbers respectively.)
+
+————————
+
+Let g(n) be the nth term of Ron Graham’s Sequence (A006255): g(n) = smallest m for which there is a sequence n = b_1 < b_2 < ... < b_t = m such that b_1*b_2*...*b_t is a perfect square.
+Let f(n) be the least k > n such that k * n is a perfect square. (A072905, a surjection!)
+Let h(n) Smallest values of t arising in Ron Graham's sequence (A066400)
+
+Then I wish to prove (or disprove) the following three equivalent statements:
+(1) n * A006255(n) is never a perfect square.
+(2) f(n) > g(n) for all n.
+(3) h(k) > 2 for all nonsquare k.
+
+f & g are bijections onto their domains (nonsquarefree & composite numbers respectively).
+
+(2) is true for all values of n such that g(n) is squarefree. (This takes care of asymptotically ~60.8% of numbers; g(n) = 4n for squarefree n).
+
+————————
+
+Conjecture:
+Given some fixed a and b, the probability that there exists an m such that
+  a * n^2 < b * m^2 < a * (n+1)^2
+is sqrt(a/b) as n goes to infinity.
+
+a * n^2 < b * m^2 < a * (n+1)^2
+a/b * n^2 < m^2 < a/b * (n+1)^2
+Let k = a/b
+k * n^2 < m^2 < k * (n+1)^2
+sqrt(k) * n < m < sqrt(k) * (n+1)
+n < m/sqrt(k) < n+1
+let K = (1/sqrt(k))
+is 1/K for K > 1 as n goes to infinity.
+
+for all K > 1, the probability that there exists m such that
+   n < K * m < n+1
+is 1/K as n -> infinity.

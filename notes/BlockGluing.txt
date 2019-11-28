@@ -1,0 +1,62 @@
+Let's define three brick gluing functions:
+(1) a defines the number of "border configurations" made by gluing planes of length two together — up to reflection/rotation
+(2) a' defines the number of "internal configurations" made by gluing planes of length two together — up to reflection/rotation
+(3) b defines the number of "border configurations" made by gluing sections of length two together — up to reflection/rotation
+(4) b' defines the number of "internal configurations" made by gluing sections of length two together — up to reflection/rotation
+
+a(1) = a'(1) = b(1) = b'(1) = 1
+
+┏━━━┓
+┃   ┃
+┃   ┃    ┏━━━━━━━┓
+┃   ┃ ~= ┃       ┃
+┗━━━┛    ┗━━━━━━━┛
+
+a(2) = a'(2) = b(2) = b'(2) = 1
+
+┏━━━┳━━━┓    ┏━━━┯━━━┓
+┃   ┃   ┃    ┃       ┃
+┠   ╂   ┨ ~= ┣━━━┿━━━┫
+┃   ┃   ┃    ┃       ┃
+┗━━━┻━━━┛    ┗━━━┷━━━┛
+
+a(3) = b(3) = 1;
+a'(3) = b'(3) = 2
+
+┏━━━┯━━━┓       ┏━━━┯━━━┓
+┃       ┃       ┃       ┃
+┣━━━┿━━━┫       ┣━━━╈━━━┫
+┃       ┃ ~(a)= ┃   ┃   ┃
+┣━━━┿━━━┫       ┠   ╂   ┨
+┃       ┃       ┃   ┃   ┃
+┗━━━┷━━━┛       ┗━━━┻━━━┛
+
+a(4) = 2
+
+┏━━━┯━━━┓
+┃       ┃
+┣━━━┿━━━┫
+┃       ┃
+┣━━━┿━━━┫
+┃       ┃
+┣━━━┿━━━┫
+┃       ┃
+┗━━━┷━━━┛
+
+┏━━━┯━━━┓
+┃       ┃
+┣━━━╈━━━╋━━━┓
+┃   ┃   ┃   ┃
+┠   ╂   ╂   ┨
+┃   ┃   ┃   ┃
+┗━━━┻━━━┻━━━┛
+
+Example of b(5): new tile placed in a corder.
+
+┏━━━┯━━━┳━━━┯━━━┓
+┃       ┃ x   x ┃
+┣━━━╈━━━╋━━━╋━━━┛
+┃   ┃   ┃   ┃
+┠   ╂   ╂   ┨
+┃   ┃   ┃   ┃
+┗━━━┻━━━┻━━━┛

@@ -1,0 +1,5 @@
+1) on an alphabet of n letters how many "special strings" exist?
+
+2) Minimize product
+3) Minimize unordered pairs
+4) Exponentiation?

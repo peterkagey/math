@@ -1,0 +1,7 @@
+I have some insight into the second question. The regions where the steep slopes appear are places where none of the numbers are anagrams in bases 3 or 4 (which are, by far, the commonest anagram bases).
+
+In particular, the values of $n$ that can be a base-$b$ anagram are of the form
+$b^k < n < \frac{b^k}{2}$ for some $k \in \mathbb{N}$.
+
+The first bump appears roughly between $y$ values of:
+$(\frac{3^7}{2} = 3280, 6561 = 3^8)$.

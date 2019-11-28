@@ -1,0 +1,334 @@
+  <ul>
+    <li> Problem v2/1. <i>Unscrewing light bulbs</i> </li>
+    <li> Problem v2/21. <i>Rectangles in rectangular grid</i> </li>
+    <li> Problem v2/26. <i>Avoiding triangles with monochromatic vertices</i> </li>
+    <li> Problem v2/30. <i>Costas array generalization</i> </li>
+    <ul>
+      <li> Number of boards: 1, 1, 2, 7, 23, 115, 694, 5282, ... </li>
+      <li> Greatest number of distances: 0, 1, 2, 4, 8, 11, 15, 20, .... </li>
+      <li> Fewest number of distances: 0, 1, 2, 2, 3, 5, 5, 6, ... </li>
+    </ul>
+    <li> Problem v2/31. <i>Counting different tilings</i> </li>
+    <li> Problem v2/33. <i>Stacking bricks</i> </li>
+    <li> Problem v2/34. <i>Avoiding three points of the same color on a line</i> </li>
+    <li> Problem v2/37. <i>Lines through boxes turn box on</i> </li>
+    <li> Problem v2/48 <i>Folding a strip of triangles</i>
+    <li> Problem v2/54. <i>Diophantine approximations of an equilateral triangle</i> </li>
+    <li> Problem v2/60. <i>First difference equivalence classes</i> </li>
+    <li> Problem v2/61. <i>Avoiding repeated tile color adjacencies</i> </li>
+    <li> Problem v2/82. <i>Venn Diagrams</i> </li>
+  </ul>
+
+<pre>
+  Run lengths of A324608 and run lengths of bits in A308092 (agree for first 51 terms)
+</pre>
+
+<pre>
+  1. How many primitive Pythagorean triangles where difference between leg and hypotenuse is A096033?
+  2. Is there a bijection between these primitive Pythagorean triangles and Heronian isosceles triangles with semiperimeter A096033?
+</pre>
+
+<pre>
+  #############
+  # Primitive #
+  #############
+  (A096468) Numbers that are the perimeter of a primitive Heronian triangle.
+  12, 16, 18, 30, 32, 36, 40, 42, 44, 48, 50, 54, 56, 60, 64, 66, 68, 70, 72, 76, 78, 80, 84, 90, 96, 98, 100, 104, 108, 110, 112, 114, 120, 126, 128, 130, 132, 136, 140, 144, 150, 152, 154, 156, 160, 162, 164, 168, 170, 172, 174, 176, 180, 182, 186, 190, 192, 196, 198, 200
+  Semiperimeter:
+  6, 8, 9, 15, 16, 18, 20, 21, 22, 24, 25, 27, 28, 30, 32, 33, 34, 35, 36, 38, 39, 40, 42, 45, 48, 49, 50, 52, 54, 55, 56, 57, 60, 63, 64, 65, 66, 68, 70, 72, 75, 76, 77, 78, 80, 81, 82, 84, 85, 86, 87, 88, 90, 91, 93, 95, 96, 98, 99, 100
+
+  Numbers that are the perimeter of a primitive Heronian isosceles triangle. 2*A096033(n+2)
+  16, 18, 36, 50, 64, 98, 100, 144, 162, 196, 242, 256, 324, 338, 400, 450, 484, 576, 578, 676, 722, 784, 882, 900, 1024, 1058, 1156, 1250, 1296, 1444, 1458, 1600, 1682, 1764, 1922, 1936, 2116, 2178, 2304, 2450, 2500, 2704, 2738, 2916, 3042, 3136
+  (A096033?)  Semiperimeter
+  Ask on MSE: Semiperimeter of isosceles Heronian triangles vs leg-hypotenuse difference in Pythagorean triangles?
+  8, 9, 18, 25, 32, 49, 50, 72, 81, 98, 121, 128, 162, 169, 200, 225, 242, 288, 289, 338, 361, 392, 441, 450, 512, 529, 578, 625, 648, 722, 729, 800, 841, 882, 961, 968, 1058, 1089, 1152, 1225, 1250, 1352, 1369, 1458, 1521, 1568
+
+  Numbers that are the perimeter of a primitive Heronian scalene triangle.
+  12, 30, 32, 36, 40, 42, 44, 48, 54, 56, 60, 64, 66, 68, 70, 72, 76, 78, 80, 84, 90, 96, 98, 100, 104, 108, 110, 112, 114, 120, 126, 128, 130, 132, 136, 140, 144, 150, 152, 154, 156, 160, 162, 164, 168, 170, 172, 174, 176, 180, 182, 186, 190, 192, 196, 198, 200
+  Semiperimeter
+  6, 15, 16, 18, 20, 21, 22, 24, 27, 28, 30, 32, 33, 34, 35, 36, 38, 39, 40, 42, 45, 48, 49, 50, 52, 54, 55, 56, 57, 60, 63, 64, 65, 66, 68, 70, 72, 75, 76, 77, 78, 80, 81, 82, 84, 85, 86, 87, 88, 90, 91, 93, 95, 96, 98, 99, 100
+
+
+  #######
+  # All #
+  #######
+  (A051518) Numbers that are the perimeter of a Heronian triangle.
+  12, 16, 18, 24, 30, 32, 36, 40, 42, 44, 48, 50, 54, 56, 60, 64, 66, 68, 70, 72, 76, 78, 80, 84, 88, 90, 96, 98, 100, 104, 108, 110, 112, 114, 120, 126, 128, 130, 132, 136, 140, 144, 150, 152, 154, 156, 160, 162, 164, 168, 170, 172, 174, 176, 180, 182, 186, 190, 192, 196, 198, 200
+  (A305704) Semiperimeter:
+  6, 8, 9, 12, 15, 16, 18, 20, 21, 22, 24, 25, 27, 28, 30, 32, 33, 34, 35, 36, 38, 39, 40, 42, 44, 45, 48, 49, 50, 52, 54, 55, 56, 57, 60, 63, 64, 65, 66, 68, 70, 72, 75, 76, 77, 78, 80, 81, 82, 84, 85, 86, 87, 88, 90, 91, 93, 95, 96, 98, 99, 100, 102, 104, 105
+
+  Numbers that are the perimeter of a Heronian isosceles triangle. Twice A046790?
+  16, 18, 32, 36, 48, 50, 54, 64, 72, 80, 90, 96, 98, 100, 108, 112, 126, 128, 144, 150, 160, 162, 176, 180, 192, 196, 198, 200, 208, 216, 224, 234, 240, 242, 250, 252, 256, 270, 272, 288, 294, 300, 304, 306, 320, 324, 336, 338, 342, 350, 352, 360, 368, 378, 384, 392, 396, 400
+  Numbers that are the semiperimeter of a Heronian isosceles triangle. A046790?
+  8, 9, 16, 18, 24, 25, 27, 32, 36, 40, 45, 48, 49, 50, 54, 56, 63, 64, 72, 75, 80, 81, 88, 90, 96, 98, 99, 100, 104, 108, 112, 117, 120, 121, 125, 126, 128, 135, 136, 144, 147, 150, 152, 153, 160, 162, 168, 169, 171, 175, 176, 180, 184, 189, 192, 196, 198, 200
+
+  Numbers that are the perimeter of a Heronian scalene triangle.
+  12, 24, 30, 32, 36, 40, 42, 44, 48, 54, 56, 60, 64, 66, 68, 70, 72, 76, 78, 80, 84, 88, 90, 96, 98, 100, 104, 108, 110, 112, 114, 120, 126, 128, 130, 132, 136, 140, 144, 150, 152, 154, 156, 160, 162, 164, 168, 170, 172, 174, 176, 180, 182, 186, 190, 192, 196, 198, 200
+  Numbers that are the semiperimeter of a Heronian scalene triangle.
+  6, 12, 15, 16, 18, 20, 21, 22, 24, 27, 28, 30, 32, 33, 34, 35, 36, 38, 39, 40, 42, 44, 45, 48, 49, 50, 52, 54, 55, 56, 57, 60, 63, 64, 65, 66, 68, 70, 72, 75, 76, 77, 78, 80, 81, 82, 84, 85, 86, 87, 88, 90, 91, 93, 95, 96, 98, 99, 100
+  ---------------------------------------------------------------------------- #
+
+  ###################
+  # Count Primitive #
+  ###################
+  (A298614) Number of primitive Heronian triangles with perimeter A096468(n).
+  1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 3, 1, 1, 3, 1, 1, 2, 1, 1, 1, 2, 5, 3, 1, 6, 3, 2, 5, 1, 4, 1, 1, 1, 4, 1, 6, 1, 3, 4, 5, 1, 3, 3, 2, 8, 1, 1, 1, 1, 1, 5, 1, 3, 2, 2, 7, 8, 3, 4, 3, 2, 6, 3, 3, 1, 5, 4, 3, 1, 5, 1, 2, 6, 16
+
+  Number of primitive Heronian isosceles triangles with semi-perimeter A096033(n).
+  1, 1, 1, 2, 2, 3, 2, 2, 3, 3, 5, 4, 3, 6, 4, 4, 5, 4, 8, 6, 9, 6, 6, 4, 8, 11, 8, 10, 6, 9, 9, 8, 14, 6, 15, 10, 11, 10
+
+  Number of primitive Heronian scalene triangles with perimeter A######(n).
+  1, 1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 5, 3, 1, 3, 1, 2, 5, 1, 4, 1, 1, 1, 4, 1, 6, 1, 3, 2, 5, 1, 3, 3, 2, 5, 1, 1, 1, 1, 1, 5, 1, 3, 2, 2, 7, 5, 3, 4, 3, 2, 6, 3, 3, 1, 5, 4, 3
+
+
+  #############
+  # Count All #
+  #############
+  (A305717) Number of Heronian triangles with perimeter A051518(n).
+  1, 1, 1, 1, 1, 2, 4, 1, 2, 1, 3, 2, 4, 1, 3, 5, 1, 1, 2, 5, 1, 1, 4, 8, 1, 5, 5, 6, 5, 2, 12, 1, 6, 1, 5, 4, 9, 1, 9, 2, 5, 11, 8, 2, 3, 5, 7, 12, 1, 10, 1, 1, 1, 7, 10, 3, 2, 2, 15, 14, 5, 10, 5, 5, 11, 16, 5, 1, 12, 7, 3, 1, 7, 1, 2, 15, 16, 1, 11, 16, 18
+
+  Number of Heronian isosceles triangles with perimeter A######(n).
+  1, 1, 1, 2, 1, 2, 1, 3, 2, 1, 1, 1, 3, 4, 2, 1, 1, 3, 5, 2, 1, 4, 1, 2, 3, 6, 1, 4, 1, 2, 1, 1, 1, 5, 2, 2, 7, 1, 1, 5, 3, 4, 1, 1, 3, 8, 1, 6, 1, 2, 1, 2, 1, 1, 3, 6, 2, 9, 1, 1, 5, 3, 7, 1, 2, 1, 10, 4, 3, 1, 4, 2, 7, 1, 1, 2, 1, 2, 1, 1, 11, 8, 6, 1, 1, 4, 1, 2, 1, 1, 3, 8, 2, 1, 1, 1, 12, 2, 3, 1, 4, 1, 3, 5, 9, 5, 1, 1, 2, 1, 2, 7, 1, 13, 2, 9, 4, 1, 2, 3, 1, 1, 2, 5, 1, 10, 3, 14, 1, 1, 1, 2, 1, 2, 1, 3, 10, 8, 1, 6, 1, 1, 4, 5, 6, 15, 1, 1, 2, 2, 1, 11, 1, 1
+
+  Number of Heronian scalene triangles with perimeter A######(n).
+  1, 1, 1, 1, 2, 1, 2, 1, 2, 3, 1, 3, 2, 1, 1, 2, 3, 1, 1, 3, 8, 1, 4, 4, 3, 1, 2, 10, 1, 5, 1, 5, 3, 6, 1, 9, 2, 5, 6, 6, 2, 3, 5, 6, 8, 1, 10, 1, 1, 1, 6, 8, 3, 2, 2, 12, 8, 4, 6, 5, 4, 11, 14, 5, 1, 11, 7, 3, 1, 6, 1, 2, 14, 11, 1, 9, 14, 11, 1, 4, 11, 3, 1, 11, 4, 2, 7, 4, 12, 2, 1, 18, 2, 17, 4, 7, 5, 1, 8, 1, 14, 5, 22, 2, 10, 1, 19, 11, 4, 3, 2, 6, 9, 8, 1, 1, 15, 8, 1, 2, 1, 9, 2, 23, 6, 21, 1, 7, 20, 21, 12, 1, 3, 9, 3, 2, 12, 3, 28, 1, 1, 1, 29, 2, 2, 7, 4,
+<pre>
+
+<pre>
+  -----------------------------
+  Problem 1.
+  Number of lights on a triangle that must stay on:
+  0, 2, 5, 8, 12, 17, 23, 30
+<pre>
+
+<pre>
+  -----------------------------
+  https://oeis.org/A020872
+
+  Generating function:
+  (4*x^9 - 11*x^8 - 31*x^7 + 108*x^6 - 264*x^4 + 214*x^3 + 87*x^2 - 133*x + 34)/(-x^10 + 3*x^9 + 6*x^8 - 25*x^7 + 3*x^6 + 56*x^5 - 43*x^4 - 23*x^3 + 34*x^2 - 11*x + 1)
+  (https://tio.run/#pari-gp)
+      ggf(v)={ my( p, q, B=#v\2 ); if( B<4, "Need at least 8 values!",
+       if( !#q=qflll(matrix(B,B,x,y,v[x-y+B+1]),4)[1], "QFLLL returned empty result.",
+        polcoeff(p=Ser(q[,1]),0)<0 && p=-p; /* adjust sign */
+        q=Pol(Ser(v)*p);
+        if( Ser(v)==q/=Pol(p), q,
+         Str("I guessed ",q,", but it doesn't reproduce the last value!")
+      )))}
+
+  Asymptotic:
+    N[(x /. Solve[x^4 - x^3 - 4 x^2 + 7 x - 1 == 0, x] // Last)^-1, 50]
+    6.3490883181034580685934755334751178748395539772887^n
+<pre>
+  -----------------------------
+  Table read by rows: T(n, k) is the last k bits of n, 0 < k < A070939 n.
+    [],[],[0],[1],[0,0],[1,1],[0,2],[1,3],[0,0,0],[1,1,1],[0,2,2]
+
+  Table read by rows: T(n, k) is the last k bits of n, 0 <= k < A070939 n.
+    [0],[0],[0,0],[0,1],[0,0,0],[0,1,1],[0,0,2],[0,1,3],[0,0,0,0],[0,1,1,1],[0,0,2,2]
+
+  Table read by rows: T(n, k) is the last k bits of n, 0 < k <= A070939 n.
+    [0],[1],[0,2],[1,3],[0,0,4],[1,1,5],[0,2,6],[1,3,7],[0,0,0,8],[1,1,1,9],[0,2,2,10]
+
+  Table read by rows: T(n, k) is the last k bits of n, 0 <= k <= A070939 n.
+    [0,0],[0,1],[0,0,2],[0,1,3],[0,0,0,4],[0,1,1,5],[0,0,2,6],[0,1,3,7],[0,0,0,0,8],[0,1,1,1,9],[0,0,2,2,10]
+
+  -- The reverse --
+
+  Table read by rows: T(n, k) is n with the first k bits removed, 0 < k < A070939 n.
+    [[],[],[0],[1],[0,0],[1,1],[2,0],[3,1],[0,0,0],[1,1,1],[2,2,0]]
+
+  Table read by rows: T(n, k) is n with the first k bits removed, 0 <= k < A070939 n.
+   [0],[1],[2,0],[3,1],[4,0,0],[5,1,1],[6,2,0],[7,3,1],[8,0,0,0],[9,1,1,1],[10,2,2,0]
+
+  Table read by rows: T(n, k) is n with the first k bits removed, 0 < k <= A070939 n.
+   [0],[0],[0,0],[1,0],[0,0,0],[1,1,0],[2,0,0],[3,1,0],[0,0,0,0],[1,1,1,0],[2,2,0,0]
+
+  Table read by rows: T(n, k) is n with the first k bits removed, 0 <= k <= A070939 n.
+   [0,0],[1,0],[2,0,0],[3,1,0],[4,0,0,0],[5,1,1,0],[6,2,0,0],[7,3,1,0],[8,0,0,0,0],[9,1,1,1,0],[10,2,2,0,0]
+</pre>
+
+<pre>
+  -----------------------------
+  Investigate discrete labelled/unlabelled topologies with certain properties.
+  A000798		Number of topologies with n labeled elements.
+  A001035		Number of T_0 topologies.
+  A234268		Number of convex topologies on an n-point totally ordered set.
+
+  Note: add A001035(n) - A000798(n), which is the number of topologies on n
+  labeled elements which are not Kolmogorov spaces.
+  0, 0, 1, 10, 136, 2711, 79504, 3405382, 211055975, 18749246912, 2365988624260,
+  420564361630293, 104490620009920522, 36030665275081893690,
+  17132727719926060775277, 11169098098145556139435182,
+  9930583626219881751366237516, 11985408843042557809380587456695,
+  19553143146433198202168306753032180
+</pre>
+
+<pre>
+  -----------------------------
+
+  1) Lexicographically earliest sequence such that the circle defined by
+    (n, a(n)), (n-1, a(n-1)), (n-2, a(n-2))
+  has larger radius than the circle defined by
+    (n-1, a(n-1)), (n-2, a(n-2)), (n-3, a(n-3))
+  for all n.
+  2) Has center further from the origin/smaller x value/larger y value/has larger radius, has distinct y value for center
+  3) Contains the previous circle
+  4) Intersects a maximal number of previous circles
+  5) Such that the circle defined by
+      (n+1, a(n+1)), (n, a(n)), (n-1, a(n-1))
+    is as small as possible? While being distinct from all previous circles?
+</pre>
+
+<pre>
+  -----------------------------
+
+  How many equilateral triangles in the triangular grid up to dihedral action
+  of the grid? How many up to movement without rotation? How many up to rigid
+  motion (i.e. how many sizes?)
+  How many primitive triangles (i.e. how many rotation classes?)
+</pre>
+
+<pre>
+  -----------------------------
+
+  There are permutations $s$ of $\{ 1, 2, \hdots, n\}$ such that no $k$-subsets
+  of $\{ (1, s(1)), \hdots, (n, s(n)) \}$ can be interpolated with a degree $k-2$
+  polynomial. What permutation(s) has the property that the *greatest* number of
+  $k$-subsets of $\{ (1, s(1)), \hdots, (n, s(n)) \}$ can be interpolated with
+  a degree $k-2$ polynomial?
+</pre>
+
+<pre>
+  -----------------------------
+
+  How many super tic-tac-toe games exist as a function of the depth of the game?
+  (Up to dihedral action?)
+</pre>
+
+
+  Number of ways to make rectangles from n squares such that the side lengths of
+  the squares satisfy gcd(s<sub>1</sub>, s<sub>2</sub>, ..., s<sub>n</sub>) = 1.
+  <br>
+  (<a href="https://en.wikipedia.org/wiki/Squaring_the_square">Squaring the Square</a>)
+  <ul>
+    <li> How many distinct rectangles? </li>
+    <li> What's the rectangle with the most area? Least? </li>
+    <li> What's the longest rectangle? Least perimeter? </li>
+  </ul>
+
+  <pre style="font-family:menlo">
+  a(1) = 1:
+  ┌─┐
+  └─┘
+
+  a(2) = 1:
+  ┌─┐
+  ├─┤
+  └─┘ (2)
+
+  a(3) = 2:
+  ┌─┐ ┌─┬─┐
+  ├─┤ ├─┴─┤
+  ├─┤ │   │
+  └─┘ └───┘ (3)
+
+  a(4) = 6:
+  ┌─┬─┐
+  ├─┼─┤
+  └─┴─┘ (2)
+  ┌─┐ ┌─┬─┬─┐
+  ├─┤ ├─┴─┴─┤
+  ├─┤ │     │
+  ├─┤ │     │
+  └─┘ └─────┘ (4)
+  ┌───┐ ┌───┐ ┌─┬───┐
+  │   │ │   │ ├─┤   │
+  ├───┤ ├─┬─┤ ├─┴───┤
+  │   │ ├─┴─┤ │     │
+  ├─┬─┤ │   │ │     │
+  └─┴─┘ └───┘ └─────┘ (5)
+
+  a(5) >= 17:
+  ┌─┬─┐ ┌─┬─┐
+  ├─┼─┤ ├─┴─┤
+  ├─┴─┤ │   │
+  │   │ ├─┬─┤
+  └───┘ └─┴─┘ (4)
+  ┌─┐ ┌─┬─┬─┬─┐
+  ├─┤ ├─┴─┴─┴─┤
+  ├─┤ │       │
+  ├─┤ │       │
+  ├─┤ │       │
+  └─┘ └───────┘ (5)
+  ┌─────┬───┐
+  │     │   │
+  │     ├───┤
+  ├─────┤   │
+  │     ├───┤
+  │     │   │
+  └─────┴───┘ (6)
+  ┌───┐ ┌───┐ ┌─────┐ ┌─┬─┬─┐ ┌─┬─────┐ ┌───┬─┬───┐ ┌───┬───┬─┐ ┌─────┬─────┐
+  │   │ │   │ │     │ ├─┴─┴─┤ ├─┤     │ │   ├─┤   │ │   │   ├─┤ │     │     │
+  ├─┬─┤ ├───┤ │     │ │     │ ├─┤     │ ├───┴─┴───┤ ├───┴───┴─┤ │     │     │
+  ├─┴─┤ │   │ ├─┬─┬─┤ │     │ ├─┴─────┤ │         │ │         │ ├───┬─┴─────┤
+  │   │ ├───┤ ├─┴─┴─┤ ├─────┤ │       │ │         │ │         │ │   │       │
+  ├───┤ │   │ │     │ │     │ │       │ │         │ │         │ ├───┤       │
+  │   │ ├─┬─┤ │     │ │     │ │       │ │         │ │         │ │   │       │
+  └───┘ └─┴─┘ └─────┘ └─────┘ └───────┘ └─────────┘ └─────────┘ └───┴───────┘ (7)
+  ┌─┬───┐ ┌─────┐ ┌─────────┐ ┌─┬─┬─────┐
+  ├─┤   │ │     │ │         │ ├─┴─┤     │
+  ├─┴───┤ │     │ │         │ │   │     │
+  │     │ ├─┬───┤ │         │ ├───┴─────┤
+  │     │ ├─┤   │ │         │ │         │
+  ├─────┤ ├─┴───┤ ├─┬─┬─────┤ │         │
+  │     │ │     │ ├─┴─┤     │ │         │
+  │     │ │     │ │   │     │ │         │
+  └─────┘ └─────┘ └───┴─────┘ └─────────┘ (8)
+</pre>
+
+
+<pre style="font-family:menlo">
+-----------------------------
+Problem 91
+┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓
+┃ ╳ ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃ ╳ ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃ ╳ ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃ ╳ ┃
+┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛
+
+
+┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓
+┃ ╳ ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃   ┃   ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃ ╳ ┃ ╳ ┃   ┃   ┃   ┃ ╳ ┃ ╳ ┃   ┃   ┃   ┃ ╳ ┃ ╳ ┃ ╳ ┃   ┃   ┃ ╳ ┃ ╳ ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃ ╳ ┃
+┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛
+
+┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓
+┃ ╳ ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃   ┃   ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃   ┃ ╳ ┃   ┃ ╳ ┃   ┃   ┃ ╳ ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃ ╳ ┃   ┃ ╳ ┃   ┃   ┃ ╳ ┃   ┃ ╳ ┃   ┃   ┃ ╳ ┃   ┃ ╳ ┃   ┃   ┃ ╳ ┃   ┃ ╳ ┃ ╳ ┃
+┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛
+
+┏━━━┳━━━┳━━━┳━━━┓   ┏━━━┳━━━┳━━━┳━━━┓
+┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃ ╳ ┃   ┃   ┃ ╳ ┃   ┃   ┃ ╳ ┃ ╳ ┃   ┃
+┣━━━╋━━━╋━━━╋━━━┫   ┣━━━╋━━━╋━━━╋━━━┫
+┃ ╳ ┃   ┃   ┃ ╳ ┃   ┃   ┃ ╳ ┃ ╳ ┃   ┃
+┗━━━┻━━━┻━━━┻━━━┛   ┗━━━┻━━━┻━━━┻━━━┛
+</pre>

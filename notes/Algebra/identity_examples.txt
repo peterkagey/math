@@ -1,0 +1,33 @@
+S = { 1, 2, 3, 4, ... }
+(a,b) -> a + b        No identity (0)
+(a,b) -> a * b        Identity: (1)
+(a,b) -> a ^ b        No identity: (1) a ^ 1 = a, but 1 ^ b != b (1 is called a left identity)
+(a,b) -> max(a, b)    Identity: (1) max(a, 1) = a; max(1, b) = b
+(a,b) -> min(a, b)    No identity.
+
+----------------------------------------------------------
+
+R
+(a, b) -> 1/a * b     No identity: b/1 = b; 1/a != a (1 is called a right identity)
+(a, b) -> min(a, b)   No identity: suppose k is the identity. min(k, k+1) != k + 1
+
+----------------------------------------------------------
+
+S = { ..., 1/8, 1/4, 1/2, 1, 2, 4, ... }
+(a, b) -> a * b       Identity (1)
+(a, b) -> a + b       No identity (0)
+
+----------------------------------------------------------
+
+Boolean algebra { T, F }
+
+(a, b) -> a && b (T)
+(a, b) -> a || b (F)
+(a, b) -> a ^ b  No Identity. T: T ^ T = F  &  F ^ F = T.
+
+----------------------------------------------------------
+
+S = NxN = { (a, b): a, b in N }
+((a, b), (c, d)) -> ((a + c), (b * d))    Identity: (0, 1)
+
+----------------------------------------------------------

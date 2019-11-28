@@ -1,0 +1,61 @@
+  N = { 0, 1, 2, 3, ... }
+
+  (a, b) -> a + b                Closed.
+  (a, b) -> a/b                  Not closed.
+  (a, b) -> max(a,b)!/min(a,b)!  Closed.
+
+  Questions:
+  (a, b) -> a - b               Not closed.
+  (a, b) -> abs(a - b)          Closed.
+  (a, b) -> a * b               Closed.
+  (a, b) -> b                   Closed.
+  (a, b) -> max(a) - min(b)     Closed.
+  (a, b) -> a^b                 Closed.
+  (a, b) -> sqrt(a + b)         Not closed.
+  (a, b) -> gcd(a, b)           Closed.
+  (a, b) -> lcm(a, b)           Closed.
+  (a, b) -> lcm(a, b)/gcd(a, b) Closed.
+
+----------------------------------------------------------
+
+  Z = { ..., -3, -2, -1, 0, 1, 2, 3, ... }
+
+  (a, b) -> a/b                  Not closed.
+  (a, b) -> a - b               Closed.
+  (a, b) -> max(a) - min(b)     Closed.
+  (a, b) -> sqrt(a + b)         Not closed.
+
+----------------------------------------------------------
+
+  Q
+
+  (a, b) -> a/b                 Not closed.
+  (a, b) -> a - b               Closed.
+  (a, b) -> max(a) - min(b)     Closed.
+  (a, b) -> sqrt(a + b)         Not closed.
+  (a, b) -> sqrt(abs(a + b))    Closed.
+
+----------------------------------------------------------
+
+  R - {0}
+
+  (a, b) -> a/b                 Closed.
+  (a, b) -> a - b               Closed.
+  (a, b) -> max(a) - min(b)     Closed.
+  (a, b) -> sqrt(a + b)         Not closed.
+  (a, b) -> sqrt(abs(a + b))    Closed.
+
+----------------------------------------------------------
+
+S = {..., 1/8, 1/4, 1/2, 1, 2, 4, 8, ....}
+
+(a, b) -> a/b                   Closed
+(a, b) -> a * b                 Closed
+(a, b) -> a - b                 Not closed
+
+----------------------------------------------------------
+
+A001013 Jordan-Polya numbers: products of factorial numbers A000142.
+
+(a, b) -> a * b                 Closed
+(a, b) -> a^b                   Closed

@@ -1,0 +1,58 @@
+I read a problem that has kept me up:
+
+You have N coins in a row, all heads. You may flip over any coin that is heads,
+but you must also flip over it's neighbor to the right. Prove that this routine must halt.
+
+Proof:
+Encode the line of coins as a binary value.
+Claim: This value is strictly increasing with each move, and a move is always available until the value is 2^n-1 (all tails)
+
+The possible combinations of coins that can be flipped are as follows:
+If the coin to the right of the heads is a heads, this is equivalent to adding 2^k + 2^k-1 to the row. If the coin is tails, this is equivalent to adding 2^k - 2^k-1 to the row.
+
+------------------------------------------------------------------------------
+
+Here's the generalization I've thought of:
+N coins in a line, initially heads up. Flip over any heads, and randomly
+(with probability p and 1-p respectively) flip over the either coin to the left
+or right.
+Because all moves result in a row with an equal or greater number of tails,
+this routine halts with probability 1.
+
+Two versions of the game:
+(1) The direction is randomly chosen, then you choose which coin to flip.
+  (A) What is the best strategy?
+  (B) How many games are expected to last at least K moves?
+
+(2) You choose the coin, then the direction is randomly chosen.
+  (A) What is the best strategy?
+  (B) How many games are expected to last at least K moves?
+
+(1A) This looks a lot like a walk on a continuously diminishing row.
+  (a) Whenever a head cannot be "moved", place a head on the appropriate edge that can be.
+    (e.g. TTT -> FTT or FTT -> FTF)
+  (b) Whenever a head can be "moved" move it toward the center if possible.
+    (e.g. FTTTT -> TFTTT -> TTFTT)
+  (c) If a head cannot be "moved" more centrally, move it away from the center.
+
+    Here's how a game might then go:
+    FFFFFF
+  R FFFFFT
+  L TFFFFT
+  L FTFFFT
+  L FFTFFT
+  R FFTFTF
+  R FFTTFF
+  R FTFTFF
+  L FFTTFF
+
+  (d) Going to the center might not be advantageous. The heuristic is to avoid bunching on one side. (e.g. TTTFFFFFFF) because then if the right coin must be flipped, we'll have to flip over an edge. But you might just want to keep the sides 'balanced'. (e.g. TFFTFFT).
+
+Another idea:
+Suppose that you're playing the game, but I get to choose which neighbor before each turn (condition 1). My constraint is that if the game terminates, the difference in the number of "lefts" and "rights" must be less than or equal to k. Do I have a strategy that will force the game to terminate?
+
+Natural generalizations:
+(1) Coins are in a circle.
+(2) Coins are on the plane.
+(3) Coins on a torus, etc.
+(4) Player 1 chooses locations and tries to make the game terminate; after locations are chosen, player 2 chooses direction to prevent termination.

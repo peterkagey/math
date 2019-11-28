@@ -1,0 +1,61 @@
+Coins in a row:
+(first player scores via min-max strategy):
+[]      -> min: 0;   max: 0
+[1]     -> min: 1;   max: 1
+[1,2]   -> min: 1;   max: 1
+[1..3]  -> min: 0;   max: 2
+[1..4]  -> min: 0;   max: 4
+[1..5]  -> min: -3;  max: 5
+[1..6]  -> min: 1;   max: 9
+[1..7]  -> min: -8;  max: 6
+[1..8]  -> min: 0;   max: 16
+[1..9]  -> min: -15; max: 9
+[1..10] -> min: 1;   max: 25
+
+[1..11] -> min: -24; max: 10
+[1..12] -> min: 13 - a_13; max: 36
+[1..13] -> min: -35; max: a_13
+[1..14] -> min: 15 - a_15; max: 49
+
+Theorem: [1..2*n] has a max score of n^2.
+Proof: arrangement highest tokens in even positions: [1, 8, 2, 7, 3, 6, 4, 5]
+
+---------------
+
+The maximum first-player score of a "Coins in a Row" game over all permutations of coins 1..n with both players using a minimax strategy.
+[1]     -> max: 1  via [1]
+[1,2]   -> max: 1  via [1,2]
+[1..3]  -> max: 2  via [1,2,3]
+[1..4]  -> max: 4  via [1,3,2,4]
+[1..5]  -> max: 5  via [1,2,4,3,5]
+[1..6]  -> max: 9  via [1,4,2,5,3,6]
+[1..7]  -> max: 6  via [1,2,3,4,6,5,7]
+[1..8]  -> max: 16 via [1,5,2,6,3,7,4,8]
+[1..9]  -> max: 9  via [1,2,3,4,6,5,8,7,9]
+
+Best games for second player:
+NOTE: [1..2n + 1] -> -n^2 + 1 forall natural numbers n
+[1]     -> min: 1;   via [1]
+[1,2]   -> min: 1;   via [1,2]
+[1..3]  -> min: 0;   via [1,3,2]
+[1..4]  -> min: 0;   via [1,2,4,3]
+[1..5]  -> min: -3;  via [1,4,2,5,3]
+[1..6]  -> min: 1;   via [1,2,3,4,6,5]
+[1..7]  -> min: -8;  via [1,5,2,6,3,7,4]
+[1..8]  -> min: 0;   via [1,2,3,4,6,5,8,7]
+[1..9]  -> min: -15; via [1,6,2,7,3,8,4,9,5]
+
+
+Games with tie strategy : Games without tie strategy (Win/Lose)
+NOTE: Games congruent to 1 or 2 (mod 4) cannot have a tie strategy because they
+have an odd number of points.
+[1]     -> 0    : 1       (1       / 0)
+[1,2]   -> 0    : 2       (2       / 0)
+[1..3]  -> 2    : 4       (4       / 0)
+[1..4]  -> 4    : 20      (20      / 0)
+[1..5]  -> 0    : 120     (92      / 28)
+[1..6]  -> 0    : 720     (720     / 0)
+[1..7]  -> 1104 : 3936    (2528    / 1298)
+[1..8]  -> 1344 : 38976   (38976   / 0)
+[1..9]  -> 0    : 362880  (191152  / 171728)
+[1..10] -> 0    : 3628800 (3628800 / 0)

@@ -1,0 +1,16 @@
+Z = { ..., -3, -2, -1, 0, 1, 2, 3, ... }
+(a, b) -> a + b         Associative
+(a, b) -> a - b         Non-associative
+(a, b) -> a * b         Associative
+(a, b) -> a/b           Non-associative
+(a, b) -> a^b           Non-associative
+(a, b) -> max(a,b)      Associative
+(a, b) -> a + 2 * b     Non-associative
+
+(a + b) + c = a + (b + c)
+(a - b) - c = a - b - c != a - (b - c) == a - b + c
+(a * b) * c = a * (b * c)
+(a/b)/c = a/(bc) != a/(b/c) = (ac)/b
+(a^b)^c = a^(b*c) != a^(b^c)
+max(max(a, b), c) = max(a, b, c) = max(a, max(a, b))
+(a # b) # c = a + 2 * b + 2 * c != a # (b # c) = a + 4 * b + 2 * c

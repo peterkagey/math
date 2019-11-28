@@ -1,0 +1,32 @@
+(1) Ron Graham's sequence
+  (a) Minimize number of terms.
+  (b) Can (a) be exactly 2?
+  (c) Count number of valid sequences.
+  (d) Generalize to Egyptian fractions
+  (e) Generalize to n being in the sequence?
+  (f) Generalize to perfect cubes, etc.
+
+(2) A259280 Braxton sequence
+  (a) Generalize to multiplication/LCM
+  (b) Other metrics?
+
+(3) Winkler's Coins in a Row
+  (a) Triangles in a row?
+  (b) Does the greedy algorithm work if players can take any arbitrary
+      row/column from a rectangular grid?
+
+(4) A261865: a(n) is the least integer k such that some multiple of sqrt(k)
+    falls strictly between n and n+1.
+
+(5) A260643: Start a spiral of numbers on a square grid, with the initial
+    square as a(1) = 1. a(n) is the smallest positive integer not equal to
+    or previously adjacent (horizontally/vertically) to its neighbors.
+  (a) Hexagonal analog
+
+(6) A263135: The maximum number of penny-to-penny connections when n pennies
+    are placed on the vertices of a hexagonal tiling.
+    (a) Square tiling
+    (b) Faces of hexagonal tiling.
+
+(7) A248122: Number of strings of length n over a three-letter alphabet that
+    begin with a nontrivial palindrome.

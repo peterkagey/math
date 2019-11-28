@@ -1,0 +1,14 @@
+-- Braxton product when no ordered pairs can occur twice in any order (e.g. [1,2,1,2] and [1,1,1] are illegal.)
+-- AND double letters are illegal (e.g. [1,1] is illegal).
+
+a(1)  = 1   via [1]
+a(2)  = 2   via [1,2]
+a(3)  = 2   via [1,2,1]
+a(4)  = 6   via [1,2,1,3]
+a(5)  = 6   via [1,2,1,3,1]
+a(6)  = 24  via [1,2,1,3,1,4]
+a(7)  = 24  via [1,2,1,3,1,4,1]
+a(8)  = 120 via [1,2,1,3,1,4,1,5]
+a(9)  = 120 via [1,2,1,3,1,4,1,5,1]
+a(10) = 576 via [1,2,1,3,1,4,2,3,4,1]
+a(11) = 720 via [1,2,1,3,1,4,1,5,1,6,1]

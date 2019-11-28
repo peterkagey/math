@@ -1,0 +1,43 @@
+Now we can compute Graham(n)
+    we can compute Count_{Graham}(n)
+    we can -- if we wish to -- ``quickly'' enumerate all Count_{Graham}(n) sequences.
+
+What we would like to be able to do:
+  (1) Prove (or disprove) that there is no sequence where $t = 2$
+    (a) i.e. g(n) = f(n)
+    (b) Conjecture by Robert G. Wilson v, Jan 30 2002 (a prolific OEIS contributor)
+
+  (x) Efficiently compute a minimal $t$: the number of terms in a Graham sequence.
+  (x) Minimize, say, the product or sum or LCM of the sequence.
+
+  (x) Generalize this to cubes.
+    (a) A277494 (Draft)
+    (b) If we loosen the constraints in a particular way, cubes should follow from doing the same as squares.
+        But in order to have it play nice, we need to allow duplicate terms.
+        (e.g.) $g_3(3) \leq \text{ via } 3 * 4^2 * 6^2 \text{ or } 3^2 * 4 * 6
+      (i) It looks like $n = a_1 < a_2 \leq a_3 \leq a_4 \leq \cdots \leq a_t = m$
+      (ii) The cubes problem probably has similar properties. I suspect it's also 1-to-1.
+    (c) I'm not sure if there's a trick for strict inequalities.
+
+  (x) Generalize to any arbitrary power.
+    (a) I haven't played much with this, but from afar, it looks out of my pay grade.
+    (b) For powers that are not prime powers, we don't have multiplicative inverses, so this is going to become some wacky linear algebra over a commutative ring, about which I have no intuition.
+
+  (x) Generalize to LCM
+    (a) LCM can probably use a similar construction, but now instead of taking the sum of the exponents (mod 2) we take the max of the exponents, and choose them in such a way that they are even.
+
+    # Ruby
+    def sequences(n)
+      (0..Float::INFINITY).each do |k|
+        zero_indexed_terms = (0...k.bit_length).select { |i| k[i] == 1 }
+        yield([n] + zero_indexed_terms.map { |i| n + 1 + i })
+      end
+    end
+
+    class Integer; def is_square?; Math.sqrt(self).round**2 == self end end
+
+    def a(n); sequences(n) { |i| return i if i.reduce(:lcm).is_square? } end
+
+  (x) Generalize to sum
+    (a) A277278
+    (b) Probably no nice properties.
