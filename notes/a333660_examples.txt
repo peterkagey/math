@@ -1,0 +1,10 @@
+A333660 examples:
+a(4)  =  1: tetrahedron
+a(5)  =  2: J_1, J_12
+a(6)  =  3: octahedron, triangular prism, J_2
+a(7)  =  3: J_7, J_13, J_49
+a(8)  =  6: cube, square antiprism, J_14, J_26, J_50, J_84
+a(9)  =  5: J_3, J_8, J_10, J_51, J_63
+a(10) =  7: pentagonal prism, pentagonal antiprism, J_15, J_17, J_62, J_64, J_86
+a(11) =  4: J_9, J_11, J_52, J_87
+a(12) = 10: hexagonal prism, hexagonal antiprism, icosahedron, truncated tetrahedron, cuboctahedron, J_4, J_16, J_27, J_53, J_88
