@@ -1,4 +1,5 @@
 *.DS_Store
+.vscode/
 Sloanes/lib/notes/
 rustOEIS/target
 haskellOEIS/.stack-work
