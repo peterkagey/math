@@ -1,0 +1,1 @@
+-- let bFile n list = putStr $ unlines $ map (\(a, b) -> show a ++ " " ++ show b) $ zip [n..] list

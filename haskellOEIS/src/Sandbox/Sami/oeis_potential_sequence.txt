@@ -1,0 +1,21 @@
+Number of equivalence classes of n-bead necklaces with beads of k colors where turning over is not allowed.
+
+Two necklaces are considered equivalent if one can reach the other by repeatedly incrementing each of the beads.
+
+a 4 2 = 3
+(0, 0)
+(1, 0)
+(2, 0)
+
+a 2 4 = 4
+(0,0,0,0)
+(0,0,0,1)
+(0,0,1,1)
+(0,1,0,1)
+
+1, 1,  1,   1,   1,    1
+1, 2,  2,   3,   3,    4
+1, 2,  5,   6,   9,   14
+1, 4,  8,  20,  33,   58
+1, 4, 17,  52, 129,  260
+1, 8, 46, 178, 527, 1316

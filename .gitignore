@@ -1,3 +1,8 @@
 *.DS_Store
 Sloanes/lib/notes/
 rustOEIS/target
+haskellOEIS/.stack-work
+haskellOEIS/dist
+haskellOEIS/.cabal-sandbox
+haskellOEIS/cabal.sandbox.config
+haskellOEIS/src/Main.hs
