@@ -1,4 +1,4 @@
-module FindStat.A349106 (a349106_row) where
+module FindStat.A349106 (a349106) where
 import Data.List (sort, permutations)
 import Data.Set (Set)
 import qualified Data.Set as Set
@@ -28,6 +28,10 @@ histogramSorted = recurse 0 0 where
     | a == i = recurse i (c+1) as
     | a /= i = c : recurse (i+1) 0 as'
 
-st000317 w = sum $ map (\c -> length $ filter (\(a,b) -> a > b) $ zip c (tail c)) $ fromWord w
+st000317 w = sum $ map (\c -> length $ filter (uncurry (>)) $ zip c (tail c)) $ fromWord w
 
 a349106_row n = histogramSorted $ sort $ map st000317 $ permutations [1..n]
+
+a349106_list = concatMap a349106_row [0..]
+
+a349106 n = a349106_list !! n

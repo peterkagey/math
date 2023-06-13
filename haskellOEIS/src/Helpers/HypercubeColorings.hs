@@ -47,7 +47,7 @@ flipFirst = Set.map (Set.map mirror) where
 -- poly-m-facet with k cells on an n-cube
 countPolyforms :: Int -> Int -> Int -> Int
 countPolyforms n m k = countRestrictedColorings n m k fixedPolyforms where
-  fixedPolyforms = allPolyforms n k (Set.fromList $ map (\i -> (i,0)) [1..n-m])
+  fixedPolyforms = allPolyforms n k (Set.fromList $ [(i, 0) | i <- [1..n-m]])
 
 -- A set of all k-polyforms on the n-cube containing the seed facet.
 -- When k = 0, this should give the empty polyomino.
