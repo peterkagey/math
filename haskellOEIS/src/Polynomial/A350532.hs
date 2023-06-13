@@ -1,4 +1,4 @@
-module Polynomial.A350532 where
+module Polynomial.A350532 (a350532) where
 import Helpers.ListHelpers (cartesianProduct)
 import Helpers.Primes (divisors)
 import Data.List (sort)
@@ -6,17 +6,16 @@ import Data.Set (Set)
 import qualified Data.Set as Set
 
 type CoefficientList = [Int]
--- a350532_row n =
 
 -- polynomials of degree n with coefficients in Z/2Z of the form f(x)^m for some m > 1
 targetPolynomialsWithMultiplicity :: Int -> [CoefficientList]
 targetPolynomialsWithMultiplicity n = concatMap f factors where
   factors = tail $ map fromIntegral $ divisors (fromIntegral n)
   -- f :: Int -> [CoefficientList]
-  f d = map (map (`mod` 2)) $ map (`power` d) $ allCoefficientLists a where
+  f d = map (map (`mod` 2) . (`power` d)) $ allCoefficientLists a where
     a = n `div` d
 
-targetPolynomials :: Int -> Set (CoefficientList)
+targetPolynomials :: Int -> Set CoefficientList
 targetPolynomials = Set.fromList . targetPolynomialsWithMultiplicity
 
 allCoefficientLists :: Int -> [CoefficientList]
@@ -54,6 +53,13 @@ histogramSorted = recurse 0 0 where
 
 justifyLeft n c s = s ++ replicate (n - length s) c
 
+a350532_row :: Int -> [Int]
 a350532_row 0 = [1]
-a350532_row n = justifyLeft (n+1) 0 $ tail $ histogramSorted $ sortedTermCounts where
+a350532_row n = justifyLeft (n+1) 0 $ tail $ histogramSorted sortedTermCounts where
   sortedTermCounts = Data.List.sort $ map sum $ Set.toList $ targetPolynomials n
+
+a350532_list :: [Int]
+a350532_list = concatMap a350532_row [0..]
+
+a350532 :: Int -> Int
+a350532 = (!!) a350532_list
