@@ -18,7 +18,7 @@ raiseUp :: [Integer] -> [[Integer]]
 raiseUp = foldr (\a -> concatMap (\ts -> [a^1 : ts, a^2 : ts, a^3 : ts])) [[]]
 
 anyProductIsFourthPower :: [Integer] -> Bool
-anyProductIsFourthPower as = any ((isKthPower 4) . product) $ raiseUp as
+anyProductIsFourthPower as = any (isKthPower 4 . product) $ raiseUp as
 
 agreesWithGraham :: Integer -> Bool
 agreesWithGraham n = lowerBound == upperBound n where

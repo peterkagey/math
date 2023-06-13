@@ -9,18 +9,17 @@ crossPolytopeVertices n = positive ++ negative where
   negative = map (map (0-)) positive
   f k = replicate k 0 ++ 1 : replicate (n-k-1) 0
 
-triangles n = choose 3 $ crossPolytopeVertices n
-quadrilaterals n = choose 4 $ crossPolytopeVertices n
-quadrilaterals' n = choose 4 $ hypercubeVertices n
+trianglesInCrossPolytope n      = choose 3 $ crossPolytopeVertices n
+trianglesInHypercube n          = choose 3 $ hypercubeVertices n
+quadrilateralsInCrossPolytope n = choose 4 $ crossPolytopeVertices n
+quadrilateralsInHypercube n     = choose 4 $ hypercubeVertices n
 
 sideLength (v, v') = sum $ map (^2) $ zipWith (-) v v'
 
 isSimplex vs = allEqual $ map (\[x,y] -> sideLength (x, y)) $ choose 2 vs
 
 allEqual [] = True
-allEqual a:as = recurse as' where
-  recurse []     = True
-  recurse (b:bs) = a == b && recurse bs
+allEqual (a:as) = all (==a) as
 
 isARectangle [v0, v1, v2, v3] = basis1Square || basis2Square || basis3Square where
   vec1 = zipWith (-) v1 v0
@@ -47,4 +46,7 @@ canonical n = minimum . transpose . map (symmetries n)
 
 -- This is slow! Use the formula in the OEIS.
 -- a344854 :: Integer -> Int
-a344854 = length . filter isSimplex . triangles
+a344854 = length . filter isSimplex . trianglesInHypercube
+a130809 = length . filter isSimplex . trianglesInCrossPolytope
+a000217 = length . filter isASquare . quadrilateralsInCrossPolytope -- triangular numbers
+a345340 = length . filter isASquare . quadrilateralsInHypercube

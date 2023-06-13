@@ -2,7 +2,7 @@ import Data.List (delete)
 
 a354408_perms n k = recurse 0 [([], [0..n-1])] where
   recurse :: Int -> [([Int], [Int])] -> [[Int]]
-  recurse i intermediateStates = concatMap f intermediateStates where
+  recurse i = concatMap f where
     f :: ([Int], [Int]) -> [[Int]]
     f (known, []) = [known]
     f (known, remaining) = recurse (i + 1) newStates where

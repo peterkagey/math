@@ -52,7 +52,7 @@ onLine pairsOfPoints point = any (uncurry (onALine point)) pairsOfPoints
 
 everyPair :: [a] -> [(a, a)]
 everyPair [] = []
-everyPair (a:as) = map (\b -> (a, b)) as ++ everyPair as
+everyPair (a:as) = [(a, a') | a' <- as] ++ everyPair as
 
 --     A   B   C   D   E   F
 --   +---+---+---+---+---+---+

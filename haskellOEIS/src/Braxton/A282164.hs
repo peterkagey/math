@@ -23,12 +23,12 @@ rootFloor :: Integer -> Integer
 rootFloor n = fromIntegral $ a000196 n
 
 isSquare :: Integer -> Bool
-isSquare n = all (\(_, k) -> k `mod` 2 == 0) $ primePowers n
+isSquare n = all (\(_, k) -> even k) $ primePowers n
 
 unsafeIntegerSqrt :: Integer -> Integer
 unsafeIntegerSqrt n = product $ map takeRoot $ primePowers n where
   takeRoot (d, k)
-    | k `mod` 2 == 0 = d^(k `div` 2)
+    | even k = d^(k `div` 2)
     | otherwise      = error ("Not a square: " ++ show n)
 
 ------------------

@@ -31,8 +31,8 @@ unrank n k prefixCounter i = recurse (0, 0) 1 [] where
     b''     = b + prefixCounter (prefix  ++ [c + 1])
 
 getColGroups :: Int -> Prefix -> [[Int]]
-getColGroups n prefix = filter (not . null) $ colGroups where
-  cols = 0 : (sort prefix) ++ [n+1]
+getColGroups n prefix = filter (not . null) colGroups where
+  cols = 0 : sort prefix ++ [n+1]
   colGroups = zipWith (\a b ->  [a+1..b-1]) cols (tail cols)
 
 blockSizesFromPrefix :: Int -> Prefix -> [Int]
@@ -58,14 +58,14 @@ complementaryRookPolynomial n prefix = foldr (.*.) [1] blockPolys where
 
 invalidMenagePrefix :: Int -> Prefix -> Bool
 invalidMenagePrefix n prefix = containsDuplicates || invalidPosition where
-  containsDuplicates = prefix /= (nub prefix)
+  containsDuplicates = prefix /= nub prefix
   invalidPosition = any inRestrictedPosition $ zip [0..] prefix where
     inRestrictedPosition (i, x) = (x `mod` n == i) || (x == i + 1)
 
 invalidDerangementPrefix :: Int -> Prefix -> Bool
 invalidDerangementPrefix _ prefix = containsDuplicates || invalidPosition where
-  containsDuplicates = prefix /= (nub prefix)
-  invalidPosition = any (id) $ zipWith (==) [1..] prefix
+  containsDuplicates = prefix /= nub prefix
+  invalidPosition = or $ zipWith (==) [1..] prefix
 
 menagePrefixCount :: Int -> Prefix -> Integer
 menagePrefixCount n prefix
@@ -79,9 +79,9 @@ menagePrefixCount n prefix
 derangementPrefixCount :: Int -> Prefix -> Integer
 derangementPrefixCount n prefix
   | invalidDerangementPrefix n prefix = 0
-  | otherwise = sum $ map (\j -> term j) [0..squareCount] where
+  | otherwise = sum $ map term [0..squareCount] where
     k = length prefix
-    squareCount = fromIntegral $ n - k - length (intersect [k+1..n] prefix)
+    squareCount = fromIntegral $ n - k - length ([k+1..n] `intersect` prefix)
     n' = fromIntegral n
     k' = fromIntegral k
     term j = (-1)^j * binomial squareCount j * factorial (n' - k' - j)
@@ -98,7 +98,7 @@ derangementPrefixCount n prefix
 (.*.) p1 [] = []
 (.*.) [] p2 = []
 (.*.) p1 p2 = foldr1 (.+.) termwiseProduct where
-  termwiseProduct = map f $ zip [0..] p1 where
+  termwiseProduct = zipWith (curry f) [0..] p1 where
     f (i, x) = replicate i 0 ++ map (*x) p2
 
 factorial :: Integer -> Integer

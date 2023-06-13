@@ -31,7 +31,7 @@ addRows r1 l r2 m = mapRow (\j x -> (x + l * getElem r2 j m) `mod` 3) r1 m
 -- (2) Swap to the top
 -- (3) Add appropriate multiples of the "top" row to all other rows
 reduceColumn :: Int -> Int -> Matrix Int -> Matrix Int
-reduceColumn r c = (cancelRows r c) . (swapToTheTop r c) . (clearOut r c)
+reduceColumn r c = cancelRows r c . swapToTheTop r c . clearOut r c
 
 -- (1)
 clearOut :: Int -> Int -> Matrix Int -> Matrix Int
@@ -57,7 +57,7 @@ cancelRows r c m
   | getElem r c m /= 1 = m
   | otherwise          = foldr cancel m nonZeroRowsIndices where
     nonZeroRowsIndices = filter (\r_i -> getElem r_i c m /= 0) $ delete r [1..nrows m]
-    cancel r_i m' = addRows r_i rInv r m' where
+    cancel r_i = addRows r_i rInv r where
         rInv = if getElem r_i c m == 1 then 2 else 1
 
 -- Count the number of non-zero *rows*.

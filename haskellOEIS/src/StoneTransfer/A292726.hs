@@ -8,7 +8,7 @@ import Data.IntMap.Strict (IntMap, toList, adjust, fromList)
 -- This is much slower than the Ruby implementation.
 
 -- TODO: Implement A292727, A292729, and A292836.
-a292726 n = length $ enumerateFrom $ fromList $ (1, n) : map (\i -> (i, 0)) [2..n]
+a292726 n = length $ enumerateFrom $ fromList $ (1, n) : [(x, 0) | x <- [2..n]]
 a292726_list = map a292726 [1..]
 
 type State = IntMap Int

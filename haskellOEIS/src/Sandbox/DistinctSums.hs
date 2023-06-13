@@ -4,7 +4,7 @@ import qualified Data.Set as Set
 import Helpers.Table (indicesByAntidiagonals)
 
 -- Given S computes |S+S|,  the size of the pairwise sum.
-sumCount as = Set.size $ Set.fromList $ map (uncurry (+)) $ pairs where
+sumCount as = Set.size $ Set.fromList $ map (uncurry (+)) pairs where
   pairs = eachPair as ++ zip as as
 
 isMaximalSumCount as = sumCount as == (x*(x+1) `div` 2) where

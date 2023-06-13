@@ -3,5 +3,5 @@ import Helpers.Primes (divisors)
 
 a001227 :: Integer -> Int
 a001227 n
-  | n `mod` 2 == 0 = a001227 (div n 2)
-  | otherwise      = length $ divisors n
+  | even n    = a001227 (div n 2)
+  | otherwise = length $ divisors n

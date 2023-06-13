@@ -27,6 +27,6 @@ histogramSorted = recurse 0 0 where
     | a == i = recurse i (c+1) as
     | a /= i = c : recurse (i+1) 0 as'
 
-st000317 w = sum $ map (\c -> length $ filter (\(a,b) -> a > b) $ zip c (tail c)) $ fromWord w
+st000317 w = sum $ map (\c -> length $ filter (uncurry (>)) $ zip c (tail c)) $ fromWord w
 
 a349106_row n = histogramSorted $ sort $ map st000317 $ permutations [1..n]

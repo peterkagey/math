@@ -8,7 +8,7 @@ commonPrefix (w1, w2) = recurse w1 w2 where
   recurse [] _ = []
   recurse _ [] = []
   recurse (a:as) (b:bs)
-    | a == b    = a : (recurse as bs)
+    | a == b    = a : recurse as bs
     | otherwise = []
 
 longestRepeatedSubstrings w = allMax length $ map commonPrefix pairs where

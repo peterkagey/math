@@ -7,9 +7,9 @@ a284918 n = map snd a284918_list !! (n - 1)
 a284918_list = (0,1) : recurse 1 where
   recurse i = (i, nextTerm) : recurse (i + 1) where
     nextTerm = head $ filter noIsosceles [1..] where
-      noIsosceles a_k = all (not . isoceles) $ everyPair $ take i a284918_list where
+      noIsosceles a_k = (not . any isosceles) $ everyPair $ take i a284918_list where
         pk = (i, a_k)
-        isoceles (p0, p1)
+        isosceles (p0, p1)
           | euclideanDistance p0 p1 == euclideanDistance p0 pk = True
           | euclideanDistance p0 p1 == euclideanDistance p1 pk = True
           | euclideanDistance p0 pk == euclideanDistance p1 pk = True

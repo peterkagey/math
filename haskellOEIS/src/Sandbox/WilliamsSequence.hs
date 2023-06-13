@@ -5,10 +5,10 @@ import qualified Data.Set as Set
 -- Relates to A066063 and
 -- William Chang's June 2022 email.
 
-covers n list = targetSet `Set.isSubsetOf` (pairSums list) where
+covers n list = targetSet `Set.isSubsetOf` pairSums list where
   targetSet = Set.fromList [1..n]
 
-covers' n list = targetSet `Set.isSubsetOf` (pairSums' list) where
+covers' n list = targetSet `Set.isSubsetOf` pairSums' list where
   targetSet = Set.fromList [1..n]
 
 pairSums list = Set.fromList [a + b | a <- list, b <- list]
