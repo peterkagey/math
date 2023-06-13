@@ -1,5 +1,5 @@
 module Graham.A278818 (a278818) where
-import Math.NumberTheory.Powers.Squares (isSquare')
+import Math.NumberTheory.Roots (isSquare)
 import Graham.A277278 (a277278)
 import Data.List (find)
 import Data.Maybe (fromJust)
@@ -9,4 +9,4 @@ import Data.Maybe (fromJust)
 
 
 a278818 :: Integer -> Integer
-a278818 n = fromJust $ find (isSquare' . (+ n)) [n + 1..]
+a278818 n = fromJust $ find (isSquare . (+ n)) [n + 1..]

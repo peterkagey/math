@@ -19,12 +19,12 @@ cabal-version:       >=1.10
 executable haskellOEIS
   main-is:             Main.hs
   ghc-options:
-  build-depends:       base >=4.11 && <4.12, containers >= 0.5.11 && < 0.6, hspec, matrix, vector, arithmoi >= 0.9.0.0, data-memocombinators >= 0.5.1
+  build-depends:       base, containers, integer-roots, data-memocombinators, vector, matrix
   hs-source-dirs:      src
   default-language:    Haskell2010
 
 test-suite spec
-  build-depends:       base >=4.11 && <4.12, containers >= 0.5.11 && < 0.6, hspec, matrix, vector, arithmoi >= 0.9.0.0, data-memocombinators >= 0.5.1
+  build-depends:       hspec, base, containers, integer-roots, data-memocombinators, vector, matrix
   hs-source-dirs:      src, test
   main-is:             Spec.hs
   default-language:    Haskell2010

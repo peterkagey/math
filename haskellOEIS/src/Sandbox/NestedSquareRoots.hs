@@ -1,4 +1,4 @@
-import Math.NumberTheory.Powers.Squares (exactSquareRoot)
+import Math.NumberTheory.Roots (exactSquareRoot)
 import Data.Foldable
 import Helpers.ListHelpers (cartesianProduct)
 

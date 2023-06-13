@@ -1,5 +1,5 @@
 import Data.List (tails)
-import Math.NumberTheory.Powers.Squares (isSquare')
+import Math.NumberTheory.Roots (isSquare)
 import Helpers.ListHelpers (firstDifferences)
 
 triangles = map (\n -> n * (n + 1) `div` 2) [1..]

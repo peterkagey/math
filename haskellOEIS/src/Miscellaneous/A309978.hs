@@ -1,5 +1,5 @@
 module Miscellaneous.A309978 (a309978) where
-import Math.NumberTheory.Powers (integerRoot)
+import Math.NumberTheory.Roots (integerRoot)
 -- a n = recurse 0
 
 a309978 1 = 0

@@ -2,7 +2,7 @@ module Helpers.GridPolytopes (countPolygons, Polygon (..)) where
 import Helpers.ListHelpers (cartesianProduct)
 import Helpers.Subsets (choose)
 import Data.List (genericTake, nub)
-import Math.NumberTheory.Powers.Squares (exactSquareRoot, isSquare')
+import Math.NumberTheory.Roots (exactSquareRoot, isSquare)
 import Data.Set (Set)
 import qualified Data.Set as Set
 

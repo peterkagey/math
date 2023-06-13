@@ -1,6 +1,6 @@
 import Data.Ratio (Ratio, (%), denominator, numerator)
 import Data.List (genericLength)
-import Math.NumberTheory.Powers.Squares (isSquare')
+import Math.NumberTheory.Roots (isSquare)
 import qualified Data.Map.Strict as Map
 
 type Histogram = Map.Map Integer Int
@@ -31,7 +31,7 @@ isRichardsSequence xs = shifted && notReversible && fewerThanThreeOccurrences &&
   meanIsInteger = denominator (mean xs) == 1
   var = variance xs
   varianceIsInteger = denominator var == 1
-  stdDevIsInteger = isSquare' (numerator var)
+  stdDevIsInteger = isSquare (numerator var)
   positiveVariance = var > 1
 
 adjust = map (map (subtract 1))

@@ -34,7 +34,7 @@ nonSelfConjugate :: Int -> [(Int, Int, Int)] -> Bool
 nonSelfConjugate n = not . isSelfConjugate n
 
 buildNextGeneration :: ([(Int, Int, Int)], [Int]) -> [([(Int, Int, Int)], [Int])]
-buildNextGeneration finished @ (_, []) = [finished]
+buildNextGeneration finished@(_, []) = [finished]
 buildNextGeneration (known, remaining) = map (\t -> (t : known, without t)) triples where
   triples = findTriplesWithHead remaining
   without (t_1, t_2, t_3) = delete t_3 $ delete t_2 $ delete t_1 remaining

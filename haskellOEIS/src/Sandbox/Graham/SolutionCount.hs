@@ -1,6 +1,6 @@
 import Data.List (subsequences)
 import Helpers.ListHelpers (cartesianProduct)
-import Math.NumberTheory.Powers (isKthPower)
+import Math.NumberTheory.Roots (isKthPower)
 import Helpers.Table (tableByAntidiagonals)
 
 baseSequences n = map (n:) $ subsequences [n+1..]

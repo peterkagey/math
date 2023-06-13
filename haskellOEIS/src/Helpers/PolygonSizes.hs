@@ -1,5 +1,5 @@
 module Helpers.PolygonSizes (triangleSizes, a001481_pairs) where
-import Math.NumberTheory.Powers.Squares (integerSquareRoot')
+import Math.NumberTheory.Roots (integerSquareRoot)
 import Data.Set (Set)
 import qualified Data.Set as Set
 
@@ -23,4 +23,4 @@ triangleSizes = scanl f (Set.singleton 1) [3..] where
 a001481_pairs :: [[(Integer, Integer)]]
 a001481_pairs = filter (not . null) $ map stepsOfLengthSqrt [0..] where
   stepsOfLengthSqrt n = filter (\(a, b) -> a^2 + b^2 == n) candidates where
-    candidates = [(a, integerSquareRoot' (n - a^2)) | a <- [0..integerSquareRoot' (n `div` 2)]]
+    candidates = [(a, integerSquareRoot (n - a^2)) | a <- [0..integerSquareRoot (n `div` 2)]]

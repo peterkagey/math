@@ -1,4 +1,4 @@
-import Math.NumberTheory.Powers.Fourth (isFourthPower')
+import Math.NumberTheory.Roots (isKthPower)
 import Data.List (nub, subsequences)
 import Helpers.Primes (primePowers)
 
@@ -15,12 +15,12 @@ baseCandidates n = filter (not . isInvalid) [n'+1..g_n-1] where
   isInvalid k = any (\p -> k - p < n' && k + p > g_n) unpairedPrimes where
     unpairedPrimes = map fst $ filter (\(_,p) -> p `mod` 2 == 1) $ primePowers $ fromIntegral k
 
-count n = map (\x -> prefix ++ x) $ subsequences $ baseCandidates n where
+count n = map (prefix ++) $ subsequences $ baseCandidates n where
   n' = fromIntegral n
   prefix = nub [n', g_n]
   g_n = a328045_list !! n
 
-a999999' n = filter (isFourthPower' . powerProduct) r where
+a999999' n = filter (isKthPower 4 . powerProduct) r where
   r = concatMap raiseUp' $ count n
 
 a999999'_list = map a999999' [1..]

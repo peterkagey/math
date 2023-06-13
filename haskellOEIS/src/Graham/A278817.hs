@@ -1,5 +1,5 @@
 module Graham.A278817 (a278817) where
-import Math.NumberTheory.Powers.Squares (isSquare')
+import Math.NumberTheory.Roots (isSquare)
 import Graham.A277278 (a277278)
 import Data.List (find)
 import Data.Maybe (fromJust)
@@ -14,7 +14,7 @@ a278817 n
   | otherwise  = (2+) $ fromJust $ find f [0..length candidateTerms] where
       a = a277278 n
       candidateTerms = [n+1..a - 1]
-      f i = any (\s -> isSquare' $ sum (n : a : s)) (comb i candidateTerms)
+      f i = any (\s -> isSquare $ sum (n : a : s)) (comb i candidateTerms)
 
 comb :: Int -> [a] -> [[a]]
 comb 0 _      = [[]]

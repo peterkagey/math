@@ -1,5 +1,5 @@
 module Minecraft.A328446 (a328446, a328446_list, a328446_row) where
-import Math.NumberTheory.Powers (integerRoot)
+import Math.NumberTheory.Roots (integerRoot)
 
 a328446 :: Int -> Int
 a328446 n = a328446_list !! (n - 1)
