@@ -1,6 +1,6 @@
-module FindStat.A354408Spec (main, spec) where
+module Permutations.A354408Spec (main, spec) where
 import Test.Hspec
-import FindStat.A354408 (a354408)
+import Permutations.A354408 (a354408)
 
 main :: IO ()
 main = hspec spec

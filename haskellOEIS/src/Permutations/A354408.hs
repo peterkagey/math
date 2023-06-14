@@ -1,4 +1,4 @@
-module FindStat.A354408 (a354408) where
+module Permutations.A354408 (a354408) where
 import Data.List (delete)
 
 a354408_perms n k = recurse 0 [([], [0..n-1])] where
